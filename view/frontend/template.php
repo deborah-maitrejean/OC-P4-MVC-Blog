@@ -31,7 +31,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Accueil</a></li>
                 <li><a href="#">Tous les chapitres</a></li>
-                <li><a href="#">A propos</a></li>
+                <li><a href="index.php?action=about">A propos</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
