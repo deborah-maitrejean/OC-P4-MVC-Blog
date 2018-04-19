@@ -30,6 +30,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Accueil</a></li>
+                <li><a href="#">Tous les chapitres</a></li>
                 <li><a href="#">A propos</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>

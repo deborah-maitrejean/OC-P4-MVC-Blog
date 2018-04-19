@@ -18,8 +18,13 @@
             </div>
         </div>
     </div>
-    <h1>Billet simple pour l'Alaska</h1>
-    <p>Derniers billets du blog :</p>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Billet simple pour l'Alaska</h1>
+        <p>Derniers billets du blog :</p>
+    </div>
+</div>
 
 <?php
 while ($data = $posts->fetch())
