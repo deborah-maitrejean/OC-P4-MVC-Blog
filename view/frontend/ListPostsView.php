@@ -6,7 +6,7 @@
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="public/images/portrait-jean-forteroche.jpg" alt="Portrait noir et blanc de l'auteur Jean Forteroche." class="img-thumbnail">
+                        <img src="public/img/portrait-jean-forteroche.jpg" alt="Portrait noir et blanc de l'auteur Jean Forteroche." class="img-thumbnail">
                     </div>
                     <div class="col-lg-6">
                         <h2>JeanForteroche</h2>
