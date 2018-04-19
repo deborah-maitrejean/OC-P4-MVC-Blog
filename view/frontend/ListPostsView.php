@@ -6,13 +6,13 @@
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="public/img/portrait-jean-forteroche.jpg" alt="Portrait noir et blanc de l'auteur Jean Forteroche." class="img-thumbnail">
+                        <img src="public/img/portrait-jean-forteroche.jpg" alt="Portrait noir et blanc de l'auteur Jean Forteroche." class="img-thumbnail img-responsive">
                     </div>
                     <div class="col-lg-6">
                         <h2>JeanForteroche</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet mauris eget tortor tristique interdum. Morbi aliquam in turpis at congue. Aenean pulvinar,
-                            eros eu efficitur iaculis, nunc sem tincidunt ante, dapibus sed libero..... </p>
-                        <a class="btn btn-lg btn-primary" href="#" role="button">Découvrir l'auteur &raquo;</a>
+                            eros eu efficitur iaculis, nunc sem tincidunt ante, dapibus sed libero... </p>
+                        <a class="btn btn-lg btn-primary" href="index.php?action=about" role="button">Découvrir l'auteur &raquo;</a>
                     </div>
                 </div>
             </div>
@@ -49,6 +49,6 @@ while ($data = $posts->fetch())
 }
 $posts->closeCursor();
 ?>
-<?php $content = ob_get_clean(); // récupère le contenu généré avec cette fonction et on met le tout dans $content ?>
 
+<?php $content = ob_get_clean(); // récupère le contenu généré avec cette fonction et on met le tout dans $content ?>
 <?php require('template.php'); ?>

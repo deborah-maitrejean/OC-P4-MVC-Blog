@@ -40,6 +40,8 @@ try {
             }
         } elseif ($_GET['action'] == 'adminConnexion'){
             adminView();
+        } elseif ($_GET['action'] == 'about'){
+            aboutView();
         }
     }
     else {

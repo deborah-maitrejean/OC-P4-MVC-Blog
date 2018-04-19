@@ -54,3 +54,6 @@ function editComment($postId, $comment, $commentId) {
 function adminView(){
     require('view/frontend/adminConnexionView.php');
 }
+function aboutView(){
+    require('view/frontend/aboutView.php');
+}
