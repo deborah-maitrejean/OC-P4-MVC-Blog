@@ -42,6 +42,8 @@ try {
             adminView();
         } elseif ($_GET['action'] == 'about'){
             aboutView();
+        } elseif ($_GET['action'] == 'contact'){
+            contactView();
         }
     }
     else {

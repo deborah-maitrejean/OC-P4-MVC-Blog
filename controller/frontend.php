@@ -57,3 +57,6 @@ function adminView(){
 function aboutView(){
     require('view/frontend/aboutView.php');
 }
+function contactView(){
+    require('view/frontend/contactView.php');
+}
