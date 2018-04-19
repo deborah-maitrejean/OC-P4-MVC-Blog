@@ -51,3 +51,6 @@ function editComment($postId, $comment, $commentId) {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+function adminView(){
+    require('view/frontend/adminConnexionView.php');
+}

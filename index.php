@@ -38,6 +38,8 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
+        } elseif ($_GET['action'] == 'adminConnexion'){
+            adminView();
         }
     }
     else {
