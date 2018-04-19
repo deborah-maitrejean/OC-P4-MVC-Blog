@@ -4,10 +4,17 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="jumbotron">
-                <h1>Jean Forteroche</h1>
-                <p></p>
-                <a class="btn btn-lg btn-primary" href="#" role="button">Découvrir l'auteur &raquo;</a>
-
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="public/images/portrait-jean-forteroche.jpg" alt="Portrait noir et blanc de l'auteur Jean Forteroche." class="img-thumbnail">
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>JeanForteroche</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet mauris eget tortor tristique interdum. Morbi aliquam in turpis at congue. Aenean pulvinar,
+                            eros eu efficitur iaculis, nunc sem tincidunt ante, dapibus sed libero..... </p>
+                        <a class="btn btn-lg btn-primary" href="#" role="button">Découvrir l'auteur &raquo;</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
