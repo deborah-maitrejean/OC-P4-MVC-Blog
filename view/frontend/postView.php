@@ -22,8 +22,8 @@
             <input type="text" id="author" name="author">
         </div>
         <div>
-            <label for="content">Commentaire</label><br>
-            <textarea id="content" name="content"></textarea>
+            <label for="comment">Commentaire</label><br>
+            <textarea id="comment" name="comment"></textarea>
         </div>
         <div>
             <input type="submit">

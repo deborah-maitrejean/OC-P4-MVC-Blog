@@ -16,7 +16,7 @@ class CommentManager extends Manager
 
     public function postComment($postId, $author, $comment) {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, creation_date) VALUES(?, ?, ?, NOW())');
+        $comments = $db->prepare('INSERT INTO comments(post_id, author, content, creation_date) VALUES(?, ?, ?, NOW())');
         // Récupération en paramètres des informations dont on a besoin
         $affectedLines = $comments->execute(array($postId, $author, $comment));
 
