@@ -40,10 +40,14 @@ while ($data = $posts->fetch())
             <p>
                 <?= nl2br(htmlspecialchars($data['content'])) ?>
             </p>
-            <p>
-                Par <strong><?= $data['author'] ?></strong> <em>le <?= $data['creation_date_fr'] ?></em>
-                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-            </p>
+            <div class="row">
+                <div class="col-lg-6">
+                    Par <strong><?= $data['author'] ?></strong> <em>le <?= $data['creation_date_fr'] ?></em>
+                </div>
+                <div class="col-lg-offset-4 col-lg-2">
+                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary read-more">Lire la suite &raquo;</a>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
