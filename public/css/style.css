@@ -1,0 +1,38 @@
+/*----- COOKIES BANNER -----*/
+div.cookie_policy_msg{
+    width:100%;
+    background:#111;
+}
+div.cookie_policy_msg>div{
+    max-width:1200px;margin:0 auto;color:#999;padding:10px}
+div.cookie_policy_msg>div>a:first-child{
+    color:#fff;
+    display:inline-block;
+    margin-left:10px
+}
+div.cookie_policy_msg>div>a:last-child{
+    display:inline-block;
+    margin-left:20px;
+    height:28px;
+    width:32px;
+    color:#fff
+}
+
+/*----- FOOTER -----*/
+#footer{
+    background-color: #eee;
+    width: 100%;
+    padding: 50px 0 65px;
+}
+footer a{
+    text-decoration: none;
+}
+footer .list-inline {
+    margin: 0;
+    padding: 0;
+}
+footer .copyright {
+    font-size: 14px;
+    margin-bottom: 0;
+    text-align: center;
+}

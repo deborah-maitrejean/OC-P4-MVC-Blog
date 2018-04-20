@@ -51,11 +51,12 @@
 <div class="container">
 
     <?= $content ?>
+</div>
 
+<div class="container-fluid">
     <div class="row">
-        <hr>
-        <footer>
-            <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-8 col-md-10 mx-auto" id="footer">
+            <footer>
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
                         <a href="https://twitter.com/D_Maitrejean" target="_blank">
@@ -82,12 +83,12 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; <a href="https://deborah-maitrejean.com" target="_blank">Déborah Maitrejean</a></p>
-            </div>
-        </footer>
+                <p class="copyright text-muted">2018 Copyright &copy; <a href="https://deborah-maitrejean.com" target="_blank">Déborah Maitrejean</a></p>
+            </footer>
+        </div>
     </div>
-
 </div>
+
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
