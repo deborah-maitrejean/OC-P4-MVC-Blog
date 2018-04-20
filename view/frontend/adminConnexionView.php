@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="" method="post" class="form-horizontal">
+        <form action="" method="post" class="form-horizontal" id="admin-connexion-view">
             <fieldset>
                 <!-- Form Name -->
                 <legend><center>Connexion à la page d'administration</center></legend>
@@ -29,8 +29,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="submit"></label>
                     <div class="col-md-8">
-                        <input id="submit" name="submit" class="btn btn-success" placeholder="Valider">
-                        <input id="cancel" name="cancel" class="btn btn-danger" placeholder="Annuler">
+                        <input type="submit" id="submit" name="submit" class="btn btn-success btn-lg" placeholder="Valider">
+                        <input type="reset" id="cancel" name="cancel" class="btn btn-danger btn-lg" placeholder="Annuler">
                     </div>
                 </div>
 
