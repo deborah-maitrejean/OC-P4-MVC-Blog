@@ -19,9 +19,15 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <!-- snow effect script -->
+    <script type="text/javascript" src="vendor/snowstorm/script/snowstorm.js"></script>
+
 </head>
 
 <body>
+
 <!-- Static navbar -->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -89,9 +95,6 @@
     </div>
 </div>
 
-
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="public/js/cookies.js"></script>
