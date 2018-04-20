@@ -5,22 +5,22 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
 function listPosts() {
-    $postManager = new \OpenClassrooms\Blog\Model\PostManager(); // création d'un objet
+    $postManager = new Blog\Model\PostManager(); // création d'un objet
     $posts = $postManager->getPosts(); // appel d'une fonction sur cet objet
 
     require('view/frontend/allPostsView.php');
 }
 
 function listPostsExcerpt() {
-    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $postManager = new Blog\Model\PostManager();
     $posts = $postManager->getPostsExcerpt();
 
     require('view/frontend/listPostsView.php');
 }
 
 function post() {
-    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $postManager = new Blog\Model\PostManager();
+    $commentManager = new Blog\Model\CommentManager();
 
     $post = $postManager->getPost($_GET['id']); // appel  d'une fonction sur l'objet PostManager
     $comments = $commentManager->getComments($_GET['id']); // appel  d'une fonction sur l'objet CommentManager
@@ -29,7 +29,7 @@ function post() {
 }
 
 function addComment($postId, $author, $comment) {
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $commentManager = new Blog\Model\CommentManager();
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {
@@ -40,8 +40,8 @@ function addComment($postId, $author, $comment) {
     }
 }
 function commentView(){
-    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $postManager = new Blog\Model\PostManager();
+    $commentManager = new Blog\Model\CommentManager();
 
     $post = $postManager->getPost($_GET['postId']);
     $comment = $commentManager->getComment($_GET['commentId']);
@@ -49,7 +49,7 @@ function commentView(){
     require('view/frontend/commentEdit.php');
 }
 function editComment($postId, $comment, $commentId) {
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $commentManager = new Blog\Model\CommentManager();
     $newComment = $commentManager->updateComment($comment, $commentId);
 
     if ($newComment === false) {

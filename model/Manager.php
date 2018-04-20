@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\Blog\Model;
+namespace Blog\Model;
 
 class Manager {
     protected function dbConnect() {
