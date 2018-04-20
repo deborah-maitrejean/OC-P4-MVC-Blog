@@ -38,7 +38,7 @@ while ($data = $posts->fetch())
             </h3>
 
             <p>
-                <?= nl2br(htmlspecialchars($data['content'])) ?>
+                <?= nl2br(htmlspecialchars($data['postExcerpt'])) ?>...
             </p>
             <div class="row">
                 <div class="col-lg-6">
