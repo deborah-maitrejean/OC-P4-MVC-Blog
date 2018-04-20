@@ -8,7 +8,7 @@ function listPosts() {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager(); // création d'un objet
     $posts = $postManager->getPosts(); // appel d'une fonction sur cet objet
 
-    require('view/frontend/listPostsView.php');
+    require('view/frontend/allPostsView.php');
 }
 
 function listPostsExcerpt() {

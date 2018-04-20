@@ -44,10 +44,11 @@ try {
             aboutView();
         } elseif ($_GET['action'] == 'contact'){
             contactView();
+        } elseif ($_GET['action'] == 'allPostsView'){
+            listPosts();
         }
     }
     else {
-        /*listPosts();*/
         listPostsExcerpt();
     }
 }
