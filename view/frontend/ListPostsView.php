@@ -45,12 +45,13 @@ while ($data = $posts->fetch())
             </p>
         </div>
     </div>
+    <hr>
     <?php
 }
 $posts->closeCursor();
 ?>
     <!-- Pager -->
-    <div class="row">
+    <div class="row" id="older-posts-btn-section">
         <div class="col-lg-offset-10 col-lg-2">
             <a class="btn btn-primary" href="#">Plus anciens &rarr;</a>
         </div>

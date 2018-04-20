@@ -36,3 +36,8 @@ footer .copyright {
     margin-bottom: 0;
     text-align: center;
 }
+
+/*----- HOME -----*/
+#older-posts-btn-section{
+    margin-bottom: 50px;
+}
