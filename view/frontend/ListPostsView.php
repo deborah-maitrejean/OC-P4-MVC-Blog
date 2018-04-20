@@ -49,6 +49,12 @@ while ($data = $posts->fetch())
 }
 $posts->closeCursor();
 ?>
+    <!-- Pager -->
+    <div class="row">
+        <div class="col-lg-offset-10 col-lg-2">
+            <a class="btn btn-primary" href="#">Plus anciens &rarr;</a>
+        </div>
+    </div>
 
 <?php $content = ob_get_clean(); // récupère le contenu généré avec cette fonction et on met le tout dans $content ?>
 <?php require('template.php'); ?>
