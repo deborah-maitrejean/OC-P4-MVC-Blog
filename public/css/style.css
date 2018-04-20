@@ -60,3 +60,18 @@ footer .copyright {
 #post-excerpt .row{
     margin-top: 25px;
 }
+
+/*------ CONTACT VIEW -----*/
+#contact-view{
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: #eee;
+    opacity: 0.9;
+    font-size: 16px;
+}
+textarea{
+    overflow: auto;
+    margin: 0;
+    min-width: 100%;
+    max-width: 100%;
+}

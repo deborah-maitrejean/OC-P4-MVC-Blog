@@ -1,10 +1,10 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 <?php ob_start(); ?>
 
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<div class="row" >
+    <div class="col-lg-offset-3 col-lg-6" id="contact-view">
 
-        <form action="" method="post" class="form-horizontal" id="formulaire">
+        <form action="" method="post" class="form-horizontal">
             <fieldset>
                 <legend>Formulaire de contact</legend>
 
@@ -35,7 +35,7 @@
 
                 <div class="form-group reset-send">
                     <label for="reset"></label>
-                    <input type="reset" id="reset" name="reset" class="btn btn-danger btn-lg" value="Réinitialiser"/>
+                    <input type="reset" id="reset" name="reset" class="btn btn-warning btn-lg" value="Réinitialiser"/>
                     <label for="send"></label>
                     <input type="submit" id="send" name="send" title="Valider et envoyer le formulaire" class="btn btn-success btn-lg" value="Envoyer"/>
                 </div>
