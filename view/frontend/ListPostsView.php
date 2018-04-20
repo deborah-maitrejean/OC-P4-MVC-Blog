@@ -33,7 +33,7 @@ while ($data = $posts->fetch())
 
     <div class="row">
         <div class="col-lg-12">
-            <h3>
+            <h3><i class="fa fa-bookmark"></i>
                 <?= htmlspecialchars($data['title']) ?>
                 <em>le <?= $data['creation_date_fr'] ?></em>
             </h3>

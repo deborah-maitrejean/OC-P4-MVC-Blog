@@ -42,7 +42,7 @@
                 <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.php?action=adminConnexion">Admin <span class="sr-only">(current)</span></a></li>
+                <li class=""><a href="index.php?action=adminConnexion"><span class="fa fa-user"></span> Admin <span class="sr-only">(current)</span></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
