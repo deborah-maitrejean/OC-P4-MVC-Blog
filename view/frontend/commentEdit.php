@@ -7,7 +7,7 @@
             <p><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">Retour à la liste des commentaires</a></p>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="comment-view">
         <div class="col-lg-12">
             <h3>
                 <?= htmlspecialchars($post['title']) ?>
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="comment-form">
         <div class="col-lg-12">
             <h3>Modifier le commentaire</h3>
             <form action="index.php?action=editComment&amp;commentId=<?= $comment['id'] ?>&amp;id=<?= $post['id'] ?>" method="post">

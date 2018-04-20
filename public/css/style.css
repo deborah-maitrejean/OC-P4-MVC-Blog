@@ -42,19 +42,19 @@ footer .copyright {
     text-align: center;
 }
 
-/*----- LIST POSTS VIEW / POST VIEW / ALL POST VIEW -----*/
+/*----- LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
 #older-posts-btn-section{
     margin-bottom: 50px;
 }
-#post-excerpt, #about-view, #post-content{
+#post-excerpt, #about-view, #post-content, #comment-view-form{
     padding-bottom: 25px;
 }
-#post-excerpt, #comment-form, #post-view, #about-view, #post-content{
+#post-excerpt, #comment-form, #post-view, #about-view, #post-content, #comment-view-form, #comment-view{
     background-color: #eee;
     opacity: 0.9;
     font-size: 16px;
 }
-#post-view, #comment-form, #about-view, #post-content{
+#post-view, #comment-form, #about-view, #post-content, #comment-view{
     margin-bottom: 30px;
 }
 #post-excerpt .row{
