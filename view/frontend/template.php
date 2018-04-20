@@ -7,7 +7,7 @@
 
     <title>Blog de Jean Forteroche, écrivain</title>
 
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -20,9 +20,9 @@
     <![endif]-->
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="public/js/jquery/jquery.min.js"></script>
     <!-- snow effect script -->
-    <script type="text/javascript" src="vendor/snowstorm/script/snowstorm.js"></script>
+    <script type="text/javascript" src="public/js/snowstorm/script/snowstorm.js"></script>
 
 </head>
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="">
 
     <!-- Add icon library -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
@@ -26,7 +26,7 @@
     <![endif]-->
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="public/js/jquery/jquery.min.js"></script>
 </head>
 
 <body>
