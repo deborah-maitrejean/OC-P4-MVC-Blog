@@ -47,7 +47,8 @@ try {
         }
     }
     else {
-        listPosts();
+        /*listPosts();*/
+        listPostsExcerpt();
     }
 }
 catch(Exception $e) { // s'il y a une erreur, alors...

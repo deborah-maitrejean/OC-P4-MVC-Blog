@@ -11,9 +11,16 @@ function listPosts() {
     require('view/frontend/listPostsView.php');
 }
 
+function listPostsExcerpt() {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $posts = $postManager->getPostsExcerpt();
+
+    require('view/frontend/listPostsView.php');
+}
+
 function post() {
-    $postManager = new \OpenClassrooms\Blog\Model\PostManager(); // création d'un objet
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager(); // création d'un objet
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
 
     $post = $postManager->getPost($_GET['id']); // appel  d'une fonction sur l'objet PostManager
     $comments = $commentManager->getComments($_GET['id']); // appel  d'une fonction sur l'objet CommentManager
