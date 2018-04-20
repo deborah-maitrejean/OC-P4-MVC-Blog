@@ -17,6 +17,11 @@ div.cookie_policy_msg>div>a:last-child{
     width:32px;
     color:#fff
 }
+/*----- GENERAL -----*/
+body{
+    background-image: url("../img/denal.jpg");
+    background-size: cover;
+}
 
 /*----- FOOTER -----*/
 #footer{
@@ -40,4 +45,8 @@ footer .copyright {
 /*----- LIST POSTS VIEW -----*/
 #older-posts-btn-section{
     margin-bottom: 50px;
+}
+#post-excerpt{
+    background-color: #eee;
+    opacity: 0.9;
 }
