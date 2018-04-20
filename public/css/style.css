@@ -42,14 +42,20 @@ footer .copyright {
     text-align: center;
 }
 
-/*----- LIST POSTS VIEW -----*/
+/*----- LIST POSTS VIEW / POST VIEW -----*/
 #older-posts-btn-section{
     margin-bottom: 50px;
 }
 #post-excerpt{
+    padding-bottom: 25px;
+}
+#post-excerpt, #comment-form, #post-view{
     background-color: #eee;
     opacity: 0.9;
-    padding-bottom: 25px;
+    font-size: 16px;
+}
+#post-view, #comment-form{
+    margin-bottom: 30px;
 }
 #post-excerpt .row{
     margin-top: 25px;

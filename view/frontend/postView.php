@@ -8,19 +8,22 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="post-view">
         <div class="col-lg-12">
             <h3>
                 <?= htmlspecialchars($post['title']) ?>
-                <em>le <?= $post['creation_date_fr'] ?></em>
             </h3>
 
             <p>
                 <?= nl2br(htmlspecialchars($post['content'])) ?>
             </p>
+            <br>
+            <p>
+                Par <strong><?= $post['author'] ?></strong> <em>le <?= $post['creation_date_fr'] ?></em>
+            </p>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="comment-form">
         <div class="col-lg-12">
             <h2>Commentaires</h2>
 
@@ -30,8 +33,8 @@
                     <input type="text" id="author" name="author" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="content">Commentaire</label>
-                    <textarea id="content" name="content" class="form-control"></textarea>
+                    <label for="comment">Commentaire</label>
+                    <textarea id="comment" name="comment" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-lg">
