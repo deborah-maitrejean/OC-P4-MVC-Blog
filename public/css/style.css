@@ -49,4 +49,8 @@ footer .copyright {
 #post-excerpt{
     background-color: #eee;
     opacity: 0.9;
+    padding-bottom: 25px;
+}
+#post-excerpt .row{
+    margin-top: 25px;
 }
