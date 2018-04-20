@@ -19,28 +19,29 @@
         </div>
     </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1>Billet simple pour l'Alaska</h1>
-        <p>Derniers billets du blog :</p>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Billet simple pour l'Alaska</h1>
+            <p>Derniers billets du blog :</p>
+        </div>
     </div>
-</div>
 
 <?php
 while ($data = $posts->fetch())
 {
     ?>
 
-    <div class="row">
+    <div class="row" id="post-excerpt">
         <div class="col-lg-12">
             <h3><i class="fa fa-bookmark"></i>
                 <?= htmlspecialchars($data['title']) ?>
-                <em>le <?= $data['creation_date_fr'] ?></em>
             </h3>
 
             <p>
                 <?= nl2br(htmlspecialchars($data['content'])) ?>
-                <br />
+            </p>
+            <p>
+                Par <strong><?= $data['author'] ?></strong> <em>le <?= $data['creation_date_fr'] ?></em>
                 <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
             </p>
         </div>
