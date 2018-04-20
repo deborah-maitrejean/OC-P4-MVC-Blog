@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>Billet simple pour l'Alaska</h1>
-            <p><a href="index.php">Retour à la liste des billets</a></p>
+            <p><a href="index.php?action=allPostsView">Retour à la liste aux billets</a></p>
         </div>
     </div>
 
