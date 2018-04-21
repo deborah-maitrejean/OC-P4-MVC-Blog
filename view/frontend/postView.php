@@ -27,7 +27,7 @@
         <div class="col-lg-12">
             <h2>Commentaires</h2>
 
-            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>&amp;postTitle=<?= $post['title'] ?>" method="post">
                 <div class="form-group">
                     <label for="author">Auteur</label>
                     <input type="text" id="author" name="author" class="form-control">

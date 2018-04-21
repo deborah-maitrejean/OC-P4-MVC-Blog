@@ -13,3 +13,9 @@ function loginControl($email, $password){
 function adminHomeView(){
     require('view/backend/adminHomeView.php');
 }
+function commentsModeration(){
+    $commentManager = new Blog\Model\CommentManager();
+    $comments = $commentManager->getAllComments();
+
+    require('view/backend/commentsModeration.php');
+}

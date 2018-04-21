@@ -14,11 +14,11 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    public function postComment($postId, $author, $comment) {
+    public function postComment($postId, $postTitle, $author, $comment) {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(post_id, author, content, creation_date) VALUES(?, ?, ?, NOW())');
+        $comments = $db->prepare('INSERT INTO comments(post_id, post_title, author, content, creation_date) VALUES(?, ?, ?, ?, NOW())');
         // Récupération en paramètres des informations dont on a besoin
-        $affectedLines = $comments->execute(array($postId, $author, $comment));
+        $affectedLines = $comments->execute(array($postId, $postTitle, $author, $comment));
 
         return $affectedLines;
     }
@@ -29,6 +29,12 @@ class CommentManager extends Manager
         $comment = $req->fetch();
 
         return $comment;
+    }
+    public function getAllComments() {
+        $db = $this->dbConnect();
+        $comments = $db->query('SELECT * , DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comments ORDER BY creation_date');
+
+        return $comments;
     }
     public function updateComment($comment, $commentId) {
         $db = $this->dbConnect();
