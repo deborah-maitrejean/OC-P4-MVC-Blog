@@ -10,6 +10,6 @@ function loginControl($mail, $password){
 
     header('location: index.php?action=adminView');
 }
-function adminView(){
-    require('view/backend/adminView.php');
+function adminHomeView(){
+    require('view/backend/adminHomeView.php');
 }
