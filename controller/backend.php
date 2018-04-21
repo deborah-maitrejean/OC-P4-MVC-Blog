@@ -6,7 +6,10 @@ require_once('model/LoginManager.php');
 
 function loginControl($mail, $password){
     $loginManager = new Blog\Model\LoginManager();
-    $login = $adminManager->getLogin($mail, $password);
+    $login = $loginManager->getLogin($mail, $password);
 
     header('location: index.php?action=adminView');
+}
+function adminView(){
+    require('view/backend/adminView.php');
 }

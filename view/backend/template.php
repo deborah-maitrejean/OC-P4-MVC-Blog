@@ -57,7 +57,7 @@
 </nav>
 
 <div class="container">
-   <!-- <?= $content ?> -->
+    <?= $content ?>
 </div>
 
 <div class="container-fluid">

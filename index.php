@@ -14,6 +14,8 @@ try {
             } else {
                 throw new Exception('Les variables n\'existent pas');
             }
+        } elseif ($_GET['action'] == 'adminView'){
+            adminView();
         } elseif ($_GET['action'] == 'listPosts') {
             listPosts();
         } elseif ($_GET['action'] == 'post') {
