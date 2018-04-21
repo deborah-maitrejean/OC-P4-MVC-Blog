@@ -28,9 +28,9 @@ function post() {
     require('view/frontend/postView.php');
 }
 
-function addComment($postId, $author, $comment) {
+function addComment($postId, $postTitle, $author, $comment) {
     $commentManager = new Blog\Model\CommentManager();
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    $affectedLines = $commentManager->postComment($postId, $postTitle, $author, $comment);
 
     if ($affectedLines === false) {
         // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur
