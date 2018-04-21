@@ -8,7 +8,15 @@
 
 namespace Blog\Model;
 
+require_once("model/Manager.php");
 
-class LoginManager {
+class LoginManager extends Manager {
+    public function getLogin(){
+        $db = $this->dbconnect();
+        $req = $db->prepare('SELECT * FROM logins WHERE email = ? AND password = ?');
+        $req->execute(array($email, $password));
+        $req = $req->fetch();
 
+        return $req;
+    }
 }
