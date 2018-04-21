@@ -1,0 +1,13 @@
+{
+    "name": "deborah/blog",
+    "description": "MVC blog with admin interface",
+    "require": {
+        "twig/twig": "^2.4"
+    },
+    "authors": [
+        {
+            "name": "deborah-maitrejean",
+            "email": "deborah.maitrejean@gmail.com"
+        }
+    ]
+}
