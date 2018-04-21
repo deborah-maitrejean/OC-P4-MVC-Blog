@@ -1,12 +1,14 @@
 <?php
 require('controller/frontend.php'); // ce fichier appelle le bon controlleur
+require('controller/backend.php');
 
 try {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
+        if ($_GET['action'] == 'adminInterfaceLogin') {
+
+        } elseif ($_GET['action'] == 'listPosts') {
             listPosts();
-        }
-        elseif ($_GET['action'] == 'post') {
+        } elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             } else {
