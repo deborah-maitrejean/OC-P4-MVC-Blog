@@ -1,12 +1,24 @@
 <?php
 require('controller/frontend.php'); // ce fichier appelle le bon controlleur
+require('controller/backend.php');
 
 try {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
+        if ($_GET['action'] == 'adminInterfaceLogin') {
+            if (isset($_POST['adminId']) AND isset($_POST['adminPassword'])){
+                if (!empty($_POST['adminId']) AND !empty($_POST['adminPassword'])){
+                    loginControl($_POST['adminId'], $_POST['adminPassword']);
+                } else{
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            } else {
+                throw new Exception('Les variables n\'existent pas');
+            }
+        } elseif ($_GET['action'] == 'adminHomeView'){
+            adminHomeView();
+        } elseif ($_GET['action'] == 'listPosts') {
             listPosts();
-        }
-        elseif ($_GET['action'] == 'post') {
+        } elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             } else {
@@ -20,7 +32,7 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             } else {
-                throw new Exception('Aucun identifiant de billet envoyé');
+                throw new Exception('Aucun identifiant de billet envoyé !');
             }
         } elseif ($_GET['action'] == 'commentView') {
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {

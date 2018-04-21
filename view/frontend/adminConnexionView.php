@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="" method="post" class="form-horizontal" id="admin-connexion-view">
+        <form action="index.php?action=adminInterfaceLogin" method="post" class="form-horizontal" id="admin-connexion-view">
             <fieldset>
                 <!-- Form Name -->
                 <legend><center>Connexion à la page d'administration</center></legend>
@@ -19,9 +19,9 @@
 
                 <!-- Password input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="password">Mot de passe </label>
+                    <label class="col-md-4 control-label" for="adminPassword">Mot de passe </label>
                     <div class="col-md-4">
-                        <input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control input-md">
+                        <input id="password" name="adminPassword" type="password" placeholder="Mot de passe" class="form-control input-md">
                     </div>
                 </div>
 
