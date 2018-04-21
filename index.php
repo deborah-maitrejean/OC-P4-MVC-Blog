@@ -20,6 +20,8 @@ try {
             adminHomeView();
         } elseif ($_GET['action'] == 'commentsModeration'){
             commentsModeration();
+        } elseif ($_GET['action'] == 'postsManager') {
+            postsManager();
         } elseif ($_GET['action'] == 'listPosts') {
             listPosts();
         } elseif ($_GET['action'] == 'post') {

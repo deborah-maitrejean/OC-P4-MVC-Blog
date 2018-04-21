@@ -10,13 +10,17 @@ class PostManager extends Manager {
 
         return $req;
     }
+    public function getAllPosts() {
+        $db = $this->dbConnect();
+        $posts = $db->query('SELECT * , DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date');
 
+        return $posts;
+    }
     public function getPostsExcerpt(){
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creation_date,  \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0,5');
         return $req;
     }
-
     public function getPost($postId) {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');

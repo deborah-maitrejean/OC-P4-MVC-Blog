@@ -19,3 +19,9 @@ function commentsModeration(){
 
     require('view/backend/commentsModeration.php');
 }
+function postsManager(){
+    $postsManager = new Blog\Model\PostManager();
+    $posts = $postsManager->getAllPosts();
+
+    require('view/backend/postsManager.php');
+}
