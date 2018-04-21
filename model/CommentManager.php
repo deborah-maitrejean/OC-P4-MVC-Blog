@@ -30,6 +30,12 @@ class CommentManager extends Manager
 
         return $comment;
     }
+    public function getAllComments() {
+        $db = $this->dbConnect();
+        $comments = $db->query('SELECT * , DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comments ORDER BY creation_date');
+
+        return $comments;
+    }
     public function updateComment($comment, $commentId) {
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE comments SET content = ?, creation_date = NOW() WHERE id = ?');

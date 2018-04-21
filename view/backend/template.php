@@ -47,7 +47,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Accueil de l'administration du site</a></li>
                 <li><a href="">Poster / modifier un billet</a></li>
-                <li><a href="">Modérer les commentaires</a></li>
+                <li><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class=""><a href=""><span class="fa fa-time"></span> Déconnexion <span class="sr-only">(current)</span></a></li>
