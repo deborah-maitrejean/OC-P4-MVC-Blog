@@ -46,7 +46,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Accueil de l'administration du site</a></li>
-                <li><a href="">Poster / modifier un billet</a></li>
+                <li><a href="index.php?action=postsManager">Gestion des billets</a></li>
                 <li><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
