@@ -21,8 +21,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1>Billet simple pour l'Alaska</h1>
-            <p>Derniers billets du blog :</p>
+            <h2>Derniers billets du blog</h2>
         </div>
     </div>
 

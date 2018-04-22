@@ -3,7 +3,6 @@
 <?php ob_start(); ?>
     <div class="row">
         <div class="col-lg-12">
-            <h1>Billet simple pour l'Alaska</h1>
             <p><a href="index.php?action=allPostsView">Retour aux billets</a></p>
         </div>
     </div>

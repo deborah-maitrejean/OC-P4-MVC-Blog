@@ -28,6 +28,11 @@
 </head>
 
 <body class="frontend">
+<header id="frontend-header">
+    <div class="container-fluid">
+        <h1>Billet simple pour l'Alaska</h1>
+    </div>
+</header>
 
 <!-- Static navbar -->
 <nav class="navbar navbar-default">

@@ -2,12 +2,6 @@
 
 <?php ob_start(); // mémorise toute la sortie HTML qui suit  ?>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h1>Billet simple pour l'Alaska</h1>
-        </div>
-    </div>
-
 <?php
 while ($data = $posts->fetch())
 {

@@ -32,8 +32,15 @@ div.cookie_policy_msg>div>a:last-child{
     margin-bottom: 0 !important;
 }
 /*header*/
-.frontend-container h1{
+#frontend-header{
+    background-color: #000;
+    color: #eee;
+    height: 200px;
+}
+#frontend-header h1{
     font-family: 'IBM Plex Mono', monospace, Arial;
+    text-align: center;
+    line-height: 200px;
 }
 
 /*----- FRONTEND LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
