@@ -28,7 +28,7 @@
                         <td class="default" scope="row"><?= $comment['creation_date_fr'] ?></td>
                         <td class="warning" scope="row"><?= $comment['post_title'] ?></td>
                         <?php
-                        if ($comment['reported'] === 1){
+                        if ($comment['reported'] == 1){
                             echo '<td class="danger" scope="row"><a href="" class="btn btn-success">Modifier</a></td>
                         <td class="danger" scope="row"><a href="" class="btn btn-danger">Supprimer</a></td>';
                         } else{
