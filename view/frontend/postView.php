@@ -48,7 +48,7 @@
                     <?php
                     if ($comment['reported'] != 1): ?>
                     <a method="get" href="index.php?action=commentView&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>" >(modifier)</a>
-                    <a method="get" href="index.php?action=reportComment&amp;commentId=<?= $comment['id'] ?>">(signaler)</a>
+                    <a method="get" href="index.php?action=reportComment&amp;commentId=<?= $comment['id'] ?>&amp;reported=1">(signaler)</a>
                     <?php endif; ?>
                 </p>
 
