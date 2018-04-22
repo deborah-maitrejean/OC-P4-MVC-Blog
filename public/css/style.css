@@ -31,6 +31,10 @@ div.cookie_policy_msg>div>a:last-child{
 .frontend .navbar-default{
     margin-bottom: 0 !important;
 }
+/*header*/
+.frontend-container h1{
+    font-family: 'IBM Plex Mono', monospace, Arial;
+}
 
 /*----- FRONTEND LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
 #older-posts-btn-section{margin-bottom: 50px;}
