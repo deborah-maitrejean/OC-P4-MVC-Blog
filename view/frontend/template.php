@@ -43,7 +43,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Accueil</a></li>
-                <li><a href="index.php?action=allPostsView">Tous les chapitres</a></li>
+                <li><a href="index.php?action=allPostsView">Tous les billets</a></li>
                 <li><a href="index.php?action=about">A propos</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
