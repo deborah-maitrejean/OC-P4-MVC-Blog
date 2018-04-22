@@ -1,27 +1,31 @@
 /*----- COOKIES BANNER -----*/
 div.cookie_policy_msg{
-    width:100%;
-    background:#111;
+    width: 100%;
+    background: #111;
 }
 div.cookie_policy_msg>div{
-    max-width:1200px;margin:0 auto;color:#999;padding:10px}
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #999;
+    padding: 10px}
 div.cookie_policy_msg>div>a:first-child{
-    color:#fff;
-    display:inline-block;
-    margin-left:10px
+    color: #fff;
+    display: inline-block;
+    margin-left: 10px
 }
 div.cookie_policy_msg>div>a:last-child{
-    display:inline-block;
-    margin-left:20px;
-    height:28px;
-    width:32px;
-    color:#fff
+    display: inline-block;
+    margin-left: 20px;
+    height: 28px;
+    width: 32px;
+    color: #fff;
 }
+
 /*----- GENERAL -----*/
-body{
-    background-image: url("../img/denal.jpg");
+/*.frontend-container{
+    background-image: url("../img/background/alaska.jpg");
     background-size: cover;
-}
+}*/
 
 /*----- FOOTER -----*/
 #footer{
@@ -29,9 +33,7 @@ body{
     width: 100%;
     padding: 50px 0 65px;
 }
-footer a{
-    text-decoration: none;
-}
+footer a{text-decoration: none;}
 footer .list-inline {
     margin: 0;
     padding: 0;
@@ -43,23 +45,15 @@ footer .copyright {
 }
 
 /*----- LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
-#older-posts-btn-section{
-    margin-bottom: 50px;
-}
-#post-excerpt, #about-view, #post-content, #comment-view-form{
-    padding-bottom: 25px;
-}
+#older-posts-btn-section{margin-bottom: 50px;}
+#post-excerpt, #about-view, #post-content, #comment-view-form{padding-bottom: 25px;}
 #post-excerpt, #comment-form, #post-view, #about-view, #post-content, #comment-view-form, #comment-view{
     background-color: #eee;
     opacity: 0.9;
     font-size: 16px;
 }
-#post-view, #comment-form, #about-view, #post-content, #comment-view{
-    margin-bottom: 30px;
-}
-#post-excerpt .row{
-    margin-top: 25px;
-}
+#post-view, #comment-form, #about-view, #post-content, #comment-view{margin-bottom: 30px;}
+#post-excerpt .row{margin-top: 25px;}
 
 /*------ CONTACT VIEW -----*/
 #contact-view{
@@ -84,3 +78,97 @@ textarea{
     opacity: 0.9;
     font-size: 16px;
 }
+
+/*------ ADMIN VIEW -----*/
+/*general*/
+.admin-container{
+    background-image: url("../img/background/alaska.jpg");
+    background-size: cover;
+}
+
+/*header*/
+#admin-header{
+    height: 250px;
+    background-image:linear-gradient(to bottom, rgba(115, 162, 192, 0.4), rgba(227, 231, 233, 0.4));
+    filter:progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='rgba(115, 162, 192, 0.4)', endColorstr='rgba(227, 231, 233, 0.4)');
+}
+#admin-header h1{
+    line-height: 250px;
+    text-align: center;
+    font-size: 56px;
+    color: #52708d;
+    text-shadow: 0px 3px 0px rgba(170, 163, 171, 0.9),
+    0px 14px 10px rgba(170, 163, 171, 0.35),
+    0px 24px 2px rgba(170, 163, 171, 0.3),
+    0px 34px 30px rgba(170, 163, 171, 0.3);
+    -webkit-text-shadow: 0px 3px 0px rgba(170, 163, 171, 0.9),
+    0px 14px 10px rgba(170, 163, 171, 0.35),
+    0px 24px 2px rgba(170, 163, 171, 0.3),
+    0px 34px 30px rgba(170, 163, 171, 0.3);
+    -moz-text-shadow: 0px 3px 0px rgba(170, 163, 171, 0.9),
+    0px 14px 10px rgba(170, 163, 171, 0.35),
+    0px 24px 2px rgba(170, 163, 171, 0.3),
+    0px 34px 30px rgba(170, 163, 171, 0.3);
+}
+
+/*navigation*/
+.admin .navbar-default{
+    margin-bottom: 0 !important;
+    background-color: #f0d2b6 !important;
+}
+.admin .navbar-default .navbar-nav > .active > a,
+.admin .navbar-default .navbar-nav > .active > a:hover,
+.admin .navbar-default .navbar-nav > .active > a:focus {
+    color: #f3f5f6 !important;
+    background-color:  #52708d !important;
+}
+.admin  .navbar-default .navbar-brand {color: #52708d !important;}
+
+/*content*/
+.admin-row{
+    padding-bottom: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.admin-container{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.admin-container .home-row{
+    font-size: 16px;
+    background-color: rgba(214, 227, 235, 0.8);
+}
+
+/*tables*/
+table{
+    background-color: #F8F8F8 !important;
+    box-shadow: 0 0 30px rgba(62, 3, 59, 0.2);
+    -moz-box-shadow: 0 0 30px rgba(62, 3, 59, 0.2);
+    -webkit-box-shadow: 0 0 30px rgba(62, 3, 59, 0.2);
+}
+th.info{background-color: rgba(113, 162, 192, 0.2)!important;}
+td.success{background-color: rgba(66, 70, 9, 0.1)!important;}
+td.danger{background-color: rgba(119, 65, 97, 0.2)!important;}
+td.warning{background-color: rgba(240, 210, 182, 0.3)!important;}
+td.default{background-color: rgba(249, 237, 230, 0.2)!important;}
+.th{text-align: center;}
+
+/*buttons*/
+.admin-container .btn-success{
+    background-color: rgba(66, 70, 9, 0.6)!important;
+    border: none !important;
+}
+.admin-container .btn-danger{
+    background-color: rgba(119, 65, 97, 0.8) !important;
+    border: none !important;
+}
+.admin-container .btn-warning{background-color: #F5DBC1!important;}
+
+/*footer*/
+#admin-footer{
+    background-color: #40341F;
+    width: 100%;
+    padding: 25px 0 33px;
+}
+#p-top{text-align: center;}
+.fa-arrow-up{color: #52708d;}
