@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Administration du blog</title>
+    <!--<title>Administration du blog</title>-->
     <meta name="description" content="">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <meta name="language" content="fr">
@@ -29,7 +29,13 @@
     <script type="text/javascript" src="public/js/jquery/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="admin ">
+
+<header id="admin-header">
+    <div class="container-fluid">
+        <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Administration du site</h1>
+    </div>
+</header>
 
 <!-- Static navbar -->
 <nav class="navbar navbar-default">
@@ -45,51 +51,31 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Accueil de l'administration du site</a></li>
+                <li class="active"><a href="#">Accueil</a></li>
                 <li><a href="index.php?action=postsManager">Gestion des billets</a></li>
                 <li><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class=""><a href=""><span class="fa fa-time"></span> Déconnexion <span class="sr-only">(current)</span></a></li>
+                <li class=""><a href=""><span class="fa fa-user-times"></span> Déconnexion <span class="sr-only">(current)</span></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
 </nav>
 
-<div class="container">
-    <?= $content ?>
+<div class="admin-container">
+    <div class="container" id="top">
+
+        <?= $content ?>
+
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto" id="footer">
+        <div class="col-lg-12" id="admin-footer">
             <footer>
-                <ul class="list-inline text-center">
-                    <li class="list-inline-item">
-                        <a href="https://twitter.com/D_Maitrejean" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.linkedin.com/in/d%C3%A9borah-maitrejean" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://github.com/deborah-maitrejean" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
+                <p id="p-top"><a href="#top"><i class="fa fa-arrow-up fa-3x" aria-hidden="true" title="Remonter"></i></a></p>
                 <p class="copyright text-muted">2018 Copyright &copy; Jean Forteroche</p>
             </footer>
         </div>
