@@ -40,6 +40,12 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé !');
             }
+        } elseif($_GET['action'] == 'reportComment') {
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+                reportComment();
+            } else {
+                throw new Exception('Aucun identifiant de commentaire envoyé !');
+            }
         } elseif ($_GET['action'] == 'commentView') {
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 commentView();
