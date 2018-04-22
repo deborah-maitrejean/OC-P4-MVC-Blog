@@ -21,8 +21,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1>Billet simple pour l'Alaska</h1>
-            <p>Derniers billets du blog :</p>
+            <h2>Derniers billets du blog</h2>
         </div>
     </div>
 
@@ -57,8 +56,8 @@ $posts->closeCursor();
 ?>
     <!-- Pager -->
     <div class="row" id="older-posts-btn-section">
-        <div class="col-lg-offset-10 col-lg-2">
-            <a class="btn btn-primary" href="#">Plus anciens &rarr;</a>
+        <div class="col-lg-offset-5 col-lg-2">
+            <a class="btn btn-default" href="#">Plus anciens &rarr;</a>
         </div>
     </div>
 

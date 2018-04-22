@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +27,12 @@
 
 </head>
 
-<body>
+<body class="frontend">
+<header id="frontend-header">
+    <div class="container-fluid">
+        <h1>Billet simple pour l'Alaska</h1>
+    </div>
+</header>
 
 <!-- Static navbar -->
 <nav class="navbar navbar-default">
@@ -43,7 +49,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Accueil</a></li>
-                <li><a href="index.php?action=allPostsView">Tous les chapitres</a></li>
+                <li><a href="index.php?action=allPostsView">Tous les billets</a></li>
                 <li><a href="index.php?action=about">A propos</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
@@ -54,9 +60,10 @@
     </div><!--/.container-fluid -->
 </nav>
 
-<div class="container">
-
-    <?= $content ?>
+<div class="frontend-container">
+    <div class="container" id="top">
+        <?= $content ?>
+    </div>
 </div>
 
 <div class="container-fluid">
@@ -98,6 +105,12 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="public/js/cookies.js"></script>
+<script src="public/js/nav.js"></script>
+<noscript>
+    <p>Attention :<br>
+        Afin de pouvoir utiliser notre site, JavaScript doit être activé.
+    </p>
+</noscript>
 
 </body>
 </html>

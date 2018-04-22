@@ -1,12 +1,7 @@
 <?php $title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
-    <div class="row">
-        <div class="col-lg-12">
-            <h1>Billet simple pour l'Alaska</h1>
-            <p><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">Retour à la liste des commentaires</a></p>
-        </div>
-    </div>
+
     <div class="row" id="comment-view">
         <div class="col-lg-12">
             <h3>
