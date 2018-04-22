@@ -54,9 +54,10 @@
     </div><!--/.container-fluid -->
 </nav>
 
-<div class="container frontend-container">
-
-    <?= $content ?>
+<div class="frontend-container">
+    <div class="container" id="top">
+        <?= $content ?>
+    </div>
 </div>
 
 <div class="container-fluid">
