@@ -21,13 +21,43 @@ div.cookie_policy_msg>div>a:last-child{
     color: #fff;
 }
 
-/*----- GENERAL -----*/
-/*.frontend-container{
-    background-image: url("../img/background/alaska.jpg");
+/*----- FRONTEND GENERAL -----*/
+.frontend-container{
+    background-image: url("../img/background/denal.jpg");
     background-size: cover;
-}*/
+}
+/*navigation*/
+.frontend .navbar-default{
+    margin-bottom: 0 !important;
+}
 
-/*----- FOOTER -----*/
+/*----- FRONTEND LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
+#older-posts-btn-section{margin-bottom: 50px;}
+#post-excerpt, #about-view, #post-content, #comment-view-form{padding-bottom: 25px;}
+#post-excerpt, #comment-form, #post-view, #about-view, #post-content, #comment-view-form, #comment-view{
+    background-color: #eee;
+    opacity: 0.9;
+    font-size: 16px;
+}
+#post-view, #comment-form, #about-view, #post-content, #comment-view{margin-bottom: 30px;}
+#post-excerpt .row{margin-top: 25px;}
+
+/*------ FRONTEND CONTACT VIEW -----*/
+#contact-view{
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: #eee;
+    opacity: 0.9;
+    font-size: 16px;
+}
+textarea{
+    overflow: auto;
+    margin: 0;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+/*----- FRONTEND FOOTER -----*/
 #footer{
     background-color: #373737;
     width: 100%;
@@ -44,33 +74,7 @@ footer .copyright {
     text-align: center;
 }
 
-/*----- LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
-#older-posts-btn-section{margin-bottom: 50px;}
-#post-excerpt, #about-view, #post-content, #comment-view-form{padding-bottom: 25px;}
-#post-excerpt, #comment-form, #post-view, #about-view, #post-content, #comment-view-form, #comment-view{
-    background-color: #eee;
-    opacity: 0.9;
-    font-size: 16px;
-}
-#post-view, #comment-form, #about-view, #post-content, #comment-view{margin-bottom: 30px;}
-#post-excerpt .row{margin-top: 25px;}
-
-/*------ CONTACT VIEW -----*/
-#contact-view{
-    margin-bottom: 30px;
-    padding: 30px;
-    background-color: #eee;
-    opacity: 0.9;
-    font-size: 16px;
-}
-textarea{
-    overflow: auto;
-    margin: 0;
-    min-width: 100%;
-    max-width: 100%;
-}
-
-/*------ ADMIN CONNEXION VIEW -----*/
+/*------ FRONTEND ADMIN CONNEXION VIEW -----*/
 #admin-connexion-view{
     margin-bottom: 30px;
     padding: 30px;

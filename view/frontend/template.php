@@ -26,7 +26,7 @@
 
 </head>
 
-<body>
+<body class="frontend">
 
 <!-- Static navbar -->
 <nav class="navbar navbar-default">
