@@ -42,9 +42,19 @@
 
             <?php while ($comment = $comments->fetch()) {
                 ?>
-                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?>
-                    <a href="index.php?action=commentView&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>" method="get"">(modifier)</a>
-                    <a href="index.php?action=reportComment&amp;commentId=<?= $comment['id'] ?>">(signaler)</a>
+                <?php
+                if ($comment['reported'] == 1){
+                    $comment['content'] = 'Commentaire en attente de modération';
+                }
+                ?>
+                <p>
+                    <strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?>
+                    <?php
+                    if ($comment['reported'] != 1){
+                        echo '<a href="index.php?action=commentView&amp;commentId=<?= $comment[\'id\'] ?>&amp;postId=<?= $post[\'id\'] ?>" method="get"">(modifier)</a>
+                    <a href="index.php?action=reportComment&amp;commentId=<?= $comment[\'id\'] ?>">(signaler)</a>';
+                    }
+                    ?>
                 </p>
                 <p><?= nl2br(htmlspecialchars($comment['content'])) ?></p>
                 <?php
