@@ -57,8 +57,8 @@ $posts->closeCursor();
 ?>
     <!-- Pager -->
     <div class="row" id="older-posts-btn-section">
-        <div class="col-lg-offset-10 col-lg-2">
-            <a class="btn btn-primary" href="#">Plus anciens &rarr;</a>
+        <div class="col-lg-offset-5 col-lg-2">
+            <a class="btn btn-default" href="#">Plus anciens &rarr;</a>
         </div>
     </div>
 

@@ -25,6 +25,7 @@ div.cookie_policy_msg>div>a:last-child{
 .frontend-container{
     background-image: url("../img/background/denal.jpg");
     background-size: cover;
+    padding-top: 100px;
 }
 /*navigation*/
 .frontend .navbar-default{
