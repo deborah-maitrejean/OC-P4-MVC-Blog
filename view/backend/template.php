@@ -85,6 +85,12 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="public/js/cookies.js"></script>
+<script src="public/js/nav.js"></script>
+<noscript>
+    <p>Attention :<br>
+        Afin de pouvoir utiliser notre site, JavaScript doit être activé.
+    </p>
+</noscript>
 
 </body>
 </html>
