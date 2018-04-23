@@ -8,7 +8,7 @@
         <form action="index.php?action=publishPost" method="post">
             <div class="form-group">
                 <label for="title">Titre:</label>
-                <input type="text">
+                <input type="text" name="title">
             </div>
             <div class="form-group">
                 <label for="content">Contenu:</label>
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Publier" class="btn btn-success btn-lg">
-                <input type="hidden" name="btn btn-danger btn-lg">
+                <input type="hidden" name="author" value="Jean Forteroche">
                 <input type="reset" class="btn btn-danger btn-lg">
             </div>
         </form>
