@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<div class="row">
+<div class="row table-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-bars"></i> Liste des billets</h2>
         <div class="table-responsive">
