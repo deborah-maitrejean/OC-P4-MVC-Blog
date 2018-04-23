@@ -4,10 +4,10 @@
 
 <div class="row">
     <div class="col-lg-12">
+        <h2><i class="fa fa-bars"></i> Liste des commentaires</h2>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
                 <caption></caption>
-
                 <thead>
                 <tr>
                     <th class="info th" scope="col">Auteur</th>
@@ -30,7 +30,7 @@
                         <?php if ($comment['reported'] == 1): ?>
                             <td class="danger" scope="row"><a hmethod="get" href="index.php?action=moderateComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-success">Modérer</a></td>
                         <?php else: ?>
-                            <td class="danger" scope="row">Commentaire non signalé</td>
+                            <td class="danger" scope="row">non signalé</td>
                         <?php endif; ?>
                             <td class="danger" scope="row"><a href="" class="btn btn-danger">Supprimer</a></td>
                     </tr>
