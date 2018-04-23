@@ -52,3 +52,9 @@ function viewOrChangePost($postId){
 
     require('view/backend/postView.php');
 }
+function updatePost($title, $content, $postId){
+    $postManager = new Blog\Model\PostManager();
+    $post = $postManager->updatePost($title, $content, $postId);
+
+    header('location: index.php?action=postsManager');
+}
