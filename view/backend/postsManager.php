@@ -4,13 +4,14 @@
 
 <div class="row">
     <div class="col-lg-12">
+        <h2><i class="fa fa-bars"></i> Liste des billets</h2>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
                 <caption></caption>
                 <thead>
                 <tr>
                     <th class="info th" scope="col">Titre</th>
-                    <th class="info th" scope="col">Contenu des billets</th>
+                    <th class="info th" scope="col">Extraits des billets</th>
                     <th class="info th" scope="col">Date de publication</th>
                     <th class="info th" scope="col" colspan="2">Actions</th>
                 </tr>
@@ -22,9 +23,9 @@
                     ?>
                     <tr>
                         <td class="success" scope="row"><?= htmlspecialchars($post['title']) ?></td>
-                        <td class="default" scope="row"><?= nl2br(htmlspecialchars($post['content'])) ?></td>
+                        <td class="default" scope="row"><?= nl2br(htmlspecialchars($post['postExcerpt'])) ?>...</td>
                         <td class="warning" scope="row"><?= $post['creation_date_fr'] ?></td>
-                        <td class="danger" scope="row"><a href="" class="btn btn-success">Modifier</a></td>
+                        <td class="danger" scope="row"><a href="" class="btn btn-success">Voir ou Modifier</a></td>
                         <td class="danger" scope="row"><a href="" class="btn btn-danger">Supprimer</a></td>
                     </tr>
                     <?php
