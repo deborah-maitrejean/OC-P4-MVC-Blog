@@ -19,6 +19,12 @@ function commentsModeration(){
 
     require('view/backend/commentsModeration.php');
 }
+function commentModeration($commentId){
+    $commentManager = new Blog\Model\CommentManager();
+    $comment = $commentManager->getComment($commentId);
+
+    require('view/backend/commentModeration.php');
+}
 function postsManager(){
     $postsManager = new Blog\Model\PostManager();
     $posts = $postsManager->getAllPosts();
