@@ -53,7 +53,7 @@
                 </p>
 
                 <?php if ($comment['reported'] == 1): ?>
-                    <i>Commentaire en attente de modération</i>
+                    <p><i>Commentaire en attente de modération</i></p>
                 <?php else: ?>
                 <p><?= nl2br(htmlspecialchars($comment['content'])) ?></p>
                 <?php endif; ?>
