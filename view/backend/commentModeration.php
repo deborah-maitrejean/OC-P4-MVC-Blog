@@ -5,7 +5,7 @@
 <?php if(isset($_GET['commentId'])): ?>
     <div class="row">
         <div class="col-lg-12">
-            <p><a href="index.php?action=commentsModeration">Retour à la liste de commentaires</a></p>
+            <p><a href="index.php?action=commentsModeration">Retour à la liste dee commentaires</a></p>
         </div>
     </div>
 
