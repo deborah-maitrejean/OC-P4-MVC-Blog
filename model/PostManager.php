@@ -43,4 +43,9 @@ class PostManager extends Manager {
 
         return $affectedLines;
     }
+    public function deletePost($postId){
+        $db = $this->dbConnect();
+        $post = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $affectedLines = $post->execute(array($postId));
+    }
 }
