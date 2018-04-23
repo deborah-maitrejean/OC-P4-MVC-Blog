@@ -33,7 +33,7 @@
 
 <header id="admin-header">
     <div class="container-fluid">
-        <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Administration du site</h1>
+        <h1><i class="fa fa-book" aria-hidden="true"></i> Administration du site</h1>
     </div>
 </header>
 
