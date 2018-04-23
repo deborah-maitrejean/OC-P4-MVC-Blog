@@ -16,6 +16,12 @@ class PostManager extends Manager {
 
         return $posts;
     }
+    public function getAllPostsExcerpt() {
+        $db = $this->dbConnect();
+        $posts = $db->query('SELECT  id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date');
+
+        return $posts;
+    }
     public function getPostsExcerpt(){
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creation_date,  \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0,5');
