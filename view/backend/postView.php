@@ -5,7 +5,7 @@
 <div class="row tinymce-post-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-pencil-square-o"></i> Modifier le billet</h2>
-        <form action="index.php?action=updatePost" method="post">
+        <form action="index.php?action=updatePost&amp;postId=<?= $post['id']; ?>" method="post">
             <div class="form-group">
                 <label for="title">Titre:</label>
                 <input type="text" name="title" value="<?=  $post['title']; ?>">
