@@ -43,7 +43,7 @@ try {
             }
         } elseif($_GET['action'] == "deleteComment"){
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
-                deleteComment($commentId);
+                deleteComment($_GET['commentId']);
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé !');
             }
