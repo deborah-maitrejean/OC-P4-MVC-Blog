@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Publier" class="btn btn-success btn-lg">
-                <input type="hidden" name="author" value="Jean Forteroche">
+                <a href="index.php?action=postsManager" class="btn btn-danger btn-lg">Annuler</a>
             </div>
         </form>
     </div>
