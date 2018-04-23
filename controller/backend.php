@@ -65,3 +65,9 @@ function updatePost($title, $content, $postId){
 
     header('location: index.php?action=postsManager');
 }
+function deleteComment($commentId){
+    $commentManager = new Blog\Model\CommentManager();
+    $deletedComment = $commentManager->deleteComment($commentId);
+
+    header('location: index.php?action=commentsModeration');
+}
