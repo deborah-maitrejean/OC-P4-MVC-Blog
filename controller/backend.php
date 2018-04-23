@@ -52,3 +52,9 @@ function viewOrChangePost($postId){
 
     require('view/backend/postView.php');
 }
+function deletePost($postId){
+    $postManager = new Blog\Model\PostManager();
+    $post = $postManager->deletePost($postId);
+
+    header('location: index.php?action=postsManager');
+}
