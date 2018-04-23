@@ -16,10 +16,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Modifier" class="btn btn-success btn-lg">
-<<<<<<< HEAD
                 <input type="hidden" name="author" value="Jean Forteroche">
-=======
->>>>>>> fe9260f911f5ba21a3a3a4aa6bc9b6db5c71c374
             </div>
         </form>
     </div>
