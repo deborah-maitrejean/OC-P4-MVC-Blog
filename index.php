@@ -34,6 +34,12 @@ try {
             } else{
                 throw new Exception('Aucun identifiant de billet envoyé !');
             }
+
+        } elseif($_GET['action'] == 'deletePost'){
+            if (isset($_GET['postId']) && $_GET['postId'] > 0){
+                deletePost($_GET['postId']);
+            } else {
+                throw new Exception('Aucun identifiant de billet envoyé');
         } elseif($_GET['action'] == 'updatePost'){
             if (isset($_GET['postId']) && $_GET['postId'] > 0){
                 if (isset($_POST['title']) && isset($_POST['content'])){

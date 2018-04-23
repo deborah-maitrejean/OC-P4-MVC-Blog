@@ -52,6 +52,10 @@ function viewOrChangePost($postId){
 
     require('view/backend/postView.php');
 }
+function deletePost($postId){
+    $postManager = new Blog\Model\PostManager();
+    $post = $postManager->deletePost($postId);
+
 function updatePost($title, $content, $postId){
     $postManager = new Blog\Model\PostManager();
     $post = $postManager->updatePost($title, $content, $postId);
