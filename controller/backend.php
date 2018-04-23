@@ -50,5 +50,5 @@ function viewOrChangePost($postId){
     $postManager = new Blog\Model\PostManager();
     $post = $postManager->getPost($postId);
 
-    header('location: index.php?action=postView');
+    require('view/backend/postView.php');
 }
