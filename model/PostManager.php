@@ -35,4 +35,12 @@ class PostManager extends Manager {
 
         return $post;
     }
+    public function publishNewPost($title, $content, $author) {
+        $db = $this->dbConnect();
+        $post = $db->prepare('INSERT INTO posts(title, content, author, creation_date) VALUES(?, ?, ?, NOW())');
+        // Récupération en paramètres des informations dont on a besoin
+        $affectedLines = $post->execute(array($title, $content, $author));
+
+        return $affectedLines;
+    }
 }
