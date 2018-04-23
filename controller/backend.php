@@ -40,3 +40,9 @@ function adminUpdateComment($comment, $commentId, $reported){
 function newPostView(){
     require('view/backend/newPostView.php');
 }
+function publishPost($title, $content, $author){
+    $postManager = new Blog\Model\PostManager();
+    $newPost = $postManager->publishNewPost($title, $content, $author);
+
+    header('location: index.php?action=postsManager');
+}
