@@ -46,3 +46,9 @@ function publishPost($title, $content, $author){
 
     header('location: index.php?action=postsManager');
 }
+function viewOrChangePost($postId){
+    $postManager = new Blog\Model\PostManager();
+    $post = $postManager->getPost($postId);
+
+    header('location: index.php?action=postView');
+}
