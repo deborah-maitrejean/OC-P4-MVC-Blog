@@ -21,7 +21,7 @@ while ($data = $posts->fetch())
                     Par <strong><?= $data['author'] ?></strong> <em>le <?= $data['creation_date_fr'] ?></em>
                 </div>
                 <div class="col-lg-offset-4 col-lg-2">
-                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary read-more">Commentaires &raquo;</a>
+                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary">Commentaires &raquo;</a>
                 </div>
             </div>
         </div>

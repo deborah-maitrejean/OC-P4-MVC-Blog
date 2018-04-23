@@ -40,6 +40,21 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé !');
             }
+        } elseif($_GET['action'] == 'reportComment') {
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && $_GET['postId']) {
+                if(isset($_GET['reported'])){
+                    reportComment($_GET['reported'], $_GET['commentId'], $_GET['postId']);
+                }
+                else {
+                    throw new Exception('Aucun identifiant de commentaire envoyé !');
+                }
+            }
+        } elseif ($_GET['action'] == 'moderateComment'){
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
+                commentModeration($_GET['commentId']);
+            } else {
+                throw new Exception('Aucun identifiant de commentaire envoyé !');
+            }
         } elseif ($_GET['action'] == 'commentView') {
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 commentView();
@@ -49,7 +64,11 @@ try {
         } elseif ($_GET['action'] == 'editComment'){
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 if (!empty($_POST['comment'])) {
-                    editComment($_GET['id'], $_POST['comment'], $_GET['commentId']);
+                    if (isset($_GET['id'])){
+                        editComment($_GET['id'], $_POST['comment'], $_GET['commentId']);
+                    } else{
+                        adminUpdateComment($_POST['comment'], $_GET['commentId'], $_GET['reported']);
+                    }
                 } else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }

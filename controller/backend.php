@@ -19,9 +19,21 @@ function commentsModeration(){
 
     require('view/backend/commentsModeration.php');
 }
+function commentModeration($commentId){
+    $commentManager = new Blog\Model\CommentManager();
+    $comment = $commentManager->getComment($commentId);
+
+    require('view/backend/commentModeration.php');
+}
 function postsManager(){
     $postsManager = new Blog\Model\PostManager();
     $posts = $postsManager->getAllPosts();
 
     require('view/backend/postsManager.php');
+}
+function adminUpdateComment($comment, $commentId, $reported){
+    $commentManager = new Blog\Model\CommentManager();
+    $changedComment = $commentManager->changeComment($comment, $commentId, $reported);
+
+    header('location: index.php?action=commentsModeration');
 }
