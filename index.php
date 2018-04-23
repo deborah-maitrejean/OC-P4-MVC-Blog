@@ -41,9 +41,9 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé !');
             }
         } elseif($_GET['action'] == 'reportComment') {
-            if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && $_GET['postId']) {
                 if(isset($_GET['reported'])){
-                    reportComment($_GET['reported'], $_GET['commentId']);
+                    reportComment($_GET['reported'], $_GET['commentId'], $_GET['postId']);
                 }
                 else {
                     throw new Exception('Aucun identifiant de commentaire envoyé !');

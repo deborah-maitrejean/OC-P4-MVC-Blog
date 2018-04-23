@@ -58,10 +58,10 @@ function editComment($postId, $comment, $commentId) {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
-function reportComment($reported, $commentId){ //$postId
+function reportComment($reported, $commentId, $postId){
     $commentManager = new Blog\Model\CommentManager();
     $reportComment = $commentManager->reportComment($reported, $commentId);
-    //header('Location: index.php?action=post&id=' . $postId);
+    header('Location: index.php?action=post&id='.$postId);
 }
 function adminView(){
     require('view/frontend/adminConnexionView.php');
