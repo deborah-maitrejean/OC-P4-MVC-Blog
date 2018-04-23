@@ -154,6 +154,10 @@ footer .copyright {
     font-size: 16px;
     background-color: rgba(214, 227, 235, 0.8);
 }
+.tinymce-post-row{
+    background-color: #eee;
+    opacity: 0.9;
+}
 
 /*tables*/
 table{
