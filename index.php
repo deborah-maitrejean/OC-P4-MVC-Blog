@@ -49,6 +49,12 @@ try {
                     throw new Exception('Aucun identifiant de commentaire envoyé !');
                 }
             }
+        } elseif ($_GET['action'] == 'moderateComment'){
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
+                commentModeration($_GET['commentId']);
+            } else {
+                throw new Exception('Aucun identifiant de commentaire envoyé !');
+            }
         } elseif ($_GET['action'] == 'commentView') {
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 commentView();
