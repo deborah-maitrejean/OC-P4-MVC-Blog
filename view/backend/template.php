@@ -33,7 +33,7 @@
 
 <header id="admin-header">
     <div class="container-fluid">
-        <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Administration du site</h1>
+        <h1><i class="fa fa-book" aria-hidden="true"></i> Administration du site</h1>
     </div>
 </header>
 
@@ -51,8 +51,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Accueil</a></li>
+                <li class="active"><a href="index.php?action=adminHomeView">Accueil</a></li>
                 <li><a href="index.php?action=postsManager">Gestion des billets</a></li>
+                <li><a href="index.php?action=newPost">Nouveau billet</a></li>
                 <li><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

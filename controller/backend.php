@@ -27,7 +27,7 @@ function commentModeration($commentId){
 }
 function postsManager(){
     $postsManager = new Blog\Model\PostManager();
-    $posts = $postsManager->getAllPosts();
+    $posts = $postsManager->getAllPostsExcerpt();
 
     require('view/backend/postsManager.php');
 }
@@ -36,4 +36,7 @@ function adminUpdateComment($comment, $commentId, $reported){
     $changedComment = $commentManager->changeComment($comment, $commentId, $reported);
 
     header('location: index.php?action=commentsModeration');
+}
+function newPostView(){
+    require('view/backend/newPostView.php');
 }
