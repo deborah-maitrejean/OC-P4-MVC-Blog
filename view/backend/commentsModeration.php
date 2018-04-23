@@ -28,7 +28,7 @@
                         <td class="default" scope="row"><?= $comment['creation_date_fr'] ?></td>
                         <td class="warning" scope="row"><?= $comment['post_title'] ?></td>
                         <?php if ($comment['reported'] == 1): ?>
-                            <td class="danger" scope="row"><a hmethod="get" href="index.php?action=moderateComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-success">Modifier</a></td>
+                            <td class="danger" scope="row"><a hmethod="get" href="index.php?action=moderateComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-success">Modérer</a></td>
                         <?php else: ?>
                             <td class="danger" scope="row">Commentaire non signalé</td>
                         <?php endif; ?>
