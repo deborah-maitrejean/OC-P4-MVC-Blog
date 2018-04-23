@@ -1,6 +1,5 @@
 window.onload=function(){
     //SCRIPT BARRE NAVIGATION SCROLL
-    if ($(window).width() > 992){
         $(window).on('scroll', function() {
             var scroll = $(window).scrollTop();
             if (scroll >= 200) {
@@ -10,5 +9,4 @@ window.onload=function(){
                 $(".navbar").removeClass("navbar-fixed-top");
             }
         });
-    }
 };
