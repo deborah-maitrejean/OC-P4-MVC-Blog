@@ -64,7 +64,11 @@ try {
         } elseif ($_GET['action'] == 'editComment'){
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 if (!empty($_POST['comment'])) {
-                    editComment($_GET['id'], $_POST['comment'], $_GET['commentId']);
+                    if (isset($_GET['id'])){
+                        editComment($_GET['id'], $_POST['comment'], $_GET['commentId']);
+                    } else{
+                        adminUpdateComment($_POST['comment'], $_GET['commentId'], $_GET['reported']);
+                    }
                 } else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
