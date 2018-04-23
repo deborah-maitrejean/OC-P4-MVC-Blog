@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<div class="row">
+<div class="row tinymce-post-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-pencil-square-o"></i> Rédiger un billet</h2>
         <form action="index.php?action=publishPost" method="post">
