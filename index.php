@@ -7,8 +7,8 @@ require('controller/backend.php');
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'adminInterfaceLogin') {
-            if (isset($_POST['adminId']) AND isset($_POST['adminPassword'])){
-                if (!empty($_POST['adminId']) AND !empty($_POST['adminPassword'])){
+            if (isset($_POST['adminId']) && isset($_POST['adminPassword'])){
+                if (!empty($_POST['adminId']) && !empty($_POST['adminPassword'])){
                     loginControl($_POST['adminId'], $_POST['adminPassword']);
                 } else{
                     throw new Exception('Tous les champs ne sont pas remplis !');
@@ -22,7 +22,13 @@ try {
             commentsModeration();
         } elseif ($_GET['action'] == 'postsManager') {
             postsManager();
-        } elseif ($_GET['action'] == 'listPosts') {
+        } elseif($_GET['action'] == 'publishPost'){
+            if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['author'])){
+                publishPost($_POST['title'], $_POST['content'], $_POST['author']);
+            } else{
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        }elseif ($_GET['action'] == 'listPosts') {
             listPosts();
         } elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
