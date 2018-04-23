@@ -27,7 +27,7 @@ function commentModeration($commentId){
 }
 function postsManager(){
     $postsManager = new Blog\Model\PostManager();
-    $posts = $postsManager->getAllPosts();
+    $posts = $postsManager->getAllPostsExcerpt();
 
     require('view/backend/postsManager.php');
 }
