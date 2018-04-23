@@ -41,6 +41,12 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
+        } elseif($_GET['action'] == "deleteComment"){
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
+                deleteComment($commentId);
+            } else {
+                throw new Exception('Aucun identifiant de commentaire envoyé !');
+            }
         } elseif($_GET['action'] == 'updatePost'){
             if (isset($_GET['postId']) && $_GET['postId'] > 0){
                 if (isset($_POST['title']) && isset($_POST['content'])){
