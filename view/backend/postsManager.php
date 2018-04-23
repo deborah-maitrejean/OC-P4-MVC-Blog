@@ -26,7 +26,7 @@
                         <td class="default" scope="row"><?= strip_tags($post['postExcerpt']); ?>...</td>
                         <td class="warning" scope="row"><?= $post['creation_date_fr']; ?></td>
                         <td class="danger" scope="row"><a href="index.php?action=viewOrChangePost&amp;postId=<?= $post['id']; ?>" class="btn btn-success">Voir ou Modifier</a></td>
-                        <td class="danger" scope="row"><a href="" class="btn btn-danger">Supprimer</a></td>
+                        <td class="danger" scope="row"><a href="index.php?action=deletePost&amp;postId=<?= $post['id']; ?>" class="btn btn-danger">Supprimer</a></td>
                     </tr>
                     <?php
                 }
