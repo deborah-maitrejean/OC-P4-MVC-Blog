@@ -28,11 +28,11 @@
                         <td class="default" scope="row"><?= $comment['creation_date_fr'] ?></td>
                         <td class="warning" scope="row"><?= $comment['post_title'] ?></td>
                         <?php if ($comment['reported'] == 1): ?>
-                            <td class="danger" scope="row"><a hmethod="get" href="index.php?action=moderateComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-success">Modérer</a></td>
+                            <td class="danger" scope="row"><a href="index.php?action=moderateComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-success">Modérer</a></td>
                         <?php else: ?>
                             <td class="danger" scope="row">non signalé</td>
                         <?php endif; ?>
-                            <td class="danger" scope="row"><a href="" class="btn btn-danger">Supprimer</a></td>
+                            <td class="danger" scope="row"><a href="index.php?action=deleteComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-danger">Supprimer</a></td>
                     </tr>
                     <?php
                 }
