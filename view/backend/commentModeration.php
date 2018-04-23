@@ -3,6 +3,12 @@
 <?php ob_start(); ?>
 
 <?php if(isset($_GET['commentId'])): ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <p><a href="index.php?action=commentsModeration">Retour à la liste de commentaires</a></p>
+        </div>
+    </div>
+
     <div class="row" id="moderateCommentForm">
         <div class="col-lg-offset-4 col-lg-4">
             <form action="index.php?action=editComment&amp;commentId=<?= $comment['id'] ?>&amp;reported=0" method="post">
