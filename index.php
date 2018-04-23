@@ -77,6 +77,8 @@ try {
             }
         } elseif ($_GET['action'] == 'adminConnexion'){
             adminView();
+        } elseif ($_GET['action'] == 'newPost'){
+            newPostView();
         } elseif ($_GET['action'] == 'about'){
             aboutView();
         } elseif ($_GET['action'] == 'contact'){
