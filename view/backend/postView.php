@@ -15,7 +15,7 @@
                 <textarea id="content" name="content" class="tinymce"><?= $post['content']; ?></textarea>
             </div>
             <div class="form-group">
-                <input type="submit" name="submit" value="Publier" class="btn btn-success btn-lg">
+                <input type="submit" name="submit" value="Modifier" class="btn btn-success btn-lg">
                 <a href="index.php?action=postsManager" class="btn btn-danger btn-lg">Annuler</a>
             </div>
         </form>
