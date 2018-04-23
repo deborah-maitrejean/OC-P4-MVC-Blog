@@ -37,3 +37,6 @@ function adminUpdateComment($comment, $commentId, $reported){
 
     header('location: index.php?action=commentsModeration');
 }
+function newPostView(){
+    require('view/backend/newPostView.php');
+}
