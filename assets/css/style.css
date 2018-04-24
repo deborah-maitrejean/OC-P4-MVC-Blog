@@ -70,7 +70,9 @@ div.cookie_policy_msg>div>a:last-child{
 #post-view, #comment-form, #post-content, #comment-view{margin-bottom: 30px;}
 #post-excerpt .row{margin-top: 25px;}
 #about-view{margin-top: 50px;}
-
+#post-content span{
+    display: inline-block;
+}
 /*------ FRONTEND CONTACT VIEW -----*/
 #contact-view{
     margin-bottom: 30px;
