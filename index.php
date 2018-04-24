@@ -3,6 +3,7 @@
 // ces fichiers appellent le bon controlleur
 require('controller/frontend.php');
 require('controller/backend.php');
+include_once('_config.php');
 
 try {
     if (isset($_GET['action'])) {
