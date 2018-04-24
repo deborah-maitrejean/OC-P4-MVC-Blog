@@ -24,9 +24,9 @@
 
 
 <!-- tinymce editor scripts -->
-<script src="public/js/tinymce/jquery.tinymce.min.js"></script>
-<script src="public/js/tinymce/tinymce.min.js"></script>
-<script src="public/js/tinymce/init-tinymce.js"></script>
+<script src="<?= ASSETS ?>js/tinymce/jquery.tinymce.min.js"></script>
+<script src="<?= ASSETS ?>js/tinymce/tinymce.min.js"></script>
+<script src="<?= ASSETS ?>js/tinymce/init-tinymce.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>
