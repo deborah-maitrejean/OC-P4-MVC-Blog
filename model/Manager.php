@@ -3,8 +3,14 @@
 namespace Blog\Model;
 
 class Manager {
+    
+    private $host     = "localhost";
+    prviate $dbname   = "blogjeanforteroche";
+    private $login    = "root";
+    private $password = "";
+    
     protected function dbConnect() {
-        $db = new \PDO('mysql:host=localhost;dbname=blogjeanforteroche;charset=utf8', 'root', '');
+        $db = new \PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $login, $password);
         return $db;
     }
 }
