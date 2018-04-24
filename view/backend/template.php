@@ -57,7 +57,7 @@
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsModeration') !== false) {echo 'class="active"';} ?>><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class=""><a href=""><span class="fa fa-user-times"></span> Déconnexion <span class="sr-only">(current)</span></a></li>
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=logOut') !== false) {echo 'class="active"';} ?>><a href=""><span class="fa fa-user-times"></span> Déconnexion <span class="sr-only">(current)</span></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
