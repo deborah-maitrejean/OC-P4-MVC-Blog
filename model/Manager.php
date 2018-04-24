@@ -5,7 +5,7 @@ namespace Blog\Model;
 class Manager {
     
     private $host     = "localhost";
-    prviate $dbname   = "blogjeanforteroche";
+    private $dbname   = "blogjeanforteroche";
     private $login    = "root";
     private $password = "";
     
