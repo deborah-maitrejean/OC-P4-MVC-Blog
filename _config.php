@@ -7,7 +7,7 @@ $host = $_SERVER['HTTP_HOST'];
 
 // je définis mes contantes
 define('ROOT', $root . '/OC-P4-MVC-Blog/'); // echo ROOT affiche mon chemin de dossier C:/xampp/htdocs/OC-P4-MVC/
-define('HOST', 'http://'. $host . '/OC-P4-MVC-Blog/'); // echo HOST affiche localhost/OC-P4-MVC
+define('HOST', 'https://'. $host . '/OC-P4-MVC-Blog/'); // echo HOST affiche localhost/OC-P4-MVC
 // j’ai maintenant mes liens absolus
 
 // je peux maintenant définir mes contantes
