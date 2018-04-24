@@ -32,18 +32,15 @@ while ($data = $posts->fetch())
 
     <div class="row" id="post-excerpt">
         <div class="col-lg-12">
-            <h3><i class="fa fa-bookmark"></i>
-                <?= htmlspecialchars($data['title']) ?>
-            </h3>
+            <h3><i class="fa fa-bookmark"></i><?= htmlspecialchars($data['title']) ?></h3>
+            <p><?= strip_tags($data['postExcerpt']) ?>...</p>
 
-            <p>
-                <?= nl2br(htmlspecialchars($data['postExcerpt'])) ?>...
-            </p>
             <div class="row">
-                <div class="col-lg-6">
-                    Par <strong><?= $data['author'] ?></strong> <em>le <?= $data['creation_date_fr'] ?></em>
+                <div class="col-xs-7 col-sm-8 col-md-6 col-lg-6">
+                    <span>Par <strong><?= $data['author'] ?></strong></span>
+                    <span>le<em> <?= $data['creation_date_fr'] ?></em></span>
                 </div>
-                <div class="col-lg-offset-4 col-lg-2">
+                <div class="col-xs-5 col-sm-2 col-md-offset-3 col-md-3 col-lg-offset-4 col-lg-2">
                     <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary read-more">Lire la suite &raquo;</a>
                 </div>
             </div>
