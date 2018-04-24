@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 
 <div class="row" >
-    <div class="col-lg-offset-3 col-lg-6" id="contact-view">
+    <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6" id="contact-view">
 
         <form action="" method="post" class="form-horizontal">
             <fieldset>
