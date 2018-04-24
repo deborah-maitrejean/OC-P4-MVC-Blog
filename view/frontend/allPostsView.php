@@ -9,7 +9,7 @@ while ($data = $posts->fetch())
 
     <div class="row" id="post-content">
         <div class="col-lg-12">
-            <h3><i class="fa fa-bookmark"></i><?= htmlspecialchars($data['title']) ?></h3>
+            <h3><i class="fa fa-bookmark"></i>&nbsp;&nbsp;<?= htmlspecialchars($data['title']) ?></h3>
             <hr>
             <p><?= strip_tags($data['content']) ?></p>
             <hr>

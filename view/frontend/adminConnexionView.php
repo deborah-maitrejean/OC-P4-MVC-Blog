@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-offset-1 col-lg-10">
         <form action="index.php?action=adminInterfaceLogin" method="post" class="form-horizontal" id="admin-connexion-view">
             <fieldset>
                 <!-- Form Name -->

@@ -32,7 +32,7 @@ while ($data = $posts->fetch())
 
     <div class="row" id="post-excerpt">
         <div class="col-lg-12">
-            <h3><i class="fa fa-bookmark"></i><?= htmlspecialchars($data['title']) ?></h3>
+            <h3><i class="fa fa-bookmark"></i>&nbsp;&nbsp;<?= htmlspecialchars($data['title']) ?></h3>
             <p><?= strip_tags($data['postExcerpt']) ?>...</p>
 
             <div class="row">

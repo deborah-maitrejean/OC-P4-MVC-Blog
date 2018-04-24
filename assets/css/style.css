@@ -20,6 +20,15 @@ div.cookie_policy_msg>div>a:last-child{
     width: 32px;
     color: #fff;
 }
+
+/*----- GENERAL -----*/
+body{
+    overflow-x: hidden;
+}
+.container, .container-fluid, .row{
+    overflow: hidden;
+}
+
 /*----- FONTS -----*/
 /* Delaration de la police FontAwesome pour les icones */
 @font-face{
@@ -27,13 +36,14 @@ div.cookie_policy_msg>div>a:last-child{
     src: url('font-awesome/fonts/FontAwesome.otf') format('otf'),
     url('font-awesome/fonts/fontawesome-webfont.eot') format('eot'),
     url('font-awesome/fonts/fontawesome-webfont.svg') format('svg'),
-    url('font-awesome/fonts/FontAwesome/fontawesome-webfont.ttf') format('truetype'),
+    url('font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'),
     url('font-awesome/fonts/fontawesome-webfont.woff') format('woff'),
     url('font-awesome/fonts/fontawesome-webfont.woff2') format('woff2');
 }
 .fa{
     font-family: 'FontAwesome';
 }
+
 /*----- FRONTEND GENERAL -----*/
 .frontend-container{
     background-image: url("../img/background/denali.jpg");
@@ -61,15 +71,14 @@ div.cookie_policy_msg>div>a:last-child{
 
 /*----- FRONTEND LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
 #older-posts-btn-section{margin-bottom: 50px;}
-#post-excerpt, #about-view, #post-content, #comment-view-form{padding-bottom: 28px;}
+#post-excerpt, #about-view, #post-content, #comment-view-form, #post-view{padding-bottom: 28px;}
 #post-excerpt, #comment-form, #post-view, #about-view, #post-content, #comment-view-form, #comment-view{
     background-color: #eee;
     opacity: 0.9;
     font-size: 16px;
 }
 #post-view, #comment-form, #post-content, #comment-view{margin-bottom: 30px;}
-#post-excerpt .row{margin-top: 25px;}
-#about-view{margin-top: 50px;}
+#post-excerpt .row, #about-view{margin-top: 25px;}
 #post-content span, #post-excerpt span{
     display: inline-block;
 }
@@ -218,3 +227,17 @@ td.default{background-color: rgba(249, 237, 230, 0.2)!important;}
 }
 #p-top{text-align: center;}
 .fa-arrow-up{color: #52708d;}
+
+/*-----  -----*/
+@media only screen and (max-width: 798px){
+    #frontend-header, #admin-header{display: none;}
+}
+@media only screen and (max-width: 1200px){
+    #about-view{margin-top: auto;}
+    #about-view h2{text-align: center;}
+    #about-view img{
+        display: block;
+        margin: 20px auto 20px auto;
+
+    }
+}
