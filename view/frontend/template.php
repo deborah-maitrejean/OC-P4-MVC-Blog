@@ -7,8 +7,8 @@
 
     <title>Blog de Jean Forteroche, écrivain</title>
 
-    <link href="public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link href="<?= ASSETS ?>css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
@@ -21,9 +21,9 @@
     <![endif]-->
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="public/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="<?= ASSETS ?>js/jquery/jquery.min.js"></script>
     <!-- snow effect script -->
-    <script type="text/javascript" src="public/js/snowstorm/script/snowstorm.js"></script>
+    <script type="text/javascript" src="<?= ASSETS ?>js/snowstorm/script/snowstorm.js"></script>
 
 </head>
 
@@ -104,8 +104,8 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="public/js/cookies.js"></script>
-<script src="public/js/nav.js"></script>
+<script src="<?= ASSETS ?>js/cookies.js"></script>
+<script src="<?= ASSETS ?>js/nav.js"></script>
 <noscript>
     <p>Attention :<br>
         Afin de pouvoir utiliser notre site, JavaScript doit être activé.
