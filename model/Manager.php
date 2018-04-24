@@ -10,7 +10,7 @@ class Manager {
     private $password = "";
     
     protected function dbConnect() {
-        $db = new \PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $login, $password);
+        $db = new \PDO('mysql:host='. $this->host .';dbname='. $this->dbname.';charset=utf8', $this->login, $this->password);
         return $db;
     }
 }
