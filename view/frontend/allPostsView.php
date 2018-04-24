@@ -14,7 +14,7 @@ while ($data = $posts->fetch())
             </h3>
 
             <p>
-                <?= nl2br(htmlspecialchars($data['content'])) ?>
+                <?= strip_tags($data['content']) ?>
             </p>
             <div class="row">
                 <div class="col-lg-6">
