@@ -51,10 +51,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php?action=adminHomeView">Accueil</a></li>
-                <li><a href="index.php?action=postsManager">Gestion des billets</a></li>
-                <li><a href="index.php?action=newPost">Nouveau billet</a></li>
-                <li><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=adminHomeView') !== false) {echo 'class="active"';} ?>><a href="index.php?action=adminHomeView">Accueil</a></li>
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=postsManager') !== false) {echo 'class="active"';} ?>><a href="index.php?action=postsManager">Gestion des billets</a></li>
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=newPost') !== false) {echo 'class="active"';} ?>><a href="index.php?action=newPost">Nouveau billet</a></li>
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsModeration') !== false) {echo 'class="active"';} ?>><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class=""><a href=""><span class="fa fa-user-times"></span> Déconnexion <span class="sr-only">(current)</span></a></li>
