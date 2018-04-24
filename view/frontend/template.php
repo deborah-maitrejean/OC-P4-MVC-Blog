@@ -2,10 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="language" content="fr">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
 
     <title>Blog de Jean Forteroche, écrivain</title>
+
+    <meta name="description" content="">
+    <meta name="robots" content="index, follow, noarchive">
+    <meta name="copyright" content="Déborah Maitrejean">
 
     <link href="<?= ASSETS ?>css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/style.css" type="text/css">
