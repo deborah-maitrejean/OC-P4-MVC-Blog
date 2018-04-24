@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="">
 
     <!-- Add icon library -->
-    <link href="<?= ASSETS ?>css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= ASSETS ?>css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="<?= ASSETS ?>css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
