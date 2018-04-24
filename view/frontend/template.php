@@ -2,12 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="language" content="fr">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device_width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
 
     <title>Blog de Jean Forteroche, écrivain</title>
 
-    <link href="<?= ASSETS ?>css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <meta name="description" content="">
+    <meta name="robots" content="index, follow, noarchive">
+    <meta name="copyright" content="Déborah Maitrejean">
+
+    <link href="<?= ASSETS ?>css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -19,12 +24,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="<?= ASSETS ?>js/jquery/jquery.min.js"></script>
-    <!-- snow effect script -->
-    <script type="text/javascript" src="<?= ASSETS ?>js/snowstorm/script/snowstorm.js"></script>
-
 </head>
 
 <body class="frontend">
@@ -102,6 +101,10 @@
     </div>
 </div>
 
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="<?= ASSETS ?>js/jquery/jquery.min.js"></script>
+<!-- snow effect script -->
+<script type="text/javascript" src="<?= ASSETS ?>js/snowstorm/script/snowstorm.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="<?= ASSETS ?>js/cookies.js"></script>

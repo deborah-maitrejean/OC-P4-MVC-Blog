@@ -21,16 +21,36 @@ div.cookie_policy_msg>div>a:last-child{
     color: #fff;
 }
 
+/*----- GENERAL -----*/
+body{overflow-x: hidden;}
+.container, .container-fluid, .row{overflow: hidden;}
+
+/*----- FONTS -----*/
+/* Delaration de la police FontAwesome pour les icones */
+@font-face{
+    font-family: 'FontAwesome';
+    src: url('font-awesome/fonts/FontAwesome.otf') format('otf'),
+    url('font-awesome/fonts/fontawesome-webfont.eot') format('eot'),
+    url('font-awesome/fonts/fontawesome-webfont.svg') format('svg'),
+    url('font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'),
+    url('font-awesome/fonts/fontawesome-webfont.woff') format('woff'),
+    url('font-awesome/fonts/fontawesome-webfont.woff2') format('woff2');
+}
+.fa{font-family: 'FontAwesome';}
+
 /*----- FRONTEND GENERAL -----*/
 .frontend-container{
-    background-image: url("../img/background/denal.jpg");
+    background-image: url("../img/background/denali.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
     padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: 787px;
 }
+
 /*navigation*/
-.frontend .navbar-default{
-    margin-bottom: 0 !important;
-}
+.frontend .navbar-default{margin-bottom: 0 !important;}
+
 /*header*/
 #frontend-header{
     background-color: #000;
@@ -45,14 +65,15 @@ div.cookie_policy_msg>div>a:last-child{
 
 /*----- FRONTEND LIST POSTS VIEW / POST VIEW / ALL POST VIEW / COMMENT VIEW-----*/
 #older-posts-btn-section{margin-bottom: 50px;}
-#post-excerpt, #about-view, #post-content, #comment-view-form{padding-bottom: 25px;}
+#post-excerpt, #about-view, #post-content, #comment-view-form, #post-view{padding-bottom: 28px;}
 #post-excerpt, #comment-form, #post-view, #about-view, #post-content, #comment-view-form, #comment-view{
     background-color: #eee;
     opacity: 0.9;
     font-size: 16px;
 }
-#post-view, #comment-form, #about-view, #post-content, #comment-view{margin-bottom: 30px;}
-#post-excerpt .row{margin-top: 25px;}
+#post-view, #comment-form, #post-content, #comment-view{margin-bottom: 30px;}
+#post-excerpt .row, #about-view{margin-top: 25px;}
+#post-content span, #post-excerpt span{display: inline-block;}
 
 /*------ FRONTEND CONTACT VIEW -----*/
 #contact-view{
@@ -74,6 +95,7 @@ textarea{
     background-color: #373737;
     width: 100%;
     padding: 50px 0 65px;
+    bottom: 0;
 }
 footer a{text-decoration: none;}
 footer .list-inline {
@@ -100,6 +122,10 @@ footer .copyright {
 .admin-container{
     background-image: url("../img/background/alaska.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: 639px;
 }
 
 /*header*/
@@ -138,7 +164,14 @@ footer .copyright {
     color: #f3f5f6 !important;
     background-color:  #52708d !important;
 }
-.admin  .navbar-default .navbar-brand {color: #52708d !important;}
+.admin .navbar-default .navbar-brand {color: #52708d !important;}
+.admin .navbar-default .navbar-toggle {
+    border-color: #52708d !important;
+}
+.admin .navbar-default .navbar-toggle:hover,
+.admin .navbar-default .navbar-toggle:focus {
+    background-color: #d3e0e8 !important;
+}
 
 /*content*/
 .admin-row{
@@ -160,9 +193,7 @@ footer .copyright {
 }
 
 /*tables*/
-table{
-    background-color: #F8F8F8 !important;
-}
+table{background-color: #F8F8F8 !important;}
 th.info{background-color: rgba(113, 162, 192, 0.2)!important;}
 td.success{background-color: rgba(66, 70, 9, 0.1)!important;}
 td.danger{background-color: rgba(119, 65, 97, 0.2)!important;}
@@ -195,6 +226,21 @@ td.default{background-color: rgba(249, 237, 230, 0.2)!important;}
     background-color: #40341F;
     width: 100%;
     padding: 25px 0 33px;
+    bottom: 0;
 }
 #p-top{text-align: center;}
 .fa-arrow-up{color: #52708d;}
+
+/*----- MEDIA QUERIES -----*/
+@media only screen and (max-width: 798px){
+    #frontend-header, #admin-header{display: none;}
+}
+
+@media only screen and (max-width: 1200px){
+    #about-view{margin-top: auto;}
+    #about-view h2{text-align: center;}
+    #about-view img{
+        display: block;
+        margin: 20px auto 20px auto;
+    }
+}

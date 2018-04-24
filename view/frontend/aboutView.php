@@ -6,7 +6,7 @@
         <h2>Qui suis-je ?</h2>
         <div class="row">
             <div class="col-lg-6">
-                <img src="public/img/portrait-jean-forteroche.jpg" alt="Portrait noir et blanc de l'auteur Jean Forteroche." class="img-thumbnail img-responsive">
+                <img src="<?= ASSETS ?>img/portrait-jean-forteroche.jpg" alt="Portrait noir et blanc de l'auteur Jean Forteroche." class="img-thumbnail img-responsive">
             </div>
             <div class="col-lg-6">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet mauris eget tortor tristique interdum. Morbi aliquam in

@@ -9,17 +9,16 @@
 
     <div class="row" id="post-view">
         <div class="col-lg-12">
-            <h3>
-                <?= htmlspecialchars($post['title']) ?>
-            </h3>
-
-            <p>
-                <?= nl2br(htmlspecialchars($post['content'])) ?>
-            </p>
-            <br>
-            <p>
-                Par <strong><?= $post['author'] ?></strong> <em>le <?= $post['creation_date_fr'] ?></em>
-            </p>
+            <h3><?= htmlspecialchars($post['title']) ?></h3>
+            <hr>
+            <p><?= strip_tags($post['content']) ?></p>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <span>Par <strong><?= $post['author'] ?></strong></span>
+                    <span>le<em> <?= $post['creation_date_fr'] ?></em></span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row" id="comment-form">
