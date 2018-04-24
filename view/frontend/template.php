@@ -48,7 +48,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=home') !== false) {echo 'class="active"';} ?>><a href="index.php?action=home">Accueil</a></li>
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php') !== false) {echo 'class="active"';} ?>><a href="index.php">Accueil</a></li>
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=allPostsView') !== false) {echo 'class="active"';} ?>><a href="index.php?action=allPostsView">Tous les billets</a></li>
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=about') !== false) {echo 'class="active"';} ?>><a href="index.php?action=about">A propos</a></li>
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=contact') !== false) {echo 'class="active"';} ?>><a href="index.php?action=contact">Contact</a></li>
