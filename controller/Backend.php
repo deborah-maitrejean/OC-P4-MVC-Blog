@@ -15,6 +15,9 @@ class Backend{
     public function adminHomeView(){
         require('view/backend/adminHomeView.php');
     }
+    public function newPostView(){
+        require('view/backend/newPostView.php');
+    }
     public function commentsModeration(){
         $commentManager = new Blog\Model\CommentManager();
         $comments = $commentManager->getAllComments();
@@ -29,12 +32,6 @@ class Backend{
         } else {
             throw new Exception('Aucun identifiant de commentaire envoyé !');
         }
-    }
-    public function postsManager(){
-        $postsManager = new Blog\Model\PostManager();
-        $posts = $postsManager->getAllPostsExcerpt();
-
-        require('view/backend/postsManager.php');
     }
     public function adminUpdateComment(){
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
@@ -52,8 +49,17 @@ class Backend{
             throw new Exception('Aucun identifiant de commentaire envoyé');
         }
     }
-    public function newPostView(){
-        require('view/backend/newPostView.php');
+    public function deleteComment($commentId){
+        $commentManager = new Blog\Model\CommentManager();
+        $deletedComment = $commentManager->deleteComment($commentId);
+
+        header('location: index.php?action=commentsModeration');
+    }
+    public function postsManager(){
+        $postsManager = new Blog\Model\PostManager();
+        $posts = $postsManager->getAllPostsExcerpt();
+
+        require('view/backend/postsManager.php');
     }
     public function publishPost($title, $content, $author){
         $postManager = new Blog\Model\PostManager();
@@ -67,8 +73,7 @@ class Backend{
 
         require('view/backend/postView.php');
     }
-    public function deletePost($postId)
-    {
+    public function deletePost($postId){
         $postManager = new Blog\Model\PostManager();
         $post = $postManager->deletePost($postId);
 
@@ -79,11 +84,5 @@ class Backend{
         $post = $postManager->updatePost($title, $content, $postId);
 
         header('location: index.php?action=postsManager');
-    }
-    public function deleteComment($commentId){
-        $commentManager = new Blog\Model\CommentManager();
-        $deletedComment = $commentManager->deleteComment($commentId);
-
-        header('location: index.php?action=commentsModeration');
     }
 }
