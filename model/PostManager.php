@@ -50,7 +50,7 @@ class PostManager extends Manager {
     }
     public function updatePost($title, $content, $postId){
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE posts SET title = ?, content = ?, creation_date = NOW() WHERE id = ?');
+        $req = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
         $affectedPost = $req->execute(array($title, $content, $postId));
 
         return $affectedPost;
