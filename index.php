@@ -1,6 +1,16 @@
 <?php
 include_once('_config.php');
 
+if($_GET) {
+    $request = $_GET['action'];
+}
+else {
+    $request = "";
+}
+require_once('classes/Router.php');
+$router = new Router($request);
+$router->renderController();
+/*
 // ces fichiers appellent le bon controlleur
 require('controller/Frontend.php');
 require('controller/Backend.php');
@@ -131,3 +141,4 @@ try {
 catch(Exception $e) { // s'il y a une erreur, alors...
     echo 'Erreur : ' . $e->getMessage();
 }
+*/
