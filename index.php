@@ -2,8 +2,8 @@
 include_once('_config.php');
 
 // ces fichiers appellent le bon controlleur
-require('controller/frontend.php');
-require('controller/backend.php');
+require('controller/Frontend.php');
+require('controller/Backend.php');
 
 
 try {
