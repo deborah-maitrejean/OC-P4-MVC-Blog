@@ -71,11 +71,15 @@ class Backend{
 
         header('location: index.php?action=postsManager');
     }
-    public function viewOrChangePost($postId){
-        $postManager = new Blog\Model\PostManager();
-        $post = $postManager->getPost($postId);
+    public function viewOrChangePost(){
+        if (isset($_GET['postId']) && $_GET['postId'] > 0){
+            $postManager = new Blog\Model\PostManager();
+            $post = $postManager->getPost($_GET['postId']);
 
-        require('view/backend/postView.php');
+            require('view/backend/postView.php');
+        } else{
+            throw new Exception('Aucun identifiant de billet envoyé !');
+        }
     }
     public function deletePost($postId){
         $postManager = new Blog\Model\PostManager();
