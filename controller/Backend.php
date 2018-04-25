@@ -85,11 +85,15 @@ class Backend{
             throw new Exception('Aucun identifiant de billet envoyé !');
         }
     }
-    public function deletePost($postId){
-        $postManager = new Blog\Model\PostManager();
-        $post = $postManager->deletePost($postId);
+    public function deletePost(){
+        if (isset($_GET['postId']) && $_GET['postId'] > 0){
+            $postManager = new Blog\Model\PostManager();
+            $post = $postManager->deletePost($_GET['postId']);
 
-        header('location: index.php?action=postsManager');
+            header('location: index.php?action=postsManager');
+        } else {
+            throw new Exception('Aucun identifiant de billet envoyé');
+        }
     }
     public function updatePost(){
         if (isset($_GET['postId']) && $_GET['postId'] > 0){

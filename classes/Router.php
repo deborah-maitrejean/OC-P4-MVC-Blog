@@ -29,6 +29,7 @@ class Router {
         'publishPost' => ['controller'=>'Backend', 'method'=>'publishPost'],
         'viewOrChangePost' => ['controller'=>'Backend', 'method'=>'viewOrChangePost'],
         'updatePost' => ['controller'=>'Backend', 'method'=>'updatePost'],
+        'deletePost' => ['controller'=>'Backend', 'method'=>'deletePost'],
         'commentsModeration' => ['controller'=>'Backend', 'method'=>'commentsModeration'],
         'moderateComment' => ['controller'=>'Backend', 'method'=>'commentModeration'],
         'editComment' => ['controller'=>'Backend', 'method'=>'adminUpdateComment'],
