@@ -49,11 +49,15 @@ class Backend{
             throw new Exception('Aucun identifiant de commentaire envoyé');
         }
     }
-    public function deleteComment($commentId){
-        $commentManager = new Blog\Model\CommentManager();
-        $deletedComment = $commentManager->deleteComment($commentId);
+    public function deleteComment(){
+        if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
+            $commentManager = new Blog\Model\CommentManager();
+            $deletedComment = $commentManager->deleteComment($_GET['commentId']);
 
-        header('location: index.php?action=commentsModeration');
+            header('location: index.php?action=commentsModeration');
+        } else {
+            throw new Exception('Aucun identifiant de commentaire envoyé !');
+        }
     }
     public function postsManager(){
         $postsManager = new Blog\Model\PostManager();
