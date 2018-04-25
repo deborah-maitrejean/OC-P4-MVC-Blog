@@ -87,10 +87,16 @@ class Backend{
 
         header('location: index.php?action=postsManager');
     }
-    public function updatePost($title, $content, $postId){
-        $postManager = new Blog\Model\PostManager();
-        $post = $postManager->updatePost($title, $content, $postId);
+    public function updatePost(){
+        if (isset($_GET['postId']) && $_GET['postId'] > 0){
+            if (isset($_POST['title']) && isset($_POST['content'])){
+                $postManager = new Blog\Model\PostManager();
+                $post = $postManager->updatePost($_POST['title'], $_POST['content'], $_GET['postId']);
 
-        header('location: index.php?action=postsManager');
+                header('location: index.php?action=postsManager');
+            }
+        } else {
+            throw new Exception('Aucun identifiant de billet envoyé !');
+        }
     }
 }
