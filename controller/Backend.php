@@ -5,9 +5,10 @@ require_once('model/CommentManager.php');
 require_once('model/LoginManager.php');
 
 class Backend{
-    public function loginControl($email, $password){
+    public function loginControl(){
         $loginManager = new Blog\Model\LoginManager();
-        $login = $loginManager->getLogin($email, $password);
+        if (isset($_POST['adminId']) && isset($_POST['password']))
+        $login = $loginManager->getLogin($_POST['adminId'], $_POST['password']);
 
         header('location: index.php?action=adminHomeView');
     }
@@ -20,11 +21,14 @@ class Backend{
 
         require('view/backend/commentsModeration.php');
     }
-    public function commentModeration($commentId){
-        $commentManager = new Blog\Model\CommentManager();
-        $comment = $commentManager->getComment($commentId);
-
-        require('view/backend/commentModeration.php');
+    public function commentModeration(){
+        if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
+            $commentManager = new Blog\Model\CommentManager();
+            $comment = $commentManager->getComment($_GET['commentId']);
+            require('view/backend/commentModeration.php');
+        } else {
+            throw new Exception('Aucun identifiant de commentaire envoyé !');
+        }
     }
     public function postsManager(){
         $postsManager = new Blog\Model\PostManager();
@@ -32,11 +36,21 @@ class Backend{
 
         require('view/backend/postsManager.php');
     }
-    public function adminUpdateComment($comment, $commentId, $reported){
-        $commentManager = new Blog\Model\CommentManager();
-        $changedComment = $commentManager->changeComment($comment, $commentId, $reported);
+    public function adminUpdateComment(){
+        if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
+            if (!empty($_POST['comment'])){
+                if (isset($_GET['reported'])){
+                    $commentManager = new Blog\Model\CommentManager();
+                    $commentManager->changeComment($_POST['comment'], $_GET['commentId'], $_GET['reported']);
 
-        header('location: index.php?action=commentsModeration');
+                    header('location: index.php?action=commentsModeration');
+                }
+            } else{
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        } else {
+            throw new Exception('Aucun identifiant de commentaire envoyé');
+        }
     }
     public function newPostView(){
         require('view/backend/newPostView.php');
