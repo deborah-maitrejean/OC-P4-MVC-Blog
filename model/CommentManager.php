@@ -54,8 +54,6 @@ class CommentManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE comments SET reported = ? WHERE id = ?');
         $affectedComment = $req->execute(array($reported, $commentId));
-
-        //return $affectedComment;
     }
     public function deleteComment($commentId){
         $db = $this->dbConnect();
