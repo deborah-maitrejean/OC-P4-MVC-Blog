@@ -19,4 +19,7 @@ class Router {
         'reportComment' => ['controller'=>'Frontend', 'method'=>'reportComment']
         //editComment
     ];
+    public function __construct($request) {
+        $this->request = $request;
+    }
 }
