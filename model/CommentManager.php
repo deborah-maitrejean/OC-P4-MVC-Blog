@@ -50,12 +50,10 @@ class CommentManager extends Manager
 
         return $affectedComment;
     }
-    public function reportComment($commentId) {
+    public function reportComment($reported, $commentId) {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE comments SET reported = 1 WHERE id = ?');
-        $req->execute(array($commentId));
-
-        return $req;
+        $req = $db->prepare('UPDATE comments SET reported = ? WHERE id = ?');
+        $affectedComment = $req->execute(array($reported, $commentId));
     }
     public function deleteComment($commentId){
         $db = $this->dbConnect();
