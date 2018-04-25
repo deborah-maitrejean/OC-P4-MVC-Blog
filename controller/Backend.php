@@ -65,11 +65,15 @@ class Backend{
 
         require('view/backend/postsManager.php');
     }
-    public function publishPost($title, $content, $author){
-        $postManager = new Blog\Model\PostManager();
-        $newPost = $postManager->publishNewPost($title, $content, $author);
+    public function publishPost(){
+        if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['author'])){
+            $postManager = new Blog\Model\PostManager();
+            $newPost = $postManager->publishNewPost($_POST['title'], $_POST['content'], $_POST['author']);
 
-        header('location: index.php?action=postsManager');
+            header('location: index.php?action=postsManager');
+        } else{
+            throw new Exception('Tous les champs ne sont pas remplis !');
+        }
     }
     public function viewOrChangePost(){
         if (isset($_GET['postId']) && $_GET['postId'] > 0){
