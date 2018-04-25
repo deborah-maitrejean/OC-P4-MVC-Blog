@@ -27,11 +27,12 @@ class Router {
         'postsManager' => ['controller'=>'Backend', 'method'=>'postsManager'],
         'newPost' => ['controller'=>'Backend', 'method'=>'newPostView'],
         'publishPost' => ['controller'=>'Backend', 'method'=>'publishPost'],
+        'viewOrChangePost' => ['controller'=>'Backend', 'method'=>'viewOrChangePost'],
         'commentsModeration' => ['controller'=>'Backend', 'method'=>'commentsModeration'],
         'moderateComment' => ['controller'=>'Backend', 'method'=>'commentModeration'],
         'editComment' => ['controller'=>'Backend', 'method'=>'adminUpdateComment'],
         'deleteComment' => ['controller'=>'Backend', 'method'=>'deleteComment'],
-        'logOut' => ['controller'=>'Backend', 'method'=>''],
+        'logOut' => ['controller'=>'Backend', 'method'=>'logOut'],
     ];
     public function __construct($request) {
         $this->request = $request;
