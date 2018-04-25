@@ -12,6 +12,9 @@ class Backend{
 
         header('location: index.php?action=adminHomeView');
     }
+    public function logOut(){
+        header('location: index.php');
+    }
     public function adminHomeView(){
         require('view/backend/adminHomeView.php');
     }
