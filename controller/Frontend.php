@@ -3,6 +3,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/LoginManager.php');
 
 class Frontend{
     public function listPosts() {
@@ -26,40 +27,35 @@ class Frontend{
 
         require('view/frontend/postView.php');
     }
-    function addComment($postId, $postTitle, $author, $comment) {
-        $commentManager = new Blog\Model\CommentManager();
-        $affectedLines = $commentManager->postComment($postId, $postTitle, $author, $comment);
+    function addComment() {
+        if (isset($_GET['id']) && $_GET['id'] > 0 && $_GET['postTitle']) {
+            if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                $commentManager = new Blog\Model\CommentManager();
+                $affectedLines = $commentManager->postComment($_GET['id'], $_GET['postTitle'], $_POST['author'], $_POST['comment']);
 
-        if ($affectedLines === false) {
-            // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur
-            throw new Exception('Impossible d\'ajouter le commentaire !');
+                if ($affectedLines === false) {
+                    // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur
+                    throw new Exception('Impossible d\'ajouter le commentaire !');
+                } else {
+                    header('Location: index.php?action=post&id=' . $_GET['id']);
+                }
+            } else {
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
         } else {
-            header('Location: index.php?action=post&id=' . $postId);
+            throw new Exception('Aucun identifiant de billet envoyé !');
         }
     }
-    public function commentView(){
-        $postManager = new Blog\Model\PostManager();
-        $commentManager = new Blog\Model\CommentManager();
-
-        $post = $postManager->getPost($_GET['postId']);
-        $comment = $commentManager->getComment($_GET['commentId']);
-
-        require('view/frontend/commentEdit.php');
-    }
-    public function editComment($postId, $comment, $commentId) {
-        $commentManager = new Blog\Model\CommentManager();
-        $newComment = $commentManager->updateComment($comment, $commentId);
-
-        if ($newComment === false) {
-            throw new Exception('Impossible de modifier le commentaire !');
-        } else {
-            header('Location: index.php?action=post&id=' . $postId);
+    public function reportComment(){
+        if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && $_GET['postId']) {
+            if(isset($_GET['reported'])){
+                $commentManager = new Blog\Model\CommentManager();
+                $commentManager->reportComment($_GET['reported'], $_GET['commentId'], $_GET['postId']);
+                header('Location: index.php?action=post&id=' . $_GET['postId']);
+            } else {
+                throw new Exception('Aucun identifiant de commentaire envoyé !');
+            }
         }
-    }
-    public function reportComment($commentId, $postId){
-        $commentManager = new Blog\Model\CommentManager();
-        $reportComment = $commentManager->reportComment($commentId);
-        header('Location: index.php?action=post&id=' . $postId);
     }
     public function adminView(){
         require('view/frontend/adminConnexionView.php');
