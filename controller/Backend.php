@@ -7,10 +7,29 @@ require_once('model/LoginManager.php');
 class Backend{
     public function loginControl(){
         $loginManager = new Blog\Model\LoginManager();
-        if (isset($_POST['adminId']) && isset($_POST['password']))
-        $login = $loginManager->getLogin($_POST['adminId'], $_POST['password']);
-
-        header('location: index.php?action=adminHomeView');
+        if (isset($_POST['email']) && isset($_POST['password'])){
+            if (!empty($_POST['email']) && !empty($_POST['password'])){
+                if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
+                    // hachage du mot de passe
+                    $passHach = hash('sha512', htmlspecialchars($_POST['password']));
+                    // vérification des identifiants
+                    $login = $loginManager->getLogin($_POST['email'], $passHach);
+                    if ($login) {
+                        // l'identification a réussi
+                        header('location: index.php?action=adminHomeView');
+                    } else{
+                        throw new Exception('Mauvais identifiants de connexion');
+                        header('location: index.php?action=adminConnexion');
+                    }
+                } else{
+                    throw new Exception('Le format de l\'adresse email est incorrect');
+                    header('location: index.php?action=adminConnexion');
+                }
+            } else{
+                throw new Exception('Tous les champs ne sont pas remplis');
+                header('location: index.php?action=adminConnexion');
+            }
+        }
     }
     public function logOut(){
         header('location: index.php');
