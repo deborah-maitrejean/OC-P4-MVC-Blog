@@ -11,17 +11,17 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="textinput">Nom d'utilisateur </label>
+                    <label class="col-md-4 control-label" for="email">Adresse mail </label>
                     <div class="col-md-4">
-                        <input id="adminId" name="adminId" type="text" placeholder="Identifiant" class="form-control input-md">
+                        <input id="email" name="email" type="text" placeholder="Adresse mail" class="form-control input-md">
                     </div>
                 </div>
 
                 <!-- Password input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="adminPassword">Mot de passe </label>
+                    <label class="col-md-4 control-label" for="password">Mot de passe </label>
                     <div class="col-md-4">
-                        <input id="password" name="adminPassword" type="password" placeholder="Mot de passe" class="form-control input-md">
+                        <input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control input-md">
                     </div>
                 </div>
 
