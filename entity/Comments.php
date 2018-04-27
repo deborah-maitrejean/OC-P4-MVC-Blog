@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class Comments
+class Comments extends Table
 {
     private $id;
     private $author;
