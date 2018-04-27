@@ -1,20 +1,12 @@
 <?php
 namespace Entity;
 
-class Posts {
+class Posts extends Table{
     private $id;
     private $author;
     private $title;
     private $content;
     private $creation_date;
-
-    public function hydrate(array $data)
-    {
-        foreach ($data as $key => $value){
-            $setter = 'set' . ucfirst($key);
-            $this->$setter($value);
-        }
-    }
 
     /**
      * @return mixed

@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class Logins
+class Logins extends Table
 {
     private $id;
     private $email;
