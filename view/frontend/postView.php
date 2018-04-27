@@ -1,4 +1,5 @@
-<?php $title = htmlspecialchars($post['title']); ?>
+
+<?php $title = htmlspecialchars($post->getTitle()); ?>
 
 <?php ob_start(); ?>
     <div class="row">
@@ -9,23 +10,24 @@
 
     <div class="row" id="post-view">
         <div class="col-lg-12">
-            <h3><?= htmlspecialchars($post['title']) ?></h3>
+            <h3><?= htmlspecialchars($post->getTitle()); ?></h3>
             <hr>
-            <p><?= strip_tags($post['content']) ?></p>
+            <p><?= strip_tags($post->getContent()); ?></p>
             <hr>
             <div class="row">
                 <div class="col-lg-12">
-                    <span>Par <strong><?= $post['author'] ?></strong></span>
-                    <span>le<em> <?= $post['creation_date_fr'] ?></em></span>
+                    <span>Par <strong><?= $post->getAuthor(); ?></strong></span>
+                    <span>le<em> <?= $post->getCreationDate(); ?></em></span>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="row" id="comment-form">
         <div class="col-lg-12">
             <h2>Commentaires</h2>
 
-            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>&amp;postTitle=<?= $post['title'] ?>" method="post">
+            <form action="index.php?action=addComment&amp;id=<?= $post->getId(); ?>&amp;postTitle=<?= $post->getTitle(); ?>" method="post">
                 <div class="form-group">
                     <label for="author">Auteur</label>
                     <input type="text" id="author" name="author" class="form-control">
@@ -43,10 +45,10 @@
                 ?>
 
                 <p>
-                    <strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?>
+                    <strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creationDate'] ?>
                     <?php
                     if ($comment['reported'] != 1): ?>
-                    <a href="index.php?action=reportComment&amp;commentId=<?= $comment['id'] ?>&amp;reported=1&amp;postId=<?= $post['id'] ?>">(signaler)</a>
+                    <a href="index.php?action=reportComment&amp;commentId=<?= $comment['id'] ?>&amp;reported=1&amp;postId=<?= $post->getId(); ?>">(signaler)</a>
                     <?php endif; ?>
                 </p>
 
