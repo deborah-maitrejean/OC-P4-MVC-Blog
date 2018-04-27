@@ -9,6 +9,23 @@ class Comments extends Table
     private $creation_date;
     private $post_id;
     private $post_title;
+    private $reported;
+
+    /**
+     * @return mixed
+     */
+    public function getReported()
+    {
+        return $this->reported;
+    }
+
+    /**
+     * @param mixed $reported
+     */
+    public function setReported($reported)
+    {
+        $this->reported = $reported;
+    }
 
     /**
      * @return mixed
