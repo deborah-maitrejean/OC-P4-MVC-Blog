@@ -25,7 +25,7 @@
                     <tr>
                         <td class="success" scope="row"><?= htmlspecialchars($comment['author']) ?></td>
                         <td class="default" scope="row"><?= nl2br(htmlspecialchars($comment['content'])) ?></td>
-                        <td class="default" scope="row"><?= $comment['creation_date_fr'] ?></td>
+                        <td class="default" scope="row"><?= $comment['creationDate'] ?></td>
                         <td class="warning" scope="row"><?= $comment['post_title'] ?></td>
                         <?php if ($comment['reported'] == 1): ?>
                             <td class="danger" scope="row"><a href="index.php?action=moderateComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-success">Modérer</a></td>
