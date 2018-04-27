@@ -1,9 +1,8 @@
 <?php
 namespace Controller;
-// Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
-require_once('model/LoginManager.php');
+use \Model\CommentManager;
+use \Model\LoginManager;
+use \Model\PostManager;
 
 class Backend{
     public function loginControl(){
