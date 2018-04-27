@@ -11,16 +11,16 @@
 
     <div class="row" id="moderateCommentForm">
         <div class="col-lg-offset-4 col-lg-4">
-            <form action="index.php?action=editComment&amp;commentId=<?= $comment['id'] ?>&amp;reported=0" method="post">
+            <form action="index.php?action=editComment&amp;commentId=<?= $comment->getId(); ?>&amp;reported=0" method="post">
                 <div class="form-group">
-                    <b name="author">Auteur:</b> <?= $comment['author'] ?>
+                    <b name="author">Auteur:</b> <?= $comment->getauthor(); ?>
                 </div>
                 <div class="form-group">
-                    <b>Date:</b> le <?= $comment['creation_date_fr'] ?>
+                    <b>Date:</b> le <?= $comment->getCreationDate(); ?>
                 </div>
                 <div class="form-group">
                     <label for="comment">Modérer le commentaire:</label><br>
-                    <textarea id="comment" name="comment" class="form-control"><?= nl2br(htmlspecialchars($comment['content'])) ?></textarea>
+                    <textarea id="comment" name="comment" class="form-control"><?= nl2br(htmlspecialchars($comment->getContent())); ?></textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Modérer" class="btn btn-success btn-lg">
