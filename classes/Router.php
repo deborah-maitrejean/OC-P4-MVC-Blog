@@ -1,9 +1,5 @@
 <?php
-/*
- * Class Router
- * create routes and find controller
- */
-
+namespace Classes;
 // ces fichiers appellent le bon controlleur
 include_once('controller/Frontend.php');
 include_once('controller/Backend.php');
