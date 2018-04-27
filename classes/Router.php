@@ -1,12 +1,7 @@
 <?php
-/*
- * Class Router
- * create routes and find controller
- */
-
-// ces fichiers appellent le bon controlleur
-include_once('controller/Frontend.php');
-include_once('controller/Backend.php');
+namespace Classes;
+use \Controller\Frontend;
+use \Controller\Backend;
 
 class Router {
     private $request;
@@ -45,15 +40,17 @@ class Router {
             if(key_exists($request, $this->routes)) {
                 $controller = $this->routes[$request]['controller'];
                 $method = $this->routes[$request]['method'];
-
-                $currentController = new $controller();
+                if ($controller == 'Frontend'){
+                    $currentController = new Frontend();
+                } else{
+                    $currentController = new Backend();
+                }
                 $currentController->$method();
             } else {
                 throw new Exception('Erreur 404: la page demandée n\'existe pas');
             }
         } catch(Exception $e) {
-            $messageError = new Frontend();
-            $message = $messageError->error($e);
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
         }
     }
 }
