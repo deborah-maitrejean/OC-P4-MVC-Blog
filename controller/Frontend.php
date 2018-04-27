@@ -1,9 +1,7 @@
 <?php
 namespace Controller;
-// Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
-require_once('model/LoginManager.php');
+use \Model\CommentManager;
+use \Model\PostManager;
 
 class Frontend{
     public function listPosts() {
