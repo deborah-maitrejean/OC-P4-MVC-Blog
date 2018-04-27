@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Entity\Comments;
+
 require_once("model/Manager.php");
 
 class CommentManager extends Manager
@@ -26,7 +28,10 @@ class CommentManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDate FROM comments WHERE id = ?');
         $req->execute(array($commentId));
-        $comment = $req->fetch();
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
+
+        $comment = new Comments();
+        $comment->hydrate($data);
 
         return $comment;
     }
