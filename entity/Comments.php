@@ -112,7 +112,7 @@ class Comments extends Table
      */
     public function getPostTitle()
     {
-        return $this->post_title;
+        return $this->postTitle;
     }
 
     /**
