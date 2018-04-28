@@ -4,7 +4,7 @@
 <div class="row" >
     <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6" id="contact-view">
 
-        <form action="" method="post" class="form-horizontal">
+        <form action="index.php?action=sendMail" method="post" class="form-horizontal">
             <fieldset>
                 <legend>Formulaire de contact</legend>
 
