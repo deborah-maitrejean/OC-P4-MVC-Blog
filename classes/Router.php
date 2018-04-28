@@ -5,9 +5,10 @@ use \Controller\Backend;
 
 class Router {
     private $request;
-    private $routes = [ // tableau qui récupère toutes les routes, il fait un lien entre ce qu'on demande, et un autre tbealu qui intègre le controller
+    private $routes = [
         // frontend:
-        '' => ['controller'=>'Frontend', 'method'=>'listPostsExcerpt'], // appelle le Frontend controller
+        '' => ['controller'=>'Frontend', 'method'=>'listPostsExcerpt'],
+        'home' => ['controller'=>'Frontend', 'method'=>'listPostsExcerpt'],
         'allPostsView' => ['controller'=>'Frontend', 'method'=>'listPosts'],
         'about' => ['controller'=>'Frontend', 'method'=>'aboutView'],
         'contact' => ['controller'=>'Frontend', 'method'=>'contactView'],
@@ -34,7 +35,7 @@ class Router {
     public function __construct($request) {
         $this->request = $request;
     }
-    public function renderController(){ // a chaque fois qu'il va trouver une classe
+    public function renderController(){
         $request = $this->request;
         try {
             if(key_exists($request, $this->routes)) {
