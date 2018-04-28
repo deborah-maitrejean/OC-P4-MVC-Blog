@@ -7,6 +7,23 @@ class Posts extends Table{
     private $title;
     private $content;
     private $creation_date;
+    private $postExcerpt;
+
+    /**
+     * @return mixed
+     */
+    public function getPostExcerpt()
+    {
+        return $this->postExcerpt;
+    }
+
+    /**
+     * @param mixed $postExcerpt
+     */
+    public function setPostExcerpt($postExcerpt)
+    {
+        $this->postExcerpt = $postExcerpt;
+    }
 
     /**
      * @return mixed
