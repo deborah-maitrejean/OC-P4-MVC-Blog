@@ -16,7 +16,7 @@
                     <b name="author">Auteur:</b> <?= $comment->getauthor(); ?>
                 </div>
                 <div class="form-group">
-                    <b>Date:</b> le <?= $comment->getCreationDate(); ?>
+                    <b>Date:</b> le <?= $comment->getCreationDateFr(); ?>
                 </div>
                 <div class="form-group">
                     <label for="comment">Modérer le commentaire:</label><br>
