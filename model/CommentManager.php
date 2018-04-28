@@ -10,7 +10,7 @@ class CommentManager extends Manager
 {
     public function getComments($postId) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr FROM comments WHERE postId = ? ORDER BY creationDate DESC');
+        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM comments WHERE postId = ? ORDER BY creationDate DESC');
         $req->execute(array($postId));
 
         $comments = [];
@@ -34,7 +34,7 @@ class CommentManager extends Manager
     }
     public function getComment($commentId) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr FROM comments WHERE id = ?');
+        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM comments WHERE id = ?');
         $req->execute(array($commentId));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
@@ -79,7 +79,7 @@ class CommentManager extends Manager
     }
     public function deleteComment($commentId){
         $db = $this->dbConnect();
-        $comment = $db->prepare('DELETE FROM comments WHERE id = ?');
-        $affectedComment = $comment->execute(array($commentId));
+        $req = $db->prepare('DELETE FROM comments WHERE id = ?');
+        $affectedComment = $req->execute(array($commentId));
     }
 }
