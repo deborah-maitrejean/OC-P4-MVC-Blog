@@ -64,4 +64,17 @@ class Frontend{
     public function contactView(){
         require('view/frontend/contactView.php');
     }
+    public function sendMail(){
+        if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['tel']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])){
+            if (!empty($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['tel']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])){
+                if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
+                    header('Location: index.php?action=contact');
+                } else{
+                    throw new Exception('L\'adresse email n\'est pas au bon format.');
+                }
+            } else{
+                throw new Exception('Tous les champs ne sont pas renseignés.');
+            }
+        }
+    }
 }
