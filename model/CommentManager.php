@@ -10,15 +10,23 @@ class CommentManager extends Manager
 {
     public function getComments($postId) {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDate FROM comments WHERE post_id = ? ORDER BY creation_date DESC');
-        $comments->execute(array($postId));
+        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr FROM comments WHERE postId = ? ORDER BY creationDate DESC');
+        $req->execute(array($postId));
 
+        $comments = [];
+
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+            $comment = new Comments();
+            $comment->hydrate($data);
+            $comments[] = $comment;
+        }
+        $req->closeCursor();
         return $comments;
     }
 
     public function postComment($postId, $postTitle, $author, $comment) {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(post_id, post_title, author, content, creation_date) VALUES(?, ?, ?, ?, NOW())');
+        $comments = $db->prepare('INSERT INTO comments(postId, postTitle, author, content, creationDate) VALUES(?, ?, ?, ?, NOW())');
         // Récupération en paramètres des informations dont on a besoin
         $affectedLines = $comments->execute(array($postId, $postTitle, $author, $comment));
 
@@ -26,7 +34,7 @@ class CommentManager extends Manager
     }
     public function getComment($commentId) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDate FROM comments WHERE id = ?');
+        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr FROM comments WHERE id = ?');
         $req->execute(array($commentId));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
@@ -59,7 +67,7 @@ class CommentManager extends Manager
     }
     public function changeComment($comment, $commentId, $reported) {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE comments SET content = ?, reported = ?, creation_date = NOW() WHERE id = ?');
+        $req = $db->prepare('UPDATE comments SET content = ?, reported = ?, creationDate = NOW() WHERE id = ?');
         $affectedComment = $req->execute(array($comment, $reported, $commentId));
 
         return $affectedComment;
