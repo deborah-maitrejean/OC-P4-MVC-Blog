@@ -25,32 +25,26 @@
         </div>
     </div>
 
-<?php
-while ($data = $posts->fetch())
-{
-    ?>
+<?php foreach ($posts as $post): ?>
 
     <div class="row" id="post-excerpt">
         <div class="col-lg-12">
-            <h3><i class="fa fa-bookmark"></i>&nbsp;&nbsp;<?= htmlspecialchars($data['title']) ?></h3>
-            <p><?= strip_tags($data['postExcerpt']) ?>...</p>
+            <h3><i class="fa fa-bookmark"></i>&nbsp;&nbsp;<?= htmlspecialchars($post->getTitle()); ?></h3>
+            <p><?= strip_tags($post->getPostExcerpt()); ?>...</p>
 
             <div class="row">
                 <div class="col-xs-7 col-sm-8 col-md-6 col-lg-6">
-                    <span>Par <strong><?= $data['author'] ?></strong></span>
-                    <span>le<em> <?= $data['creation_date_fr'] ?></em></span>
+                    <span>Par <strong><?= $post->getAuthor(); ?></strong></span>
+                    <span>le<em> <?= $post->getCreationDate(); ?></em></span>
                 </div>
                 <div class="col-xs-5 col-sm-2 col-md-offset-3 col-md-3 col-lg-offset-4 col-lg-2">
-                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary read-more">Lire la suite &raquo;</a>
+                    <a href="index.php?action=post&amp;id=<?= $post->getId(); ?>" class="btn btn-primary read-more">Lire la suite &raquo;</a>
                 </div>
             </div>
         </div>
     </div>
     <hr>
-    <?php
-}
-$posts->closeCursor();
-?>
+<?php endforeach; ?>
     <!-- Pager -->
     <div class="row" id="older-posts-btn-section">
         <div class="col-lg-offset-5 col-lg-2">

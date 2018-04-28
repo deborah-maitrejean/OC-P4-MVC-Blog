@@ -20,23 +20,22 @@
 
                 <tbody>
                 <?php
-                while ($comment = $comments->fetch()) {
+                foreach ($comments as $comment):
                     ?>
                     <tr>
-                        <td class="success" scope="row"><?= htmlspecialchars($comment['author']) ?></td>
-                        <td class="default" scope="row"><?= nl2br(htmlspecialchars($comment['content'])) ?></td>
-                        <td class="default" scope="row"><?= $comment['creation_date_fr'] ?></td>
-                        <td class="warning" scope="row"><?= $comment['post_title'] ?></td>
-                        <?php if ($comment['reported'] == 1): ?>
-                            <td class="danger" scope="row"><a href="index.php?action=moderateComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-success">Modérer</a></td>
+                        <td class="success" scope="row"><?= htmlspecialchars($comment->getAuthor()); ?></td>
+                        <td class="default" scope="row"><?= nl2br(htmlspecialchars($comment->getContent())); ?></td>
+                        <td class="default" scope="row"><?= $comment->getCreationdateFr(); ?></td>
+                        <td class="warning" scope="row"><?= $comment->getPostTitle(); ?></td>
+                        <?php if ($comment->getReported() == 1): ?>
+                            <td class="danger" scope="row"><a href="index.php?action=moderateComment&amp;commentId=<?= $comment->getId(); ?>" class="btn btn-success">Modérer</a></td>
                         <?php else: ?>
                             <td class="danger" scope="row">non signalé</td>
                         <?php endif; ?>
-                            <td class="danger" scope="row"><a href="index.php?action=deleteComment&amp;commentId=<?= $comment['id'] ?>" class="btn btn-danger">Supprimer</a></td>
+                            <td class="danger" scope="row"><a href="index.php?action=deleteComment&amp;commentId=<?= $comment->getId(); ?>" class="btn btn-danger">Supprimer</a></td>
                     </tr>
                     <?php
-                }
-                $comments->closeCursor();
+                    endforeach;
                 ?>
                 </tbody>
             </table>

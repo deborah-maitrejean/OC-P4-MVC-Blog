@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Entity\Logins;
+
 require_once("model/Manager.php");
 
 class LoginManager extends Manager {
@@ -9,8 +11,11 @@ class LoginManager extends Manager {
         $db = $this->dbconnect();
         $req = $db->prepare('SELECT * FROM logins WHERE email = ? AND password = ?');
         $req->execute(array($email, $passHach));
-        $req = $req->fetch();
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
 
-        return $req;
+        $login = new Logins();
+        $login->hydrate($data);
+
+        return $login;
     }
 }

@@ -5,14 +5,14 @@
 <div class="row tinymce-post-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-pencil-square-o"></i> Modifier le billet</h2>
-        <form action="index.php?action=updatePost&amp;postId=<?= $post['id']; ?>" method="post">
+        <form action="index.php?action=updatePost&amp;postId=<?= $post->getId(); ?>" method="post">
             <div class="form-group">
                 <label for="title">Titre:</label>
-                <input type="text" name="title" value="<?=  $post['title']; ?>">
+                <input type="text" name="title" value="<?=  $post->getTitle(); ?>">
             </div>
             <div class="form-group">
                 <label for="content">Contenu:</label>
-                <textarea id="content" name="content" class="tinymce"><?= $post['content']; ?></textarea>
+                <textarea id="content" name="content" class="tinymce"><?= $post->getContent(); ?></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Modifier" class="btn btn-success btn-lg">
