@@ -1,5 +1,5 @@
 
-<?php $title = htmlspecialchars($post->getTitle()); ?>
+<?php $title = $post->getTitle(); ?>
 
 <?php ob_start(); ?>
     <div class="row">
@@ -41,25 +41,26 @@
                 </div>
             </form>
 
-            <?php while ($comment = $comments->fetch()) {
+            <?php
+                foreach ($comments as $comment):
                 ?>
 
                 <p>
-                    <strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creationDate'] ?>
+                    <strong><?= htmlspecialchars($comment->getAuthor()); ?></strong> le <?= $comment->getCreationDateFr(); ?>
                     <?php
-                    if ($comment['reported'] != 1): ?>
-                    <a href="index.php?action=reportComment&amp;commentId=<?= $comment['id'] ?>&amp;reported=1&amp;postId=<?= $post->getId(); ?>">(signaler)</a>
+                    if ($comment->getReported() != 1): ?>
+                    <a href="index.php?action=reportComment&amp;commentId=<?= $comment->getId(); ?>&amp;reported=1&amp;postId=<?= $post->getId(); ?>">(signaler)</a>
                     <?php endif; ?>
                 </p>
 
-                <?php if ($comment['reported'] == 1): ?>
+                <?php if ($comment->getReported() == 1): ?>
                     <p><i>Commentaire en attente de modération</i></p>
                 <?php else: ?>
-                <p><?= nl2br(htmlspecialchars($comment['content'])) ?></p>
+                <p><?= nl2br(htmlspecialchars($comment->getContent())); ?></p>
                 <?php endif; ?>
 
                 <?php
-            }
+                endforeach;
             ?>
         </div>
     </div>
