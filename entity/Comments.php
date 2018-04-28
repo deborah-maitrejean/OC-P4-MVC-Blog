@@ -6,9 +6,9 @@ class Comments extends Table
     private $id;
     private $author;
     private $content;
-    private $creation_date;
-    private $post_id;
-    private $post_title;
+    private $creationDateFr;
+    private $postId;
+    private $postTitle;
     private $reported;
 
     /**
@@ -78,17 +78,17 @@ class Comments extends Table
     /**
      * @return mixed
      */
-    public function getCreationDate()
+    public function getCreationDateFr()
     {
-        return $this->creation_date;
+        return $this->creationDateFr;
     }
 
     /**
-     * @param mixed $creation_date
+     * @param mixed $creationDateFr
      */
-    public function setCreationDate($creation_date)
+    public function setCreationDateFr($creationDateFr)
     {
-        $this->creation_date = $creation_date;
+        $this->creationDateFr = $creationDateFr;
     }
 
     /**
@@ -96,15 +96,15 @@ class Comments extends Table
      */
     public function getPostId()
     {
-        return $this->post_id;
+        return $this->postId;
     }
 
     /**
-     * @param mixed $post_id
+     * @param mixed $postId
      */
-    public function setPostId($post_id)
+    public function setPostId($postId)
     {
-        $this->post_id = $post_id;
+        $this->postId = $postId;
     }
 
     /**
@@ -116,11 +116,11 @@ class Comments extends Table
     }
 
     /**
-     * @param mixed $post_title
+     * @param mixed $postTitle
      */
-    public function setPostTitle($post_title)
+    public function setPostTitle($postTitle)
     {
-        $this->post_title = $post_title;
+        $this->postTitle = $postTitle;
     }
 
 }
