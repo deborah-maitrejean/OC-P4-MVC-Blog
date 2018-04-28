@@ -14,7 +14,7 @@ class Backend{
                     $passHach = hash('sha512', htmlspecialchars($_POST['password']));
                     // vérification des identifiants
                     $login = $loginManager->getLogin($_POST['email'], $passHach);
-                    if ($login) {
+                    if ($login->getPassword()) {
                         // l'identification a réussi
                         header('location: index.php?action=adminHomeView');
                     } else{
