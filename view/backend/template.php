@@ -83,7 +83,10 @@ session_start();
         <div class="col-lg-12" id="admin-footer">
             <footer>
                 <p id="p-top"><a href="#top"><i class="fa fa-arrow-up fa-3x" aria-hidden="true" title="Remonter"></i></a></p>
-                <p class="copyright text-muted">2018 Copyright &copy; Jean Forteroche</p>
+                <p class="copyright text-muted">
+                    2018 Copyright &copy; Jean Forteroche<br>
+                    Dernière connexion le <?= date('d/m/Y à H:i:s', $_SESSION['time']); ?>
+                </p>
             </footer>
         </div>
     </div>
