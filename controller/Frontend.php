@@ -65,10 +65,23 @@ class Frontend{
         require('view/frontend/contactView.php');
     }
     public function sendMail(){
-        if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['tel']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])){
+        if (isset($_POST['submit']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['tel']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])){
             if (!empty($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['tel']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])){
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
-                    header('Location: index.php?action=contact');
+                    if(preg_match("#^0[1-9]([-. ]?[0-9]{2}){4}$#", $_POST['tel'])){
+                        $contactManager = new ContactManager();
+                        $contactManager->sendMail(
+                            htmlspecialchars($_POST['lastName']),
+                            htmlspecialchars($_POST['firstName']),
+                            htmlspecialchars($_POST['tel']),
+                            htmlspecialchars($_POST['email']),
+                            htmlspecialchars($_POST['subject']),
+                            htmlspecialchars($_POST['message'])
+                        );
+                        header('Location: index.php?action=contact');
+                    } else{
+                        Exception('Le numéro de téléphone n\'est pas au bon format.');
+                    }
                 } else{
                     throw new Exception('L\'adresse email n\'est pas au bon format.');
                 }
