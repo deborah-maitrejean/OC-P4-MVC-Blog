@@ -55,8 +55,16 @@ class Frontend{
             }
         }
     }
-    public function adminView(){
-        require('view/frontend/adminConnexionView.php');
+    public function adminView(){;
+        session_start();
+        if (session_status() === 2){
+            if (isset($_SESSION) && isset($_SESSION['connected'])){
+                header('Location: index.php?action=adminHomeView');
+            } else{
+                session_destroy();
+                require('view/frontend/adminConnexionView.php');
+            }
+        }
     }
     public function aboutView(){
         require('view/frontend/aboutView.php');

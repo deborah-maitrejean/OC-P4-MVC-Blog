@@ -7,32 +7,45 @@ use \Model\PostManager;
 class Backend{
     public function loginControl(){
         $loginManager = new LoginManager();
-        if (isset($_POST['email']) && isset($_POST['password'])){
+        if (isset($_POST['submit']) &&isset($_POST['email']) && isset($_POST['password'])){
             if (!empty($_POST['email']) && !empty($_POST['password'])){
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
                     // hachage du mot de passe
                     $passHach = hash('sha512', htmlspecialchars($_POST['password']));
                     // vérification des identifiants
                     $login = $loginManager->getLogin($_POST['email'], $passHach);
-                    if ($login->getPassword()) {
-                        // l'identification a réussi
+                    if ($login !== null) {
+                        // l'identification a réussi, la session démarre
+                        session_name('adminSession');
+                        session_start();
+                        $_SESSION['time']       = time();
+                        $_SESSION['email']      = $login->getEmail();
+                        $_SESSION['password']   = $login->getPassword();
+                        $_SESSION['name']       = substr($login->getEmail(), 0, 11);
+                        $_SESSION['connected']  = true;
+                        session_write_close();
+
                         header('location: index.php?action=adminHomeView');
                     } else{
-                        throw new Exception('Mauvais identifiants de connexion');
+                        //throw new Exception('Mauvais identifiants de connexion');
                         header('location: index.php?action=adminConnexion');
                     }
                 } else{
-                    throw new Exception('Le format de l\'adresse email est incorrect');
+                    //throw new Exception('Le format de l\'adresse email est incorrect');
                     header('location: index.php?action=adminConnexion');
                 }
             } else{
-                throw new Exception('Tous les champs ne sont pas remplis');
+                //throw new Exception('Tous les champs ne sont pas remplis');
                 header('location: index.php?action=adminConnexion');
             }
         }
     }
     public function logOut(){
-        header('location: index.php');
+        if (session_start()){
+            session_destroy();
+            setcookie('adminSession');
+            header('location: index.php');
+        }
     }
     public function adminHomeView(){
         require('view/backend/adminHomeView.php');

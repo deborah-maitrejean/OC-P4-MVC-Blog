@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -58,7 +61,7 @@
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsModeration') !== false) {echo 'class="active"';} ?>><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=logOut') !== false) {echo 'class="active"';} ?> title="Déconnexion"><a href=""><span class="fa fa-user-times"></span><span class="sr-only">(current)</span></a></li>
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=logOut') !== false) {echo 'class="active"';} ?> title="Déconnexion"><a href="index.php?action=logOut"><span class="fa fa-user-times"></span><span class="sr-only">(current)</span></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
@@ -66,6 +69,11 @@
 
 <div class="admin-container">
     <div class="container" id="top">
+        <div class="row">
+            <div class="col-lg-12 admin-name-col">
+                <h4 id="admin-name">Bonjour <?= $_SESSION['name']; ?> !</h4>
+            </div>
+        </div>
         <?= $content ?>
     </div>
 </div>
@@ -75,7 +83,10 @@
         <div class="col-lg-12" id="admin-footer">
             <footer>
                 <p id="p-top"><a href="#top"><i class="fa fa-arrow-up fa-3x" aria-hidden="true" title="Remonter"></i></a></p>
-                <p class="copyright text-muted">2018 Copyright &copy; Jean Forteroche</p>
+                <p class="copyright text-muted">
+                    2018 Copyright &copy; Jean Forteroche<br>
+                    Dernière connexion le <?= date('d/m/Y à H:i:s', $_SESSION['time']); ?>
+                </p>
             </footer>
         </div>
     </div>
