@@ -19,6 +19,7 @@ class Backend{
                         session_start();
                         $_SESSION['email'] = $login->getEmail();
                         $_SESSION['password'] = $login->getPassword();
+                        $_SESSION['name'] = substr($login->getEmail(), 0, 11);;
                         header('location: index.php?action=adminHomeView');
                     } else{
                         //throw new Exception('Mauvais identifiants de connexion');
@@ -35,7 +36,10 @@ class Backend{
         }
     }
     public function logOut(){
-        header('location: index.php');
+        if (session_start()){
+            session_destroy();
+            header('location: index.php');
+        }
     }
     public function adminHomeView(){
         require('view/backend/adminHomeView.php');
