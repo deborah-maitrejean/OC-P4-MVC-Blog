@@ -191,6 +191,17 @@ footer .copyright {
     background-color: #eee;
     opacity: 0.9;
 }
+.admin-name-col{
+    height: 30px;
+    margin-bottom: 25px;
+}
+#admin-name{
+    text-align: center;
+    font-size: 18px;
+    background-color: rgba(214, 227, 235, 0.8);
+    width: 200px;
+    line-height: 30px;
+}
 
 /*tables*/
 table{background-color: #F8F8F8 !important;}
