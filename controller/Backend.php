@@ -16,10 +16,15 @@ class Backend{
                     $login = $loginManager->getLogin($_POST['email'], $passHach);
                     if ($login !== null) {
                         // l'identification a réussi, la session démarre
+                        session_name('adminSession');
                         session_start();
-                        $_SESSION['email'] = $login->getEmail();
-                        $_SESSION['password'] = $login->getPassword();
-                        $_SESSION['name'] = substr($login->getEmail(), 0, 11);;
+                        $_SESSION['time']       = time();
+                        $_SESSION['email']      = $login->getEmail();
+                        $_SESSION['password']   = $login->getPassword();
+                        $_SESSION['name']       = substr($login->getEmail(), 0, 11);
+                        $_SESSION['connected']  = true;
+                        session_write_close();
+
                         header('location: index.php?action=adminHomeView');
                     } else{
                         //throw new Exception('Mauvais identifiants de connexion');
@@ -38,6 +43,7 @@ class Backend{
     public function logOut(){
         if (session_start()){
             session_destroy();
+            setcookie('adminSession');
             header('location: index.php');
         }
     }
