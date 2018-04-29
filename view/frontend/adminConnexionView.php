@@ -11,17 +11,17 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Adresse mail </label>
+                    <label class="col-md-4 control-label" for="email">Adresse mail <span class="star">*</span></label>
                     <div class="col-md-4">
-                        <input id="email" name="email" type="text" placeholder="Adresse mail" class="form-control input-md">
+                        <input id="email" name="email" type="text" placeholder="Adresse mail" class="form-control input-md" required>
                     </div>
                 </div>
 
                 <!-- Password input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="password">Mot de passe </label>
+                    <label class="col-md-4 control-label" for="password">Mot de passe <span class="star">*</span></label>
                     <div class="col-md-4">
-                        <input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control input-md">
+                        <input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control input-md" required>
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                         <input type="reset" id="cancel" name="cancel" class="btn btn-danger btn-lg" placeholder="Annuler">
                     </div>
                 </div>
-
+            <small><i>* champs requis</i></small>
             </fieldset>
         </form>
     </div>
