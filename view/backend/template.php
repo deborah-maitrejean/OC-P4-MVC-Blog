@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -66,6 +69,11 @@
 
 <div class="admin-container">
     <div class="container" id="top">
+        <div class="row">
+            <div class="col-lg-12 admin-name-col">
+                <h4 id="admin-name">Bonjour <?= $_SESSION['name']; ?> !</h4>
+            </div>
+        </div>
         <?= $content ?>
     </div>
 </div>
