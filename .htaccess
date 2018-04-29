@@ -1,4 +1,4 @@
 RewriteEngine On
 
 RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://localhost:80/OC-P4-MVC-Blog/$1 [R=301,L]
+RewriteRule ^(.*)$ https://jean-forteroche.deborah-maitrejean.com/$1 [R=301,L]
