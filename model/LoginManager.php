@@ -13,9 +13,11 @@ class LoginManager extends Manager {
         $req->execute(array($email, $passHach));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
-        $login = new Logins();
-        $login->hydrate($data);
+        if ($data !== false){
+            $login = new Logins();
+            $login->hydrate($data);
 
-        return $login;
+            return $login;
+        }
     }
 }

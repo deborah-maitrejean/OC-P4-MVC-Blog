@@ -21,15 +21,15 @@ class Backend{
                         $_SESSION['password'] = $login->getPassword();
                         header('location: index.php?action=adminHomeView');
                     } else{
-                        throw new Exception('Mauvais identifiants de connexion');
+                        //throw new Exception('Mauvais identifiants de connexion');
                         header('location: index.php?action=adminConnexion');
                     }
                 } else{
-                    throw new Exception('Le format de l\'adresse email est incorrect');
+                    //throw new Exception('Le format de l\'adresse email est incorrect');
                     header('location: index.php?action=adminConnexion');
                 }
             } else{
-                throw new Exception('Tous les champs ne sont pas remplis');
+                //throw new Exception('Tous les champs ne sont pas remplis');
                 header('location: index.php?action=adminConnexion');
             }
         }
