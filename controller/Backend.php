@@ -14,8 +14,11 @@ class Backend{
                     $passHach = hash('sha512', htmlspecialchars($_POST['password']));
                     // vérification des identifiants
                     $login = $loginManager->getLogin($_POST['email'], $passHach);
-                    if ($login->getPassword()) {
-                        // l'identification a réussi
+                    if ($login->getEmail() && $login->getPassword()) {
+                        // l'identification a réussi, la session démarre
+                        session_start();
+                        $_SESSION['email'] = $login->getEmail();
+                        $_SESSION['password'] = $login->getPassword();
                         header('location: index.php?action=adminHomeView');
                     } else{
                         throw new Exception('Mauvais identifiants de connexion');
