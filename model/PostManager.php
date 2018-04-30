@@ -8,7 +8,7 @@ require_once("model/Manager.php");
 class PostManager extends Manager {
     public function countPosts(){
         $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(id) as nbPosts FROM posts');
+        $req = $db->query('SELECT COUNT(id) FROM posts');
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $data = $req->fetchAll();
         $nbPosts = $data[0];
