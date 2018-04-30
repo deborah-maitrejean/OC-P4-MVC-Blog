@@ -5,8 +5,15 @@ use \Model\PostManager;
 
 class Frontend{
     public function listPosts() {
-        $postManager = new PostManager(); // création d'un objet
-        $posts = $postManager->getPosts(); // appel d'une fonction sur cet objet
+        $postManager = new PostManager();
+        $posts = $postManager->countPosts();
+        foreach($posts as $key=>$value) {
+            $nbPosts = $posts[$key];
+        }
+        $currentPage = 1;
+        $perPage = 5;
+        $nbPage = ceil($nbPosts / $perPage);
+        $posts = $postManager->getPosts($currentPage, $perPage);
 
         require('view/frontend/allPostsView.php');
     }
