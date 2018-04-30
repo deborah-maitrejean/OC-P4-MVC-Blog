@@ -17,7 +17,7 @@ class PostManager extends Manager {
     }
     public function getPosts() {
         $db = $this->dbConnect();
-        $req = $db->query("SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date DESC LIMIT 0,5 ");
+        $req = $db->query("SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date DESC LIMIT '.(($currentPage-1)*$perPage).', '.$perPage.'");
 
         $posts = array();
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
