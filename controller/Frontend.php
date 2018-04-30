@@ -8,7 +8,7 @@ class Frontend{
         $postManager = new PostManager();
         $nbPosts = $postManager->countPosts();
         $currentPage = 1;
-        $postManager->getPosts($currentPage, $nbPosts);
+        $posts = $postManager->getPosts($currentPage, $nbPosts);
 
         require('view/frontend/allPostsView.php');
     }
