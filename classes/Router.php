@@ -18,6 +18,7 @@ class Router {
         'addComment' => ['controller'=>'Frontend', 'method'=>'addComment'],
         'reportComment' => ['controller'=>'Frontend', 'method'=>'reportComment'],
         'sendMail' => ['controller'=>'Frontend', 'method'=>'sendMail'],
+        'cookies' => ['controller'=>'Frontend', 'method'=>'cookies'],
         // backend:
         'adminInterfaceLogin' => ['controller'=>'Backend', 'method'=>'loginControl'],
         'adminHomeView' => ['controller'=>'Backend', 'method'=>'adminHomeView'],
