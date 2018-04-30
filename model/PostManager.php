@@ -6,9 +6,26 @@ use Entity\Posts;
 require_once("model/Manager.php");
 
 class PostManager extends Manager {
-    public function getPosts() {
+    public function countPosts(){
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->query('SELECT COUNT(id) FROM posts');
+
+        $req->setFetchMode(\PDO::FETCH_ASSOC);
+        $data = $req->fetchAll();
+        $postsNb = $data[0];
+        foreach($postsNb as $key=>$value) {
+            $nbPosts = $postsNb[$key];
+        }
+        return $nbPosts; // le nombre de posts est retourné
+    }
+    public function countPages($nbPosts,  $perPage){
+        $nbPages = ceil($nbPosts / $perPage);
+
+        return $nbPages;
+    }
+    public function getPosts($currentPage, $perPage) {
+        $db = $this->dbConnect();
+        $req = $db->query("SELECT * , DATE_FORMAT(creationDate, '%d/%m/%Y à %Hh%im%ss') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT ".(($currentPage-1)*$perPage).",$perPage");
 
         $posts = array();
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
@@ -16,14 +33,13 @@ class PostManager extends Manager {
             $post->hydrate($data);
             $posts[] = $post;
         }
-
         $req->closeCursor();
 
         return $posts;
     }
     public function getAllPosts() {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT * , DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date');
+        $req = $db->query('SELECT * , DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate');
         $posts = array();
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
@@ -38,7 +54,7 @@ class PostManager extends Manager {
     }
     public function getAllPostsExcerpt() {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT  id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date');
+        $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate');
         $posts = array();
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
@@ -53,7 +69,7 @@ class PostManager extends Manager {
     }
     public function getPostsExcerpt(){
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creation_date,  \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date DESC LIMIT 0,5');
+        $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creationDate,  \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT 0,4');
         $posts = array();
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
@@ -68,7 +84,7 @@ class PostManager extends Manager {
     }
     public function getPost($postId) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts WHERE id = ?');
         $req->execute(array($postId));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
@@ -79,7 +95,7 @@ class PostManager extends Manager {
     }
     public function publishNewPost($title, $content, $author) {
         $db = $this->dbConnect();
-        $post = $db->prepare('INSERT INTO posts(title, content, author, creation_date) VALUES(?, ?, ?, NOW())');
+        $post = $db->prepare('INSERT INTO posts(title, content, author, creationDate) VALUES(?, ?, ?, NOW())');
         // Récupération en paramètres des informations dont on a besoin
         $affectedLines = $post->execute(array($title, $content, $author));
 

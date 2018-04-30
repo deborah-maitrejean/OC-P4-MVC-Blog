@@ -5,8 +5,16 @@ use \Model\PostManager;
 
 class Frontend{
     public function listPosts() {
-        $postManager = new PostManager(); // création d'un objet
-        $posts = $postManager->getPosts(); // appel d'une fonction sur cet objet
+        $postManager = new PostManager();
+        $nbPosts = $postManager->countPosts();
+        $perPage = 3;
+        $nbPages = $postManager->countPages($nbPosts, $perPage);
+        if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
+            $currentPage = $_GET['page'];
+        } else{
+            $currentPage = 1;
+        }
+        $posts = $postManager->getPosts($currentPage, $perPage);
 
         require('view/frontend/allPostsView.php');
     }
@@ -25,7 +33,7 @@ class Frontend{
 
         require('view/frontend/postView.php');
     }
-    function addComment() {
+    public function addComment() {
         if (isset($_GET['id']) && $_GET['id'] > 0 && $_GET['postTitle']) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                 $commentManager = new CommentManager();

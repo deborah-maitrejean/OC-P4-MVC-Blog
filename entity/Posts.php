@@ -6,7 +6,24 @@ class Posts extends Table{
     private $author;
     private $title;
     private $content;
-    private $creation_date;
+    private $creationDate;
+
+    /**
+     * @return mixed
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * @param mixed $creationDate
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
+    private $creationDateFr;
     private $postExcerpt;
 
     /**
@@ -92,17 +109,17 @@ class Posts extends Table{
     /**
      * @return mixed
      */
-    public function getCreationDate()
+    public function getCreationDateFr()
     {
-        return $this->creation_date;
+        return $this->creationDateFr;
     }
 
     /**
-     * @param mixed $creation_date
+     * @param mixed $creationDateFr
      */
-    public function setCreationDate($creation_date)
+    public function setCreationDateFr($creationDateFr)
     {
-        $this->creation_date = $creation_date;
+        $this->creationDateFr = $creationDateFr;
     }
 
 }
