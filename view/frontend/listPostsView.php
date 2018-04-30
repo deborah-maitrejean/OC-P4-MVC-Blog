@@ -45,12 +45,6 @@
     </div>
     <hr>
 <?php endforeach; ?>
-    <!-- Pager -->
-    <div class="row" id="older-posts-btn-section">
-        <div class="col-lg-offset-5 col-lg-2">
-            <a class="btn btn-default" href="#">Plus anciens &rarr;</a>
-        </div>
-    </div>
 
 <?php $content = ob_get_clean(); // récupère le contenu généré avec cette fonction et on met le tout dans $content ?>
 <?php require('template.php'); ?>
