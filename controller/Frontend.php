@@ -101,4 +101,7 @@ class Frontend{
     public function cookies(){
         require('view/frontend/privacy.php');
     }
+    public function legalesMentions(){
+        require('view/frontend/legalesMentions.php');
+    }
 }
