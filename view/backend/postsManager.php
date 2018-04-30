@@ -5,6 +5,10 @@
 <div class="row table-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-bars"></i> Liste des billets</h2>
+        <div>
+            <a href="index.php?action=postsManagerByDate" class="btn btn-default">Plus récent aux plus ancien</a>
+            <a href="index.php?action=postsManager" class="btn btn-default">Plus ancien au plus récent</a>
+        </div>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
                 <caption></caption>
