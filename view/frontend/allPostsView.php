@@ -3,7 +3,6 @@
 <?php ob_start(); ?>
 
 <?php foreach ($posts as $post): ?>
-
     <div class="row" id="post-content">
         <div class="col-lg-12">
             <h3><i class="fa fa-bookmark"></i>&nbsp;&nbsp;<?= htmlspecialchars($post->getTitle()); ?></h3>
@@ -21,13 +20,31 @@
             </div>
         </div>
     </div>
-
     <?php endforeach; ?>
 
     <!-- Pager -->
-    <div class="row" id="older-posts-btn-section">
-        <div class="col-lg-offset-5 col-lg-2">
-            <a class="btn btn-default" href="#">Plus anciens &rarr;</a>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="pagination text-center">
+                <?php if ($currentPage - 1 == 0): ?>
+                    <li class="page-item disabled"><span><i class="fa fa-angle-left"></i></span></li>
+                <?php else : ?>
+                    <li class="page-item"><a href="index.php?action=allPostsView&amp;page=<?=$currentPage - 1 ?>" class="page-link"><i class="fa fa-angle-left"></i></a></li>
+                <?php endif; ?>
+                <?php
+                for ($i = 1; $i <= $nbPages; $i++) {
+                    if ($i == $currentPage): ?>
+                        <li class="page-item active"><a class="page-link"><?= $i ?></a></li>
+                    <?php else : ?>
+                        <li class="page-item"><a href="index.php?action=allPostsView&amp;page=<?= $i ?>" class="page-link"><?=$i?></a></li>
+                    <?php endif;
+                } ?>
+                <?php if ($currentPage + 1 > $nbPages): ?>
+                    <li class="page-item disabled"><span><i class="fa fa-angle-right"></i></span></li>
+                <?php else : ?>
+                    <li class="page-item"><a href="index.php?action=allPostsView&amp;page=<?=$currentPage + 1 ?>" class="page-link"><i class="fa fa-angle-right"></i></a></li>
+                <?php endif; ?>
+            </ul>
         </div>
     </div>
 
