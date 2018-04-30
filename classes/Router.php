@@ -28,6 +28,8 @@ class Router {
         'updatePost' => ['controller'=>'Backend', 'method'=>'updatePost'],
         'deletePost' => ['controller'=>'Backend', 'method'=>'deletePost'],
         'commentsModeration' => ['controller'=>'Backend', 'method'=>'commentsModeration'],
+        'commentsByDate' => ['controller'=>'Backend', 'method'=>'commentsByDate'],
+        'commentsByPost' => ['controller'=>'Backend', 'method'=>'commentsByPost'],
         'moderateComment' => ['controller'=>'Backend', 'method'=>'commentModeration'],
         'editComment' => ['controller'=>'Backend', 'method'=>'adminUpdateComment'],
         'deleteComment' => ['controller'=>'Backend', 'method'=>'deleteComment'],

@@ -5,6 +5,11 @@
 <div class="row table-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-bars"></i> Liste des commentaires</h2>
+        <div>
+            <a href="index.php?action=commentsModeration" class="btn btn-default">Trier par statut</a>
+            <a href="index.php?action=commentsByDate" class="btn btn-default">Trier par date</a>
+            <a href="index.php?action=commentsByPost" class="btn btn-default">Trier par billet</a>
+        </div>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
                 <caption></caption>
@@ -19,9 +24,7 @@
                 </thead>
 
                 <tbody>
-                <?php
-                foreach ($comments as $comment):
-                    ?>
+                <?php foreach ($comments as $comment): ?>
                     <tr>
                         <td class="success" scope="row"><?= htmlspecialchars($comment->getAuthor()); ?></td>
                         <td class="default" scope="row"><?= nl2br(htmlspecialchars($comment->getContent())); ?></td>
@@ -34,9 +37,7 @@
                         <?php endif; ?>
                             <td class="danger" scope="row"><a href="index.php?action=deleteComment&amp;commentId=<?= $comment->getId(); ?>" class="btn btn-danger">Supprimer</a></td>
                     </tr>
-                    <?php
-                    endforeach;
-                ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

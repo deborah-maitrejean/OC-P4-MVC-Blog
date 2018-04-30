@@ -45,8 +45,35 @@ class CommentManager extends Manager
     }
     public function getAllComments() {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, author, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr, postId, postTitle, reported FROM comments ORDER BY creationDate');
+        $req = $db->query('SELECT id, author, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr, postId, postTitle, reported FROM comments ORDER BY reported = "0" ');
+        $comments = array();
 
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+            $comment = new Comments();
+            $comment->hydrate($data);
+            $comments[] = $comment;
+        }
+        $req->closeCursor();
+
+        return $comments;
+    }
+    public function getAllCommentsByDate(){
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, author, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr, postId, postTitle, reported FROM comments ORDER BY creationDate');
+        $comments = array();
+
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+            $comment = new Comments();
+            $comment->hydrate($data);
+            $comments[] = $comment;
+        }
+        $req->closeCursor();
+
+        return $comments;
+    }
+    public function getAllCommentsByPost(){
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, author, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr, postId, postTitle, reported FROM comments ORDER BY postId');
         $comments = array();
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
