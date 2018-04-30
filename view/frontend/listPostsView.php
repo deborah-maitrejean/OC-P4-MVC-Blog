@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-xs-7 col-sm-8 col-md-6 col-lg-6">
                     <span>Par <strong><?= $post->getAuthor(); ?></strong></span>
-                    <span>le<em> <?= $post->getCreationDate(); ?></em></span>
+                    <span>le<em> <?= $post->getCreationDateFr(); ?></em></span>
                 </div>
                 <div class="col-xs-5 col-sm-2 col-md-offset-3 col-md-3 col-lg-offset-4 col-lg-2">
                     <a href="index.php?action=post&amp;id=<?= $post->getId(); ?>" class="btn btn-primary read-more">Lire la suite &raquo;</a>

@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <span>Par <strong><?= $post->getAuthor(); ?></strong></span>
-                    <span>le<em> <?= $post->getCreationDate(); ?></em></span>
+                    <span>le<em> <?= $post->getCreationDateFr(); ?></em></span>
                 </div>
             </div>
         </div>
