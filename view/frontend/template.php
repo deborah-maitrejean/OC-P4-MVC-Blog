@@ -98,7 +98,22 @@ session_start();
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">2018 Copyright &copy; <a href="https://deborah-maitrejean.com" target="_blank">Déborah Maitrejean</a></p>
+                <p class="copyright text-muted">
+                    2018 Copyright &copy; <a href="index.php">Jean Forteroche</a>
+                    |
+                    Site crée par <a href="https://deborah-maitrejean.com" target="_blank">Déborah Maitrejean</a>
+                </p>
+                <p>
+                <ul class="list-inline text-muted text-center">
+                    <li>Plan du site:</li>
+                    <li><a href="index.php?action=home">Accueil</a> | </li>
+                    <li><a href="index.php?action=allPostsView">Tous les billets</a> | </li>
+                    <li><a href="index.php?action=about">A propos</a> | </li>
+                    <li><a href="index.php?action=contact">Contact</a> | </li>
+                    <li><a href="index.php?action=legalesMentions">Mentions légales</a> | </li>
+                    <li><a href="index.php?action=cookies">Vie privée</a></li>
+                </ul>
+                </p>
             </footer>
         </div>
     </div>
