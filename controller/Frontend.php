@@ -6,14 +6,9 @@ use \Model\PostManager;
 class Frontend{
     public function listPosts() {
         $postManager = new PostManager();
-        $posts = $postManager->countPosts();
-        foreach($posts as $key=>$value) {
-            $nbPosts = $posts[$key];
-        }
+        $nbPosts = $postManager->countPosts();
         $currentPage = 1;
-        $perPage = 5;
-        $nbPage = ceil($nbPosts / $perPage);
-        $posts = $postManager->getPosts($currentPage, $perPage);
+        $postManager->getPosts($currentPage, $nbPosts);
 
         require('view/frontend/allPostsView.php');
     }
