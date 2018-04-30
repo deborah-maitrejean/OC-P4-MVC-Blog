@@ -6,6 +6,23 @@ class Posts extends Table{
     private $author;
     private $title;
     private $content;
+    private $creationDate;
+
+    /**
+     * @return mixed
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * @param mixed $creationDate
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
     private $creationDateFr;
     private $postExcerpt;
 
