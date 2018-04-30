@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div class="row">
-    <div class="col-lg-12" class="legales-mentions">
+    <div class="col-lg-12 legales-mentions">
         <h2>Mentions relatives aux cookies</h2>
         <h3>Qu'est-ce qu'un Cookie et à quoi sert-il ?</h3>
         <p>Un Cookie (ou témoin de connexion) est un petit fichier texte qu'un serveur internet peut stocker sur votre machine afin de mémoriser vos préférences de consultation pour un site donné
