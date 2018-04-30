@@ -31,7 +31,7 @@ class PostManager extends Manager {
             $posts[] = $post;
         }
         $req->closeCursor();
-        //var_dump($posts);die; // affiche bien un array contenant les données
+
         return $posts;
     }
     public function getAllPosts() {
