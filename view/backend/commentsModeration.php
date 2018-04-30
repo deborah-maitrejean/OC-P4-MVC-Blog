@@ -8,6 +8,7 @@
         <div>
             <a href="index.php?action=commentsModeration" class="btn btn-default">Trier par statut</a>
             <a href="index.php?action=commentsByDate" class="btn btn-default">Trier par date</a>
+            <a href="index.php?action=commentsByPost" class="btn btn-default">Trier par billet</a>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
