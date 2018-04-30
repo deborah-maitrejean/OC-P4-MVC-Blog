@@ -18,9 +18,12 @@ class PostManager extends Manager {
         }
         return $nbPosts; // le nombre de posts est retourné
     }
-    public function getPosts($currentPage, $nbPosts) {
-        $perPage = 5;
-        $nbPage = ceil($nbPosts / $perPage);
+    public function countPages($nbPosts,  $perPage){
+        $nbPages = ceil($nbPosts / $perPage);
+
+        return $nbPages;
+    }
+    public function getPosts($currentPage, $perPage) {
         $db = $this->dbConnect();
         $req = $db->query("SELECT * , DATE_FORMAT(creationDate, '%d/%m/%Y à %Hh%im%ss') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT ".(($currentPage-1)*$perPage).",$perPage");
 
@@ -66,7 +69,7 @@ class PostManager extends Manager {
     }
     public function getPostsExcerpt(){
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creationDate,  \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT 0,5');
+        $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creationDate,  \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT 0,4');
         $posts = array();
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
