@@ -6,9 +6,18 @@ use Entity\Posts;
 require_once("model/Manager.php");
 
 class PostManager extends Manager {
+    public function countPosts(){
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(id) as nbPosts FROM posts');
+        $req->setFetchMode(\PDO::FETCH_ASSOC);
+        $data = $req->fetchAll();
+        $nbPosts = $data[0];
+
+        return $nbPosts;
+    }
     public function getPosts() {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->query("SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%im%ss\') AS creationDate FROM posts ORDER BY creation_date DESC LIMIT 0,5 ");
 
         $posts = array();
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
