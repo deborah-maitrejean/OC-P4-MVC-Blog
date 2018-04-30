@@ -99,7 +99,7 @@ textarea{
 }
 footer a{text-decoration: none;}
 footer .list-inline {
-    margin: 0;
+    margin: 0 0 25px 0;
     padding: 0;
 }
 footer .copyright {
