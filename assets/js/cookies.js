@@ -42,7 +42,7 @@ var Cookie_Eu = {
             div_cookie.id = 'cookie_policy_msg';
             div_cookie.className = 'cookie_policy_msg';
             var t = "<div>En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies utilisés à des fins de mesure d'audience.";
-            t += '<a href="http://salome-maitrejean-psychologue.com/mentions-relatives-aux-cookies.php">  &nbsp;En savoir plus</a><a href="javascript:Cookie_Eu.write(365);"> &nbsp;OK</a></div>';
+            t += '<a href="index.php?action=cookies">  &nbsp;En savoir plus</a><a href="javascript:Cookie_Eu.write(365);"> &nbsp;OK</a></div>';
 
             div_cookie.innerHTML = t;
             docbody.insertBefore(div_cookie, docbody.childNodes[0]);
