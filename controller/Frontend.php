@@ -98,4 +98,7 @@ class Frontend{
             }
         }
     }
+    public function cookies(){
+        require('view/frontend/privacy.php');
+    }
 }
