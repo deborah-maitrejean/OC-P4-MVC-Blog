@@ -7,7 +7,7 @@ use \Model\PostManager;
 class Backend{
     public function loginControl(){
         $loginManager = new LoginManager();
-        if (isset($_POST['submit']) &&isset($_POST['email']) && isset($_POST['password'])){
+        if (isset($_POST['submit']) && isset($_POST['email']) && isset($_POST['password'])){
             if (!empty($_POST['email']) && !empty($_POST['password'])){
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
                     // hachage du mot de passe
@@ -16,7 +16,6 @@ class Backend{
                     $login = $loginManager->getLogin($_POST['email'], $passHach);
                     if ($login !== null) {
                         // l'identification a réussi, la session démarre
-                        session_name('adminSession');
                         session_start();
                         $_SESSION['time']       = time();
                         $_SESSION['email']      = $login->getEmail();
