@@ -111,6 +111,12 @@ class Backend{
 
         require('view/backend/postsManager.php');
     }
+    public function postsManagerByDate(){
+        $postsManager = new PostManager();
+        $posts = $postsManager->getAllPostsExcerptDesc();
+
+        require('view/backend/postsManager.php');
+    }
     public function publishPost(){
         if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['author'])){
             $postManager = new PostManager();
