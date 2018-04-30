@@ -24,6 +24,7 @@ class Router {
         'adminInterfaceLogin' => ['controller'=>'Backend', 'method'=>'loginControl'],
         'adminHomeView' => ['controller'=>'Backend', 'method'=>'adminHomeView'],
         'postsManager' => ['controller'=>'Backend', 'method'=>'postsManager'],
+        'postsManagerByDate' => ['controller'=>'Backend', 'method'=>'postsManagerByDate'],
         'newPost' => ['controller'=>'Backend', 'method'=>'newPostView'],
         'publishPost' => ['controller'=>'Backend', 'method'=>'publishPost'],
         'viewOrChangePost' => ['controller'=>'Backend', 'method'=>'viewOrChangePost'],
