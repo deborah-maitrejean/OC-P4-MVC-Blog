@@ -1,8 +1,8 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
-<?php ob_start(); // mémorise toute la sortie HTML qui suit  ?>
+<?php ob_start(); ?>
 
-<?php foreach ($posts as $post): //Undefined variable: posts ?>
+<?php foreach ($posts as $post): ?>
 
     <div class="row" id="post-content">
         <div class="col-lg-12">
