@@ -67,6 +67,21 @@ class PostManager extends Manager {
 
         return $posts;
     }
+    public function getAllPostsExcerptDesc() {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC');
+        $posts = array();
+
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+            $post = new Posts();
+            $post->hydrate($data);
+            $posts[] = $post;
+        }
+
+        $req->closeCursor();
+
+        return $posts;
+    }
     public function getPostsExcerpt(){
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creationDate,  \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT 0,4');
