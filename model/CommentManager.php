@@ -8,6 +8,23 @@ require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
+    public function countComments(){
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(id) FROM comments');
+
+        $req->setFetchMode(\PDO::FETCH_ASSOC);
+        $data = $req->fetchAll();
+        $commentsNb = $data[0];
+        foreach($commentsNb as $key=>$value) {
+            $nbComments = $commentsNb[$key];
+        }
+        return $nbComments; // le nombre de commentaires est retourné
+    }
+    public function countPages($nbComments,  $perPage){
+        $nbPages = ceil($nbComments / $perPage);
+
+        return $nbPages;
+    }
     public function getComments($postId) {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM comments WHERE postId = ? ORDER BY creationDate DESC');
