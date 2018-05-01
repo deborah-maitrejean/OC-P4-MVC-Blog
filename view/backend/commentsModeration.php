@@ -7,8 +7,8 @@
         <h2><i class="fa fa-bars"></i> Liste des commentaires</h2>
         <div>
             <a href="index.php?action=commentsModeration" class="btn btn-default">Trier par statut</a>
-            <a href="index.php?action=commentsByDate" class="btn btn-default">Trier par date</a>
-            <a href="index.php?action=commentsByPost" class="btn btn-default">Trier par billet</a>
+            <a href="index.php?action=commentsModeration&amp;orderBy=date" class="btn btn-default">Trier par date</a>
+            <a href="index.php?action=commentsModeration&amp;orderBy=posts" class="btn btn-default">Trier par billet</a>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
