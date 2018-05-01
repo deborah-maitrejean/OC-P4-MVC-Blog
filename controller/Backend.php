@@ -54,7 +54,20 @@ class Backend{
     }
     public function commentsModeration(){
         $commentManager = new CommentManager();
-        $comments = $commentManager->getAllComments();
+
+        $nbComments = $commentManager->countComments();
+        if ($nbComments > 0){
+            $perPage = 15;
+            $nbPages = $commentManager->countPages($nbComments, $perPage);
+            if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
+                $currentPage = $_GET['page'];
+            } else{
+                $currentPage = 1;
+            }
+            $comments = $commentManager->getAllComments($currentPage, $perPage);
+        } else{
+            $comments = false;
+        }
 
         require('view/backend/commentsModeration.php');
     }
