@@ -24,7 +24,7 @@ class Frontend{
 
         require('view/frontend/listPostsView.php');
     }
-    public function post() {
+    public function postNcomments() {
         $postManager = new PostManager();
         $post = $postManager->getPost($_GET['id']);
 
