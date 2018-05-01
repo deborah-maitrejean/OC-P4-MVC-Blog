@@ -30,16 +30,18 @@ class Frontend{
 
         $commentManager = new CommentManager();
         $nbComments = $commentManager->countComments($post->getId());
-        $perPage = 4;
-        $nbPages = $commentManager->countPages($nbComments, $perPage);
-        if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
-            $currentPage = $_GET['page'];
+        if ($nbComments > 0){
+            $perPage = 4;
+            $nbPages = $commentManager->countPages($nbComments, $perPage);
+            if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
+                $currentPage = $_GET['page'];
+            } else{
+                $currentPage = 1;
+            }
+            $comments = $commentManager->getComments($_GET['id'], $currentPage, $perPage);
         } else{
-            $currentPage = 1;
+            $comments = false;
         }
-
-        $comments = $commentManager->getComments($_GET['id'], $currentPage, $perPage);
-        //var_dump($comments);die;
 
         require('view/frontend/postView.php');
     }
