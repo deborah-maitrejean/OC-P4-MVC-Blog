@@ -41,7 +41,8 @@
                 </div>
             </form>
 
-            <?php foreach ($comments as $comment): ?>
+            <?php if ((isset($comments))):
+            foreach ($comments as $comment): ?>
                 <p>
                     <strong><?= htmlspecialchars($comment->getAuthor()); ?></strong> le <?= $comment->getCreationDateFr(); ?>
                     <?php if ($comment->getReported() != 1): ?>
@@ -56,6 +57,7 @@
                 <?php endif; ?>
 
             <?php endforeach; ?>
+            <?php endif; ?>
 
             <div>
                 <ul class="pagination text-center">
