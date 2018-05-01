@@ -65,7 +65,7 @@
                     <?php if ($currentPage - 1 == 0): ?>
                         <li class="page-item disabled"><span><i class="fa fa-angle-left"></i></span></li>
                     <?php else : ?>
-                        <li class="page-item"><a href="index.php?action=post&amp;page=<?=$currentPage - 1 ?>" class="page-link"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="page-item"><a href="index.php?action=post&amp;id=<?= $post->getId(); ?>&amp;page=<?=$currentPage - 1 ?>" class="page-link"><i class="fa fa-angle-left"></i></a></li>
                     <?php endif; ?>
                     <?php
                     for ($i = 1; $i <= $nbPages; $i++) {
