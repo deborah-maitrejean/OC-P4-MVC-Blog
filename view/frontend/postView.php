@@ -41,7 +41,7 @@
                 </div>
             </form>
 
-            <?php if ((isset($comments))):
+            <?php if ((isset($comments) && $comments != false)):
             foreach ($comments as $comment): ?>
                 <p>
                     <strong><?= htmlspecialchars($comment->getAuthor()); ?></strong> le <?= $comment->getCreationDateFr(); ?>
@@ -59,6 +59,7 @@
             <?php endforeach; ?>
             <?php endif; ?>
 
+            <?php if (isset($currentPage)): ?>
             <div>
                 <ul class="pagination text-center">
                     <?php if ($currentPage - 1 == 0): ?>
@@ -71,16 +72,17 @@
                         if ($i == $currentPage): ?>
                             <li class="page-item active"><a class="page-link"><?= $i ?></a></li>
                         <?php else : ?>
-                            <li class="page-item"><a href="index.php?action=post&amp;page=<?= $i ?>" class="page-link"><?=$i?></a></li>
+                            <li class="page-item"><a href="index.php?action=post&amp;id=<?= $post->getId(); ?>&amp;page=<?= $i ?>" class="page-link"><?=$i?></a></li>
                         <?php endif;
                     } ?>
                     <?php if ($currentPage + 1 > $nbPages): ?>
                         <li class="page-item disabled"><span><i class="fa fa-angle-right"></i></span></li>
                     <?php else : ?>
-                        <li class="page-item"><a href="index.php?action=post&amp;page=<?=$currentPage + 1 ?>" class="page-link"><i class="fa fa-angle-right"></i></a></li>
+                        <li class="page-item"><a href="index.php?action=post&amp;id=<?= $post->getId(); ?>&amp;page=<?=$currentPage + 1 ?>" class="page-link"><i class="fa fa-angle-right"></i></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
+        <?php endif; ?>
         </div>
     </div>
 
