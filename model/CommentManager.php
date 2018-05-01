@@ -8,9 +8,10 @@ require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
-    public function countComments(){
+    public function countComments($postId){
         $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(id) FROM comments');
+        $req = $db->prepare('SELECT COUNT(id) FROM comments WHERE postId = ?');
+        $req->execute(array($postId));
 
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $data = $req->fetchAll();
@@ -25,12 +26,14 @@ class CommentManager extends Manager
 
         return $nbPages;
     }
-    public function getComments($postId) {
+    public function getComments($postId, $currentPage, $perPage) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, author, content, reported, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM comments WHERE postId = ? ORDER BY creationDate DESC');
-        $req->execute(array($postId));
-
-        $comments = [];
+        $req = $db->prepare("SELECT id, author, content, reported, DATE_FORMAT(creationDate, \"%d/%m/%Y à %Hh%im%ss\") AS creationDateFr 
+            FROM comments 
+            WHERE postId = :postId
+            ORDER BY creationDate DESC 
+            LIMIT ".(($currentPage-1)*$perPage).",$perPage");
+        $req->execute(array(':postId' => $postId));
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
             $comment = new Comments();
@@ -40,7 +43,6 @@ class CommentManager extends Manager
         $req->closeCursor();
         return $comments;
     }
-
     public function postComment($postId, $postTitle, $author, $comment) {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comments(postId, postTitle, author, content, creationDate) VALUES(?, ?, ?, ?, NOW())');
