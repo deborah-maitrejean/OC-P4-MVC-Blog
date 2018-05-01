@@ -60,7 +60,7 @@
                     if ($i == $currentPage): ?>
                         <li class="page-item active"><a class="page-link"><?= $i ?></a></li>
                     <?php else : ?>
-                        <li class="page-item"><a href="index.php?action=commentsModeratio&amp;page=<?= $i ?>" class="page-link"><?=$i?></a></li>
+                        <li class="page-item"><a href="index.php?action=commentsModeration&amp;page=<?= $i ?>" class="page-link"><?=$i?></a></li>
                     <?php endif;
                 } ?>
                 <?php if ($currentPage + 1 > $nbPages): ?>
