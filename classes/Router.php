@@ -14,7 +14,7 @@ class Router {
         'contact' => ['controller'=>'Frontend', 'method'=>'contactView'],
         'adminConnexion' => ['controller'=>'Frontend', 'method'=>'adminView'],
         'listPosts' => ['controller'=>'Frontend', 'method'=>'listPosts'],
-        'post' => ['controller'=>'Frontend', 'method'=>'post'],
+        'post' => ['controller'=>'Frontend', 'method'=>'postNcomments'],
         'addComment' => ['controller'=>'Frontend', 'method'=>'addComment'],
         'reportComment' => ['controller'=>'Frontend', 'method'=>'reportComment'],
         'sendMail' => ['controller'=>'Frontend', 'method'=>'sendMail'],

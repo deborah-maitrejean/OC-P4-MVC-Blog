@@ -41,27 +41,48 @@
                 </div>
             </form>
 
-            <?php
-                foreach ($comments as $comment):
-                ?>
-
+            <?php if ((isset($comments) && $comments != false)):
+            foreach ($comments as $comment): ?>
                 <p>
                     <strong><?= htmlspecialchars($comment->getAuthor()); ?></strong> le <?= $comment->getCreationDateFr(); ?>
-                    <?php
-                    if ($comment->getReported() != 1): ?>
-                    <a href="index.php?action=reportComment&amp;commentId=<?= $comment->getId(); ?>&amp;reported=1&amp;postId=<?= $post->getId(); ?>">(signaler)</a>
+                    <?php if ($comment->getReported() != 1): ?>
+                        <a href="index.php?action=reportComment&amp;commentId=<?= $comment->getId(); ?>&amp;reported=1&amp;postId=<?= $post->getId(); ?>">(signaler)</a>
                     <?php endif; ?>
                 </p>
 
                 <?php if ($comment->getReported() == 1): ?>
                     <p><i>Commentaire en attente de modération</i></p>
                 <?php else: ?>
-                <p><?= nl2br(htmlspecialchars($comment->getContent())); ?></p>
+                    <p><?= nl2br(htmlspecialchars($comment->getContent())); ?></p>
                 <?php endif; ?>
 
-                <?php
-                endforeach;
-            ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if (isset($currentPage)): ?>
+            <div>
+                <ul class="pagination text-center">
+                    <?php if ($currentPage - 1 == 0): ?>
+                        <li class="page-item disabled"><span><i class="fa fa-angle-left"></i></span></li>
+                    <?php else : ?>
+                        <li class="page-item"><a href="index.php?action=post&amp;page=<?=$currentPage - 1 ?>" class="page-link"><i class="fa fa-angle-left"></i></a></li>
+                    <?php endif; ?>
+                    <?php
+                    for ($i = 1; $i <= $nbPages; $i++) {
+                        if ($i == $currentPage): ?>
+                            <li class="page-item active"><a class="page-link"><?= $i ?></a></li>
+                        <?php else : ?>
+                            <li class="page-item"><a href="index.php?action=post&amp;id=<?= $post->getId(); ?>&amp;page=<?= $i ?>" class="page-link"><?=$i?></a></li>
+                        <?php endif;
+                    } ?>
+                    <?php if ($currentPage + 1 > $nbPages): ?>
+                        <li class="page-item disabled"><span><i class="fa fa-angle-right"></i></span></li>
+                    <?php else : ?>
+                        <li class="page-item"><a href="index.php?action=post&amp;id=<?= $post->getId(); ?>&amp;page=<?=$currentPage + 1 ?>" class="page-link"><i class="fa fa-angle-right"></i></a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         </div>
     </div>
 
