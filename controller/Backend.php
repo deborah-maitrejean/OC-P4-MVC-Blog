@@ -79,18 +79,6 @@ class Backend{
 
         require('view/backend/commentsModeration.php');
     }
-    public function commentsByDate(){
-        $commentManager = new CommentManager();
-        $comments = $commentManager->getAllCommentsByDate();
-
-        require('view/backend/commentsModeration.php');
-    }
-    public function commentsByPost(){
-        $commentManager = new CommentManager();
-        $comments = $commentManager->getAllCommentsByPost();
-
-        require('view/backend/commentsModeration.php');
-    }
     public function commentModeration(){
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
             $commentManager = new CommentManager();
