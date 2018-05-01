@@ -64,7 +64,15 @@ class Backend{
             } else{
                 $currentPage = 1;
             }
-            $comments = $commentManager->getAllComments($currentPage, $perPage);
+            if (isset($_GET['orderBy']) && $_GET['orderBy'] == 'date'){
+                $byDate = $_GET['orderBy'];
+                $comments = $commentManager->getAllComments($currentPage, $perPage, $byDate);
+            } elseif (isset($_GET['orderBy']) && $_GET['orderBy'] == 'posts'){
+                $byPosts = $_GET['orderBy'];
+                $comments = $commentManager->getAllComments($currentPage, $perPage, $byPosts);
+            } else{
+                $comments = $commentManager->getAllComments($currentPage, $perPage);
+            }
         } else{
             $comments = false;
         }
