@@ -6,10 +6,27 @@ class Comments extends Table
     private $id;
     private $author;
     private $content;
+    private $creationDate;
     private $creationDateFr;
     private $postId;
     private $postTitle;
     private $reported;
+
+    /**
+     * @return mixed
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * @param mixed $creationDate
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
 
     /**
      * @return mixed
