@@ -56,7 +56,20 @@ session_start();
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=contact') !== false) {echo 'class="active"';} ?>><a href="index.php?action=contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=adminConnexion') !== false) {echo 'class="active"';} ?>><a href="index.php?action=adminConnexion"><span class="fa fa-user"></span> Admin <span class="sr-only">(current)</span></a></li>
+                <?php if(session_status() === 2 && isset($_SESSION) && isset($_SESSION['connected'])): ?>
+                    <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=adminConnexion') !== false) {echo 'class="active"';} ?> title="Accueil de l'interface administration">
+                        <a href="index.php?action=adminConnexion"><span class="fa fa-home"></span></a>
+                    </li>
+                    <li title="Déconnexion">
+                        <a href="index.php?action=logOut"><span class="fa fa-user-times"></span></a>
+                    </li>
+                <?php else: ?>
+                    <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=adminConnexion') !== false) {echo 'class="active"';} ?> title="Connexion">
+                        <a href="index.php?action=adminConnexion"><span class="fa fa-user"></span> Admin <span class="sr-only">(current)</span></a>
+                    </li>
+                <?php endif; ?>
+
+
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
