@@ -26,10 +26,20 @@ class Frontend{
     }
     public function post() {
         $postManager = new PostManager();
-        $commentManager = new CommentManager();
+        $post = $postManager->getPost($_GET['id']);
 
-        $post = $postManager->getPost($_GET['id']); // appel  d'une fonction sur l'objet PostManager
-        $comments = $commentManager->getComments($_GET['id']); // appel  d'une fonction sur l'objet CommentManager
+        $commentManager = new CommentManager();
+        $nbComments = $commentManager->countComments($post->getId());
+        $perPage = 4;
+        $nbPages = $commentManager->countPages($nbComments, $perPage);
+        if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
+            $currentPage = $_GET['page'];
+        } else{
+            $currentPage = 1;
+        }
+
+        $comments = $commentManager->getComments($_GET['id'], $currentPage, $perPage);
+        //var_dump($comments);die;
 
         require('view/frontend/postView.php');
     }
