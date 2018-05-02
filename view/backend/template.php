@@ -56,11 +56,9 @@ session_start();
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=adminHomeView') !== false) {echo 'class="active"';} ?> title="Accueil de l'interface administration"><a href="index.php?action=adminHomeView">Accueil admin</a></li>
-                <li <?php if ((stripos($_SERVER['REQUEST_URI'],'index.php?action=postsManager') !== false) || (stripos($_SERVER['REQUEST_URI'],'index.php?action=postsManagerByDate') !== false))
-                {echo 'class="active"';} ?>><a href="index.php?action=postsManager">Gestion des billets</a></li>
+                <li <?php if ((stripos($_SERVER['REQUEST_URI'],'index.php?action=postsManager') !== false)) {echo 'class="active"';} ?>><a href="index.php?action=postsManager">Gestion des billets</a></li>
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=newPost') !== false) {echo 'class="active"';} ?>><a href="index.php?action=newPost">Nouveau billet</a></li>
-                <li <?php if ((stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsModeration') !== false) || (stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsByDate') !== false) || (stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsByPost') !== false))
-                {echo 'class="active"';} ?>><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
+                <li <?php if ((stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsModeration') !== false) ) {echo 'class="active"';} ?>><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=logOut') !== false) {echo 'class="active"';} ?> title="Déconnexion"><a href="index.php?action=logOut"><span class="fa fa-user-times"></span><span class="sr-only">(current)</span></a></li>

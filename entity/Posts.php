@@ -6,7 +6,9 @@ class Posts extends Table{
     private $author;
     private $title;
     private $content;
+    private $postExcerpt;
     private $creationDate;
+    private $creationDateFr;
 
     /**
      * @return mixed
@@ -23,8 +25,6 @@ class Posts extends Table{
     {
         $this->creationDate = $creationDate;
     }
-    private $creationDateFr;
-    private $postExcerpt;
 
     /**
      * @return mixed

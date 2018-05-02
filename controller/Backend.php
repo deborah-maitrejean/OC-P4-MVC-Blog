@@ -54,19 +54,28 @@ class Backend{
     }
     public function commentsModeration(){
         $commentManager = new CommentManager();
-        $comments = $commentManager->getAllComments();
 
-        require('view/backend/commentsModeration.php');
-    }
-    public function commentsByDate(){
-        $commentManager = new CommentManager();
-        $comments = $commentManager->getAllCommentsByDate();
-
-        require('view/backend/commentsModeration.php');
-    }
-    public function commentsByPost(){
-        $commentManager = new CommentManager();
-        $comments = $commentManager->getAllCommentsByPost();
+        $nbComments = $commentManager->countComments();
+        if ($nbComments > 0){
+            $perPage = 15;
+            $nbPages = $commentManager->countPages($nbComments, $perPage);
+            if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
+                $currentPage = $_GET['page'];
+            } else{
+                $currentPage = 1;
+            }
+            if (isset($_GET['orderBy']) && $_GET['orderBy'] == 'date'){
+                $byDate = $_GET['orderBy'];
+                $comments = $commentManager->getAllComments($currentPage, $perPage, $byDate);
+            } elseif (isset($_GET['orderBy']) && $_GET['orderBy'] == 'posts'){
+                $byPosts = $_GET['orderBy'];
+                $comments = $commentManager->getAllComments($currentPage, $perPage, $byPosts);
+            } else{
+                $comments = $commentManager->getAllComments($currentPage, $perPage);
+            }
+        } else{
+            $comments = false;
+        }
 
         require('view/backend/commentsModeration.php');
     }
@@ -107,13 +116,25 @@ class Backend{
     }
     public function postsManager(){
         $postsManager = new PostManager();
-        $posts = $postsManager->getAllPostsExcerpt();
 
-        require('view/backend/postsManager.php');
-    }
-    public function postsManagerByDate(){
-        $postsManager = new PostManager();
-        $posts = $postsManager->getAllPostsExcerptDesc();
+        $nbPosts = $postsManager->countPosts();
+        if ($nbPosts > 0){
+            $perPage = 10;
+            $nbPages = $postsManager->countPages($nbPosts, $perPage);
+            if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
+                $currentPage = $_GET['page'];
+            } else{
+                $currentPage = 1;
+            }
+            if (isset($_GET['orderBy']) && $_GET['orderBy'] == 'date'){
+                $byDate = $_GET['orderBy'];
+                $posts = $postsManager->getAllPostsExcerpt($currentPage, $perPage, $byDate);
+            } else{
+                $posts = $postsManager->getAllPostsExcerpt($currentPage, $perPage);
+            }
+        } else{
+            $posts = false;
+        }
 
         require('view/backend/postsManager.php');
     }
