@@ -89,6 +89,13 @@ textarea{
     min-width: 100%;
     max-width: 100%;
 }
+.message{
+    text-align: right;
+    padding-bottom: 30px;
+}
+.message, .star{
+    color:red;
+}
 
 /*----- FRONTEND FOOTER -----*/
 #footer{
