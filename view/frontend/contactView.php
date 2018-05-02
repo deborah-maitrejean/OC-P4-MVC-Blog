@@ -6,6 +6,7 @@
         <?php if(!isset($_SESSION)){session_start();} ?>
         <?php if (isset($_SESSION['message'])): ?>
         <div class="message"><?= $_SESSION['message']; ?></div>
+        <?php session_destroy(); ?>
         <?php endif; ?>
 
         <form action="index.php?action=sendMail" method="post" class="form-horizontal">
