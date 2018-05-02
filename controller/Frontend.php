@@ -2,6 +2,7 @@
 namespace Controller;
 use \Model\CommentManager;
 use \Model\PostManager;
+use \Model\ContactManager;
 
 class Frontend{
     public function listPosts() {
@@ -96,6 +97,9 @@ class Frontend{
         require('view/frontend/contactView.php');
     }
     public function sendMail(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_POST['submit']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['tel']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])){
             if (!empty($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['tel']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])){
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
@@ -109,19 +113,23 @@ class Frontend{
                             htmlspecialchars($_POST['subject']),
                             htmlspecialchars($_POST['message'])
                         );
+                        $_SESSION['message'] = 'Votre message nous a bien été transmis.';
                         header('Location: index.php?action=contact');
                     } else{
-                        $errorMessage = 'Le numéro de téléphone n\'est pas au bon format.';
+                        $_SESSION['message'] = 'Le numéro de téléphone n\'est pas au bon format.';
                         header('Location: index.php?action=contact');
                     }
                 } else{
-                    $errorMessage = 'L\'adresse email n\'est pas au bon format.';
+                    $_SESSION['message'] = 'L\'adresse email n\'est pas au bon format.';
                     header('Location: index.php?action=contact');
                 }
             } else{
-                $errorMessage = 'Tous les champs ne sont pas renseignés.';
+                $_SESSION['message'] = 'Tous les champs ne sont pas renseignés.';
                 header('Location: index.php?action=contact');
             }
+        } else{
+            $_SESSION['message'] = 'Une erreur est survenue.';
+            header('Location: index.php?action=contact');
         }
     }
     public function cookies(){
