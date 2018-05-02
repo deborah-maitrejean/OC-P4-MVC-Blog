@@ -6,17 +6,19 @@ use \Model\PostManager;
 
 class Backend{
     public function loginControl(){
-        $loginManager = new LoginManager();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_POST['submit']) && isset($_POST['email']) && isset($_POST['password'])){
             if (!empty($_POST['email']) && !empty($_POST['password'])){
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
                     // hachage du mot de passe
                     $passHach = hash('sha512', htmlspecialchars($_POST['password']));
                     // vérification des identifiants
+                    $loginManager = new LoginManager();
                     $login = $loginManager->getLogin($_POST['email'], $passHach);
                     if ($login !== null) {
-                        // l'identification a réussi, la session démarre
-                        session_start();
+                        // l'identification a réussi
                         $_SESSION['time']       = time();
                         $_SESSION['email']      = $login->getEmail();
                         $_SESSION['password']   = $login->getPassword();
@@ -26,17 +28,20 @@ class Backend{
 
                         header('location: index.php?action=adminHomeView');
                     } else{
-                        $errorMessage = 'Mauvais identifiants de connexion';
+                        $_SESSION['message'] = 'Mauvais identifiants de connexion.';
                         header('location: index.php?action=adminConnexion');
                     }
                 } else{
-                    $errorMessage = 'Le format de l\'adresse email est incorrect';
+                    $_SESSION['message'] = 'Le format de l\'adresse email est incorrect.';
                     header('location: index.php?action=adminConnexion');
                 }
             } else{
-                $errorMessage = 'Tous les champs ne sont pas remplis';
+                $_SESSION['message'] = 'Tous les champs ne sont pas remplis.';
                 header('location: index.php?action=adminConnexion');
             }
+        } else{
+            $_SESSION['message'] = 'Une erreur est survenue.';
+            header('location: index.php?action=adminConnexion');
         }
     }
     public function logOut(){
