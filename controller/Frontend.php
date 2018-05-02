@@ -52,16 +52,18 @@ class Frontend{
                 $affectedLines = $commentManager->postComment($_GET['id'], $_GET['postTitle'], $_POST['author'], $_POST['comment']);
 
                 if ($affectedLines === false) {
-                    // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur
-                    throw new Exception('Impossible d\'ajouter le commentaire !');
+                    $errorMessage = 'Impossible d\'ajouter le commentaire !';
+                    header('Location: index.php?action=post');
                 } else {
                     header('Location: index.php?action=post&id=' . $_GET['id']);
                 }
             } else {
-                throw new Exception('Tous les champs ne sont pas remplis !');
+                $errorMessage = 'Tous les champs ne sont pas remplis !';
+                header('Location: index.php?action=post');
             }
         } else {
-            throw new Exception('Aucun identifiant de billet envoyé !');
+            $errorMessage = 'Aucun identifiant de billet envoyé !';
+            header('Location: index.php?action=post');
         }
     }
     public function reportComment(){
@@ -71,7 +73,8 @@ class Frontend{
                 $commentManager->reportComment($_GET['reported'], $_GET['commentId'], $_GET['postId']);
                 header('Location: index.php?action=post&id=' . $_GET['postId']);
             } else {
-                throw new Exception('Aucun identifiant de commentaire envoyé !');
+                $errorMessage = 'Aucun identifiant de commentaire envoyé !';
+                header('Location: index.php?action=post');
             }
         }
     }
@@ -108,13 +111,16 @@ class Frontend{
                         );
                         header('Location: index.php?action=contact');
                     } else{
-                        Exception('Le numéro de téléphone n\'est pas au bon format.');
+                        $errorMessage = 'Le numéro de téléphone n\'est pas au bon format.';
+                        header('Location: index.php?action=contact');
                     }
                 } else{
-                    throw new Exception('L\'adresse email n\'est pas au bon format.');
+                    $errorMessage = 'L\'adresse email n\'est pas au bon format.';
+                    header('Location: index.php?action=contact');
                 }
             } else{
-                throw new Exception('Tous les champs ne sont pas renseignés.');
+                $errorMessage = 'Tous les champs ne sont pas renseignés.';
+                header('Location: index.php?action=contact');
             }
         }
     }
