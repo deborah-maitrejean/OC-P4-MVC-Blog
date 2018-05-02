@@ -51,7 +51,8 @@ class Router {
                 }
                 $currentController->$method();
             } else {
-                throw new Exception('Erreur 404: la page demandée n\'existe pas');
+                $errorMessage = 'Erreur 404: la page demandée n\'existe pas';
+                header('Location: index.php');
             }
         } catch(Exception $e) {
             echo 'Exception reçue : ',  $e->getMessage(), "\n";
