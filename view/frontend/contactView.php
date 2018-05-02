@@ -3,6 +3,10 @@
 
 <div class="row" >
     <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6" id="contact-view">
+        <?php if(!isset($_SESSION)){session_start();} ?>
+        <?php if (isset($_SESSION['message'])): ?>
+        <div class="message"><?= $_SESSION['message']; ?></div>
+        <?php endif; ?>
 
         <form action="index.php?action=sendMail" method="post" class="form-horizontal">
             <fieldset>
@@ -34,12 +38,11 @@
                 </div>
 
                 <div class="form-group reset-send">
-                    <label for="send"></label>
-                    <input type="submit" id="send" name="send" title="Valider et envoyer le formulaire" class="btn btn-success btn-lg" value="Envoyer">
+                    <label for="submit"></label>
+                    <input type="submit" id="submit" name="submit" title="Valider et envoyer le formulaire" class="btn btn-success btn-lg" value="Envoyer">
                     <label for="reset"></label>
                     <input type="reset" id="reset" name="reset" class="btn btn-warning btn-lg" value="Réinitialiser">
                 </div>
-
                 <i>* champs requis</i>
             </fieldset>
         </form>
