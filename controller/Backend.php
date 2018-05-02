@@ -26,15 +26,15 @@ class Backend{
 
                         header('location: index.php?action=adminHomeView');
                     } else{
-                        //throw new Exception('Mauvais identifiants de connexion');
+                        $errorMessage = 'Mauvais identifiants de connexion';
                         header('location: index.php?action=adminConnexion');
                     }
                 } else{
-                    //throw new Exception('Le format de l\'adresse email est incorrect');
+                    $errorMessage = 'Le format de l\'adresse email est incorrect';
                     header('location: index.php?action=adminConnexion');
                 }
             } else{
-                //throw new Exception('Tous les champs ne sont pas remplis');
+                $errorMessage = 'Tous les champs ne sont pas remplis';
                 header('location: index.php?action=adminConnexion');
             }
         }
@@ -85,7 +85,7 @@ class Backend{
             $comment = $commentManager->getComment($_GET['commentId']);
             require('view/backend/commentModeration.php');
         } else {
-            throw new Exception('Aucun identifiant de commentaire envoyé !');
+            $errorMessage = 'Aucun identifiant de commentaire envoyé !';
         }
     }
     public function adminUpdateComment(){
@@ -98,10 +98,10 @@ class Backend{
                     header('location: index.php?action=commentsModeration');
                 }
             } else{
-                throw new Exception('Tous les champs ne sont pas remplis !');
+                $errorMessage = 'Tous les champs ne sont pas remplis !';
             }
         } else {
-            throw new Exception('Aucun identifiant de commentaire envoyé');
+            $errorMessage = 'Aucun identifiant de commentaire envoyé';
         }
     }
     public function deleteComment(){
@@ -111,7 +111,7 @@ class Backend{
 
             header('location: index.php?action=commentsModeration');
         } else {
-            throw new Exception('Aucun identifiant de commentaire envoyé !');
+            $errorMessage = 'Aucun identifiant de commentaire envoyé !';
         }
     }
     public function postsManager(){
@@ -145,7 +145,7 @@ class Backend{
 
             header('location: index.php?action=postsManager');
         } else{
-            throw new Exception('Tous les champs ne sont pas remplis !');
+            $errorMessage = 'Tous les champs ne sont pas remplis !';
         }
     }
     public function viewOrChangePost(){
@@ -155,7 +155,7 @@ class Backend{
 
             require('view/backend/postView.php');
         } else{
-            throw new Exception('Aucun identifiant de billet envoyé !');
+            $errorMessage = 'Aucun identifiant de billet envoyé !';
         }
     }
     public function deletePost(){
@@ -165,7 +165,7 @@ class Backend{
 
             header('location: index.php?action=postsManager');
         } else {
-            throw new Exception('Aucun identifiant de billet envoyé');
+            $errorMessage = 'Aucun identifiant de billet envoyé';
         }
     }
     public function updatePost(){
@@ -177,7 +177,7 @@ class Backend{
                 header('location: index.php?action=postsManager');
             }
         } else {
-            throw new Exception('Aucun identifiant de billet envoyé !');
+            $errorMessage = 'Aucun identifiant de billet envoyé !';
         }
     }
 }
