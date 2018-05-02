@@ -55,7 +55,7 @@ class PostManager extends Manager {
     public function getAllPostsExcerpt($currentPage, $perPage, $params = '') {
         $db = $this->dbConnect();
 
-        if ($params = 'date'){
+        if ($params == 'date'){
             $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate LIMIT '.(($currentPage-1)*$perPage).', '.$perPage.' ');
         } else{
             $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT '.(($currentPage-1)*$perPage).', '.$perPage.' ');
