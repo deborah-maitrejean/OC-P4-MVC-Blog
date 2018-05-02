@@ -116,7 +116,25 @@ class Backend{
     }
     public function postsManager(){
         $postsManager = new PostManager();
-        $posts = $postsManager->getAllPostsExcerpt();
+
+        $nbPosts = $postsManager->countPosts();
+        if ($nbPosts > 0){
+            $perPage = 10;
+            $nbPages = $postsManager->countPages($nbPosts, $perPage);
+            if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages){
+                $currentPage = $_GET['page'];
+            } else{
+                $currentPage = 1;
+            }
+            if (isset($_GET['orderBy']) && $_GET['orderBy'] == 'date'){
+                $byDate = $_GET['orderBy'];
+                $posts = $postsManager->getAllPostsExcerpt($currentPage, $perPage, $byDate);
+            } else{
+                $posts = $postsManager->getAllPostsExcerpt($currentPage, $perPage);
+            }
+        } else{
+            $posts = false;
+        }
 
         require('view/backend/postsManager.php');
     }
