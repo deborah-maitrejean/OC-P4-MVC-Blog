@@ -4,6 +4,11 @@
 
 <div class="row">
     <div class="col-md-offset-1 col-lg-10">
+        <?php if(!isset($_SESSION)){session_start();} ?>
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="message"><?= $_SESSION['message']; ?></div>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
         <form action="index.php?action=adminInterfaceLogin" method="post" class="form-horizontal" id="admin-connexion-view">
             <fieldset>
                 <!-- Form Name -->
