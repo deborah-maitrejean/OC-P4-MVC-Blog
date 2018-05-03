@@ -148,4 +148,7 @@ class Frontend{
     public function legalesMentions(){
         require('view/frontend/legalesMentions.php');
     }
+    public function page404(){
+        require('view/frontend/404.php');
+    }
 }
