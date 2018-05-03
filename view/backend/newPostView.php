@@ -5,6 +5,11 @@
 <div class="row tinymce-post-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-pencil-square-o"></i> Rédiger un billet</h2>
+        <?php if(!isset($_SESSION)){session_start();} ?>
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="message"><?= $_SESSION['message']; ?></div>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
         <form action="index.php?action=publishPost" method="post">
             <div class="form-group">
                 <label for="title">Titre:</label>

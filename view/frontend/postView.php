@@ -26,15 +26,20 @@
     <div class="row" id="comment-form">
         <div class="col-lg-12">
             <h2>Commentaires</h2>
+            <?php if(!isset($_SESSION)){session_start();} ?>
+            <?php if (isset($_SESSION['message'])): ?>
+                <div class="message"><?= $_SESSION['message']; ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
 
             <form action="index.php?action=addComment&amp;id=<?= $post->getId(); ?>&amp;postTitle=<?= $post->getTitle(); ?>" method="post">
                 <div class="form-group">
                     <label for="author">Auteur</label>
-                    <input type="text" id="author" name="author" class="form-control">
+                    <input type="text" id="author" name="author" class="form-control" required maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="comment">Commentaire</label>
-                    <textarea id="comment" name="comment" class="form-control"></textarea>
+                    <textarea id="comment" name="comment" class="form-control" required maxlength="255"></textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-lg">

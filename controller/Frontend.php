@@ -2,6 +2,7 @@
 namespace Controller;
 use \Model\CommentManager;
 use \Model\PostManager;
+use \Model\ContactManager;
 
 class Frontend{
     public function listPosts() {
@@ -46,32 +47,49 @@ class Frontend{
         require('view/frontend/postView.php');
     }
     public function addComment() {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['id']) && $_GET['id'] > 0 && $_GET['postTitle']) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                $commentManager = new CommentManager();
-                $affectedLines = $commentManager->postComment($_GET['id'], $_GET['postTitle'], $_POST['author'], $_POST['comment']);
+                if (strlen($_POST['author']) <= 255 && strlen($_POST['comment']) <= 255){
+                    $id = strip_tags($_GET['id']);
+                    $postTitle = strip_tags($_GET['postTitle']);
+                    $author = strip_tags($_POST['author']);
+                    $comment = strip_tags(trim($_POST['comment']));
 
-                if ($affectedLines === false) {
-                    // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur
-                    throw new Exception('Impossible d\'ajouter le commentaire !');
-                } else {
-                    header('Location: index.php?action=post&id=' . $_GET['id']);
+                    $commentManager = new CommentManager();
+                    $affectedLines = $commentManager->postComment($id, $postTitle, $author, $comment);
+
+                    if ($affectedLines === false) {
+                        $_SESSION['message'] = 'Impossible d\'ajouter le commentaire !';
+
+                    }
+                } else{
+                    $_SESSION['message'] = 'Les champs ne doivent pas dépasser 255 caractères.';
                 }
             } else {
-                throw new Exception('Tous les champs ne sont pas remplis !');
+                $_SESSION['message'] = 'Tous les champs ne sont pas remplis !';
             }
         } else {
-            throw new Exception('Aucun identifiant de billet envoyé !');
+            $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
         }
+        header('Location: index.php?action=post&id=' . $_GET['id']);
     }
     public function reportComment(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && $_GET['postId']) {
             if(isset($_GET['reported'])){
                 $commentManager = new CommentManager();
                 $commentManager->reportComment($_GET['reported'], $_GET['commentId'], $_GET['postId']);
+
+                $_SESSION['message'] = 'Le commentaire a été signalé.';
                 header('Location: index.php?action=post&id=' . $_GET['postId']);
             } else {
-                throw new Exception('Aucun identifiant de commentaire envoyé !');
+                $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
+                header('Location: index.php?action=post');
             }
         }
     }
@@ -93,6 +111,9 @@ class Frontend{
         require('view/frontend/contactView.php');
     }
     public function sendMail(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_POST['submit']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['tel']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])){
             if (!empty($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['tel']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])){
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
@@ -106,17 +127,20 @@ class Frontend{
                             htmlspecialchars($_POST['subject']),
                             htmlspecialchars($_POST['message'])
                         );
-                        header('Location: index.php?action=contact');
+                        $_SESSION['message'] = 'Votre message nous a bien été transmis.';
                     } else{
-                        Exception('Le numéro de téléphone n\'est pas au bon format.');
+                        $_SESSION['message'] = 'Le numéro de téléphone n\'est pas au bon format.';
                     }
                 } else{
-                    throw new Exception('L\'adresse email n\'est pas au bon format.');
+                    $_SESSION['message'] = 'L\'adresse email n\'est pas au bon format.';
                 }
             } else{
-                throw new Exception('Tous les champs ne sont pas renseignés.');
+                $_SESSION['message'] = 'Tous les champs ne sont pas renseignés.';
             }
+        } else{
+            $_SESSION['message'] = 'Une erreur est survenue.';
         }
+        header('Location: index.php?action=contact');
     }
     public function cookies(){
         require('view/frontend/privacy.php');

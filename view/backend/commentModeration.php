@@ -5,12 +5,17 @@
 <?php if(isset($_GET['commentId'])): ?>
     <div class="row">
         <div class="col-lg-12">
-            <p><a href="index.php?action=commentsModeration">Retour à la liste dee commentaires</a></p>
+            <p><a href="index.php?action=commentsModeration">Retour à la liste des commentaires</a></p>
         </div>
     </div>
 
     <div class="row" id="moderateCommentForm">
         <div class="col-lg-offset-4 col-lg-4">
+            <?php if(!isset($_SESSION)){session_start();} ?>
+            <?php if (isset($_SESSION['message'])): ?>
+                <div class="message"><?= $_SESSION['message']; ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
             <form action="index.php?action=editComment&amp;commentId=<?= $comment->getId(); ?>&amp;reported=0" method="post">
                 <div class="form-group">
                     <b name="author">Auteur:</b> <?= $comment->getauthor(); ?>
