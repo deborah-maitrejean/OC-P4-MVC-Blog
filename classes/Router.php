@@ -20,6 +20,7 @@ class Router {
         'sendMail' => ['controller'=>'Frontend', 'method'=>'sendMail'],
         'cookies' => ['controller'=>'Frontend', 'method'=>'cookies'],
         'legalesMentions' => ['controller'=>'Frontend', 'method'=>'legalesMentions'],
+        '404' => ['controller'=>'Frontend', 'method'=>'page404'],
         // backend:
         'adminInterfaceLogin' => ['controller'=>'Backend', 'method'=>'loginControl'],
         'adminHomeView' => ['controller'=>'Backend', 'method'=>'adminHomeView'],
@@ -51,8 +52,8 @@ class Router {
                 }
                 $currentController->$method();
             } else {
-                $errorMessage = 'Erreur 404: la page demandée n\'existe pas';
-                header('Location: index.php');
+                //$errorMessage = 'Erreur 404: la page demandée n\'existe pas';
+                header('Location: index.php?action=404');
             }
         } catch(Exception $e) {
             echo 'Exception reçue : ',  $e->getMessage(), "\n";
