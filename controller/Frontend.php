@@ -47,24 +47,37 @@ class Frontend{
         require('view/frontend/postView.php');
     }
     public function addComment() {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['id']) && $_GET['id'] > 0 && $_GET['postTitle']) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                $commentManager = new CommentManager();
-                $affectedLines = $commentManager->postComment($_GET['id'], $_GET['postTitle'], $_POST['author'], $_POST['comment']);
+                if (strlen($_POST['author']) <= 255 && strlen($_POST['comment']) <= 255){
+                    $id = strip_tags($_GET['id']);
+                    $postTitle = strip_tags($_GET['postTitle']);
+                    $author = strip_tags($_POST['author']);
+                    $comment = strip_tags(trim($_POST['comment']));
 
-                if ($affectedLines === false) {
-                    $errorMessage = 'Impossible d\'ajouter le commentaire !';
-                    header('Location: index.php?action=post');
-                } else {
+                    $commentManager = new CommentManager();
+                    $affectedLines = $commentManager->postComment($id, $postTitle, $author, $comment);
+
+                    if ($affectedLines === false) {
+                        $_SESSION['message'] = 'Impossible d\'ajouter le commentaire !';
+                        header('Location: index.php?action=post&id=' . $_GET['id']);
+                    } else {
+                        header('Location: index.php?action=post&id=' . $_GET['id']);
+                    }
+                } else{
+                    $_SESSION['message'] = 'Les champs ne doivent pas dépasser 255 caractères.';
                     header('Location: index.php?action=post&id=' . $_GET['id']);
                 }
             } else {
-                $errorMessage = 'Tous les champs ne sont pas remplis !';
-                header('Location: index.php?action=post');
+                $_SESSION['message'] = 'Tous les champs ne sont pas remplis !';
+                header('Location: index.php?action=post&id=' . $_GET['id']);
             }
         } else {
-            $errorMessage = 'Aucun identifiant de billet envoyé !';
-            header('Location: index.php?action=post');
+            $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
+            header('Location: index.php?action=post&id=' . $_GET['id']);
         }
     }
     public function reportComment(){
