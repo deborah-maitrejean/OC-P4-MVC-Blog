@@ -5,6 +5,11 @@
 <div class="row table-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-bars"></i> Liste des billets</h2>
+        <?php if(!isset($_SESSION)){session_start();} ?>
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="message"><?= $_SESSION['message']; ?></div>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
         <div>
             <a href="index.php?action=postsManager" class="btn btn-default">Plus récent au plus ancien</a>
             <a href="index.php?action=postsManager&amp;orderBy=date" class="btn btn-default">Plus ancien au plus récent</a>
