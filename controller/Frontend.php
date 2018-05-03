@@ -77,13 +77,18 @@ class Frontend{
         header('Location: index.php?action=post&id=' . $_GET['id']);
     }
     public function reportComment(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && $_GET['postId']) {
             if(isset($_GET['reported'])){
                 $commentManager = new CommentManager();
                 $commentManager->reportComment($_GET['reported'], $_GET['commentId'], $_GET['postId']);
+
+                $_SESSION['message'] = 'Le commentaire a été signalé.';
                 header('Location: index.php?action=post&id=' . $_GET['postId']);
             } else {
-                $errorMessage = 'Aucun identifiant de commentaire envoyé !';
+                $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
                 header('Location: index.php?action=post');
             }
         }
