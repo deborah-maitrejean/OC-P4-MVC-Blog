@@ -85,39 +85,54 @@ class Backend{
         require('view/backend/commentsModeration.php');
     }
     public function commentModeration(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
             $commentManager = new CommentManager();
             $comment = $commentManager->getComment($_GET['commentId']);
+
             require('view/backend/commentModeration.php');
         } else {
-            $errorMessage = 'Aucun identifiant de commentaire envoyé !';
+            $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
+            header('location: index.php?action=commentsModeration');
         }
     }
     public function adminUpdateComment(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
             if (!empty($_POST['comment'])){
                 if (isset($_GET['reported'])){
                     $commentManager = new CommentManager();
                     $commentManager->changeComment($_POST['comment'], $_GET['commentId'], $_GET['reported']);
 
+                    $_SESSION['message'] = 'Le commentaire a été modéré.';
                     header('location: index.php?action=commentsModeration');
                 }
             } else{
-                $errorMessage = 'Tous les champs ne sont pas remplis !';
+                $_SESSION['message'] = 'Tous les champs ne sont pas remplis !';
+                header('Location: index.php?action=commentsModeration');
             }
         } else {
-            $errorMessage = 'Aucun identifiant de commentaire envoyé';
+            $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé.';
+            header('Location: index.php?action=commentsModeration');
         }
     }
     public function deleteComment(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
             $commentManager = new CommentManager();
             $deletedComment = $commentManager->deleteComment($_GET['commentId']);
 
-            header('location: index.php?action=commentsModeration');
+            $_SESSION['message'] = 'La suppression a réussi.';
         } else {
-            $errorMessage = 'Aucun identifiant de commentaire envoyé !';
+            $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
         }
+        header('location: index.php?action=commentsModeration');
     }
     public function postsManager(){
         $postsManager = new PostManager();
@@ -156,6 +171,8 @@ class Backend{
                 $postManager = new PostManager();
                 $newPost = $postManager->publishNewPost($title, $content, $author);
 
+                $_SESSION['message'] = 'Le billet a été publié.';
+
                 header('Location: index.php?action=postsManager');
             } else{
                 $_SESSION['message'] = 'Tous les champs ne sont pas remplis !';
@@ -181,9 +198,14 @@ class Backend{
         }
     }
     public function deletePost(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['postId']) && $_GET['postId'] > 0){
             $postManager = new PostManager();
             $post = $postManager->deletePost($_GET['postId']);
+
+            $_SESSION['message'] = 'Le billet a été supprimé.';
         } else {
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé';
         }
@@ -195,8 +217,20 @@ class Backend{
         }
         if (isset($_GET['postId']) && $_GET['postId'] > 0){
             if (isset($_POST['title']) && isset($_POST['content'])){
-                $postManager = new PostManager();
-                $post = $postManager->updatePost($_POST['title'], $_POST['content'], $_GET['postId']);
+                if (!empty($_POST['title']) && !empty($_POST['content'])){
+                    $title = strip_tags($_POST['title']);
+                    $content  = $_POST['content'];
+                    $author = strip_tags($_POST['author']);
+
+                    $postManager = new PostManager();
+                    $post = $postManager->updatePost($title, $content, $author);
+
+                    $_SESSION['message'] = 'Le billet a été mis à jour.';
+                } else{
+                    $_SESSION['message'] = 'Tous les champs ne sont pas remplis.';
+                }
+            } else{
+                $_SESSION['message'] = 'Un problème est survenu.';
             }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
