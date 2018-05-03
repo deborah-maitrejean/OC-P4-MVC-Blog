@@ -5,6 +5,11 @@
 <div class="row table-row">
     <div class="col-lg-12">
         <h2><i class="fa fa-bars"></i> Liste des commentaires</h2>
+        <?php if(!isset($_SESSION)){session_start();} ?>
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="message"><?= $_SESSION['message']; ?></div>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
         <div>
             <a href="index.php?action=commentsModeration" class="btn btn-default">Trier par statut</a>
             <a href="index.php?action=commentsModeration&amp;orderBy=date" class="btn btn-default">Trier par date</a>
