@@ -154,35 +154,40 @@ class Backend{
         }
     }
     public function viewOrChangePost(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['postId']) && $_GET['postId'] > 0){
             $postManager = new PostManager();
             $post = $postManager->getPost($_GET['postId']);
 
             require('view/backend/postView.php');
         } else{
-            $errorMessage = 'Aucun identifiant de billet envoyé !';
+            $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
+            header('location: index.php?action=postsManager');
         }
     }
     public function deletePost(){
         if (isset($_GET['postId']) && $_GET['postId'] > 0){
             $postManager = new PostManager();
             $post = $postManager->deletePost($_GET['postId']);
-
-            header('location: index.php?action=postsManager');
         } else {
-            $errorMessage = 'Aucun identifiant de billet envoyé';
+            $_SESSION['message'] = 'Aucun identifiant de billet envoyé';
         }
+        header('location: index.php?action=postsManager');
     }
     public function updatePost(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_GET['postId']) && $_GET['postId'] > 0){
             if (isset($_POST['title']) && isset($_POST['content'])){
                 $postManager = new PostManager();
                 $post = $postManager->updatePost($_POST['title'], $_POST['content'], $_GET['postId']);
-
-                header('location: index.php?action=postsManager');
             }
         } else {
-            $errorMessage = 'Aucun identifiant de billet envoyé !';
+            $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
         }
+        header('location: index.php?action=postsManager');
     }
 }
