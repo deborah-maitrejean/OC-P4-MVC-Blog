@@ -63,22 +63,18 @@ class Frontend{
 
                     if ($affectedLines === false) {
                         $_SESSION['message'] = 'Impossible d\'ajouter le commentaire !';
-                        header('Location: index.php?action=post&id=' . $_GET['id']);
-                    } else {
-                        header('Location: index.php?action=post&id=' . $_GET['id']);
+
                     }
                 } else{
                     $_SESSION['message'] = 'Les champs ne doivent pas dépasser 255 caractères.';
-                    header('Location: index.php?action=post&id=' . $_GET['id']);
                 }
             } else {
                 $_SESSION['message'] = 'Tous les champs ne sont pas remplis !';
-                header('Location: index.php?action=post&id=' . $_GET['id']);
             }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
-            header('Location: index.php?action=post&id=' . $_GET['id']);
         }
+        header('Location: index.php?action=post&id=' . $_GET['id']);
     }
     public function reportComment(){
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && $_GET['postId']) {
@@ -127,23 +123,19 @@ class Frontend{
                             htmlspecialchars($_POST['message'])
                         );
                         $_SESSION['message'] = 'Votre message nous a bien été transmis.';
-                        header('Location: index.php?action=contact');
                     } else{
                         $_SESSION['message'] = 'Le numéro de téléphone n\'est pas au bon format.';
-                        header('Location: index.php?action=contact');
                     }
                 } else{
                     $_SESSION['message'] = 'L\'adresse email n\'est pas au bon format.';
-                    header('Location: index.php?action=contact');
                 }
             } else{
                 $_SESSION['message'] = 'Tous les champs ne sont pas renseignés.';
-                header('Location: index.php?action=contact');
             }
         } else{
             $_SESSION['message'] = 'Une erreur est survenue.';
-            header('Location: index.php?action=contact');
         }
+        header('Location: index.php?action=contact');
     }
     public function cookies(){
         require('view/frontend/privacy.php');
