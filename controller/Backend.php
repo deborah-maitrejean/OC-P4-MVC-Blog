@@ -144,13 +144,26 @@ class Backend{
         require('view/backend/postsManager.php');
     }
     public function publishPost(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['author'])){
-            $postManager = new PostManager();
-            $newPost = $postManager->publishNewPost($_POST['title'], $_POST['content'], $_POST['author']);
+            if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])){
+                $title = strip_tags($_POST['title']);
+                $content  = $_POST['content'];
+                $author = strip_tags($_POST['author']);
 
-            header('location: index.php?action=postsManager');
+                $postManager = new PostManager();
+                $newPost = $postManager->publishNewPost($title, $content, $author);
+
+                header('Location: index.php?action=postsManager');
+            } else{
+                $_SESSION['message'] = 'Tous les champs ne sont pas remplis !';
+                header('Location: index.php?action=newPost');
+            }
         } else{
-            $errorMessage = 'Tous les champs ne sont pas remplis !';
+            $_SESSION['message'] = 'Une erreur est survenue.';
+            header('Location: index.php?action=newPost');
         }
     }
     public function viewOrChangePost(){
