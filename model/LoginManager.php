@@ -20,4 +20,11 @@ class LoginManager extends Manager {
             return $login;
         }
     }
+    public function checkLogin($email){
+        $db = $this->dbconnect();
+        $req = $db->prepare('SELECT email FROM logins WHERE email = ?');
+        $login = $req->execute(array($email));
+
+        return $login;
+    }
 }
