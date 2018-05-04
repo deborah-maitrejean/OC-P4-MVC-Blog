@@ -64,14 +64,18 @@ class Backend{
             if (!empty($_POST['email']) && !empty($_POST['newEmail']) && !empty($_POST['newEmailVerif'])){
                 $loginManager = new LoginManager();
                 $login = $loginManager->checkLogin($_POST['email']);
-                if ($login->getEmail() != null && $login->getEmail() == $_POST['email']){
+                $email = $login->getEmail();
+                if ($email != null && $email == $_POST['email']){
                     if ($_POST['newEmail'] == $_POST['newEmailVerif']){
                         $emailPattern = "#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#";
                         if (preg_match($emailPattern, $_POST['newEmail'])){
-                            $newEmail = $_POST['newEmail'];
-                            $email = $login->getEmail();
-                            $loginManager->updateLogin($newEmail, $email);
-                            $_SESSION['message'] = 'L\'identifiant a été mis à jour.';
+                            if ($email <= 255 && $_POST['newEmail'] <= 255){
+                                $newEmail = $_POST['newEmail'];
+                                $loginManager->updateLogin($newEmail, $email);
+                                $_SESSION['message'] = 'L\'identifiant a été mis à jour.';
+                            } else{
+                                $_SESSION['message'] = 'L\'adresse email ne doit pas dépasser 255 caractères.';
+                            }
                         } else{
                             $_SESSION['message'] = 'Le format de l\'adresse email est invalide.';
                         }
