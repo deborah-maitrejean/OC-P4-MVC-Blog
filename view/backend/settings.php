@@ -2,7 +2,13 @@
 
 <?php ob_start(); ?>
 
-<div class="row">
+<div class="row settings-row">
+    <h2><i class="fa fa-cog" aria-hidden="true"></i> Paramètres du compte</h2>
+    <?php if(!isset($_SESSION)){session_start();} ?>
+    <?php if (isset($_SESSION['message'])): ?>
+        <div class="message"><?= $_SESSION['message']; ?></div>
+        <?php unset($_SESSION['message']); ?>
+    <?php endif; ?>
     <div class="col-lg-6 settings-form">
         <form action="index.php?action=changePassword" method="post">
             <fieldset>
@@ -44,8 +50,8 @@
                     <input type="text" name="newLogin" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="newLogin">Confirmez le nouvel identifiant<span class="star">*</span></label>
-                    <input type="text" name="newLogin" required class="form-control">
+                    <label for="newLoginVerif">Confirmez le nouvel identifiant<span class="star">*</span></label>
+                    <input type="text" name="newLoginVerif" required class="form-control">
                 </div>
                 <div class="form-group reset-send">
                     <label for="submit"></label>
