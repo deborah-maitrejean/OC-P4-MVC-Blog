@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6 settings-form">
         <form action="index.php?action=changePassword" method="post">
             <fieldset>
                 <legend>Changer le mot de passe de connexion</legend>
@@ -30,7 +30,7 @@
             </fieldset>
         </form>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 settings-form">
         <form action="index.php?action=changeLogin" method="post">
             <fieldset>
                 <legend>Changer l'identifiant de connexion</legend>
