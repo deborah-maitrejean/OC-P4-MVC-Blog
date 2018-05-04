@@ -1,19 +1,14 @@
 <?php
-if (isset($_POST['login']) AND isset($_POST['pass']))
-{
-    //$salt = ;
+if (isset($_POST['login']) AND isset($_POST['pass'])) {
     $login = $_POST['login'];
-    $pass_crypte = hash('sha512', $_POST['pass']); // On crypte le mot de passe
+    $pass_crypte = password_hash($_POST['pass'], PASSWORD_BCRYPT);
 
-    echo '<p>Ligne à copier dans le .htpasswd ou données à entrer dans la base de données:<br>' . $login . ':' . $pass_crypte . '</p>';
+    echo '<p>Ligne à copier dans le .htpasswd ou à entrer dans la base de données:<br>' . $login . ':' . $pass_crypte . '</p>';
 }
-
-else // On n'a pas encore rempli le formulaire
+else
 {
     ?>
-
     <p>Entrez votre login et votre mot de passe pour le crypter.</p>
-
     <form method="post">
         <p>
             Login : <input type="text" name="login"><br>
@@ -22,7 +17,6 @@ else // On n'a pas encore rempli le formulaire
             <input type="submit" value="Crypter !">
         </p>
     </form>
-
     <?php
 }
 ?>
