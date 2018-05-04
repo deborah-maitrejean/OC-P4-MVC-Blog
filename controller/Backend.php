@@ -51,6 +51,13 @@ class Backend{
             header('location: index.php');
         }
     }
+    public function settings(){
+        require('view/backend/settings.php');
+    }
+    public function changePassword(){
+    }
+    public function changeLogin(){
+    }
     public function adminHomeView(){
         require('view/backend/adminHomeView.php');
     }
