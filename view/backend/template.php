@@ -61,6 +61,7 @@ if(!isset($_SESSION)){session_start();}
                 <li <?php if ((stripos($_SERVER['REQUEST_URI'],'index.php?action=commentsModeration') !== false) ) {echo 'class="active"';} ?>><a href="index.php?action=commentsModeration">Modérer les commentaires</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=settings') !== false) {echo 'class="active"';} ?> title="Paramètres"><a href="index.php?action=settings"><i class="fa fa-cog" aria-hidden="true"></i><span class="sr-only">(current)</span></a></li>
                 <li <?php if (stripos($_SERVER['REQUEST_URI'],'index.php?action=logOut') !== false) {echo 'class="active"';} ?> title="Déconnexion"><a href="index.php?action=logOut"><span class="fa fa-user-times"></span><span class="sr-only">(current)</span></a></li>
             </ul>
         </div><!--/.nav-collapse -->

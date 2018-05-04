@@ -35,6 +35,9 @@ class Router {
         'editComment' => ['controller'=>'Backend', 'method'=>'adminUpdateComment'],
         'deleteComment' => ['controller'=>'Backend', 'method'=>'deleteComment'],
         'logOut' => ['controller'=>'Backend', 'method'=>'logOut'],
+        'settings' => ['controller'=>'Backend', 'method'=>'settings'],
+        'changePassword' => ['controller'=>'Backend', 'method'=>'changePassword'],
+        'changeLogin' => ['controller'=>'Backend', 'method'=>'changeLogin']
     ];
     public function __construct($request) {
         $this->request = $request;
