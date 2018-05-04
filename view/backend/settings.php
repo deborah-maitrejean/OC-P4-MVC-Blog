@@ -15,8 +15,8 @@
                 <legend>Changer le mot de passe de connexion</legend>
 
                 <div class="form-group">
-                    <label for="password">Entrez votre mot de passe actuel<span class="star">*</span></label>
-                    <input type="password" name="password" id="password" required class="form-control" maxlength="255">
+                    <label for="email">Entrez votre identifiant de connexion<span class="star">*</span></label>
+                    <input type="email" name="email" id="email" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="newPassword">Nouveau mot de passe<span class="star">*</span></label>

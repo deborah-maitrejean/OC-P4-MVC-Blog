@@ -13,11 +13,13 @@ class Backend{
             if (!empty($_POST['email']) && !empty($_POST['password'])){
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
                     // hachage du mot de passe
-                    $passHach = hash('sha512', htmlspecialchars($_POST['password']));
+                    $passHach = password_hash($_POST['password'], PASSWORD_BCRYPT);
                     // vérification des identifiants
                     $loginManager = new LoginManager();
-                    $login = $loginManager->getLogin($_POST['email'], $passHach);
-                    if ($login !== null) {
+                    $login = $loginManager->getLogin($_POST['email']);
+                    $psword = $login->getPassword();
+
+                    if ($login !== null && password_verify($_POST['password'], $psword)) {
                         // l'identification a réussi
                         $_SESSION['time']       = time();
                         $_SESSION['email']      = $login->getEmail();
@@ -58,25 +60,29 @@ class Backend{
         if(!isset($_SESSION)) {
             session_start();
         }
-        if (isset($_POST['submit']) && isset($_POST['password']) && isset($_POST['newPassword']) && isset($_POST['newPasswordVerif'])){
-            if (!empty($_POST['password']) && !empty($_POST['newPassword']) && !empty($_POST['newPasswordVerif'])){
-                if ($_POST['newPassword'] == $_POST['newPasswordVerif']){
-                    if ($_POST['password'] <= 255 && $_POST['newPassword'] <= 255){
-                        // hachage du mot de passe
-                        $passHash = hash('sha512', htmlspecialchars($_POST['password']));
-                        $loginManager = new LoginManager();
-                        $pass = $loginManager->checkPassword($passHash);
-                        if ($pass != null){
+        if (isset($_POST['submit']) && isset($_POST['email']) && isset($_POST['newPassword']) && isset($_POST['newPasswordVerif'])){
+            if (!empty($_POST['email']) && !empty($_POST['newPassword']) && !empty($_POST['newPasswordVerif'])){
+                if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
+                    if ($_POST['newPassword'] == $_POST['newPasswordVerif']){
+                        if ($_POST['email'] <= 255 && $_POST['newPassword'] <= 255){
+                            $loginManager = new LoginManager();
+                            $pass = $loginManager->getPass($_POST['email']);
+                            $psword = $pass->getPassword();
+
                             // hachage du nouveau mot de passe
-                            $newPassHash = hash('sha512', htmlspecialchars($_POST['newPassword']));
-                            $loginManager->updatePassword($newPassHash, $passHash);
-                            $_SESSION['message'] = 'Le mot de passe a été mis à jour.';
+                            $newPassHash = password_hash($_POST['newPassword'], PASSWORD_BCRYPT);
+                            if (password_verify($_POST['newPassword'], $newPassHash)){
+                                $loginManager->updatePassword($newPassHash, $_POST['email']);
+                                $_SESSION['message'] = 'Le mot de passe a été mis à jour.';
+                            }
+                        } else{
+                            $_SESSION['message'] = 'Le mot de passe ne doit pas pas dépasser 255 caractères.';
                         }
                     } else{
-                        $_SESSION['message'] = 'Le mot de passe ne doit pas pas dépasser 255 caractères.';
+                        $_SESSION['message'] = 'Les nouveaux mots de passe saisis ne sont pas identiques.';
                     }
                 } else{
-                    $_SESSION['message'] = 'Les nouveaux mots de passe saisis ne sont pas identiques.';
+                    $_SESSION['message'] = 'L\'adresse email de connexion n\'est pas au bon format.';
                 }
             } else{
                 $_SESSION['message'] = 'Tous les champs ne sont pas remplis.';

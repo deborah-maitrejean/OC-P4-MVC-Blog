@@ -7,10 +7,10 @@ use Entity\Logins;
 require_once("model/Manager.php");
 
 class LoginManager extends Manager {
-    public function getLogin($email, $passHach){
+    public function getLogin($email){
         $db = $this->dbconnect();
-        $req = $db->prepare('SELECT * FROM logins WHERE email = ? AND password = ?');
-        $req->execute(array($email, $passHach));
+        $req = $db->prepare('SELECT * FROM logins WHERE email = ?');
+        $req->execute(array($email));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
         if ($data !== false){
@@ -39,23 +39,25 @@ class LoginManager extends Manager {
 
         return $updatedLogin;
     }
-    public function checkPassword($password){
+    public function updatePassword($newPassword, $email){
         $db = $this->dbconnect();
-        $req = $db->prepare("SELECT password FROM logins WHERE password = ?");
-        $pass = $req->execute(array($password));
-
-        $data = $req->fetch(\PDO::FETCH_ASSOC);
-
-        $pass = new Logins();
-        $pass->hydrate($data);
-
-        return $pass;
-    }
-    public function updatePassword($newPassword, $password){
-        $db = $this->dbconnect();
-        $req = $db->prepare('UPDATE logins SET password = ? WHERE password = ?');
-        $updatedPassword = $req->execute(array($newPassword, $password));
+        $req = $db->prepare('UPDATE logins SET password = ? WHERE email = ?');
+        $updatedPassword = $req->execute(array($newPassword, $email));
 
         return $updatedPassword;
+    }
+
+    public function getPass($email){
+        $db = $this->dbconnect();
+        $req = $db->prepare('SELECT password FROM logins WHERE email = ?');
+        $req->execute(array($email));
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
+
+        if ($data !== false){
+            $pass = new Logins();
+            $pass->hydrate($data);
+
+            return $pass;
+        }
     }
 }
