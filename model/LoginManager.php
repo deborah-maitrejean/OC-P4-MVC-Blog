@@ -25,6 +25,18 @@ class LoginManager extends Manager {
         $req = $db->prepare('SELECT email FROM logins WHERE email = ?');
         $login = $req->execute(array($email));
 
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
+
+        $login = new Logins();
+        $login->hydrate($data);
+
         return $login;
+    }
+    public function updateLogin($newEmail, $email){
+        $db = $this->dbconnect();
+        $req = $db->prepare('UPDATE logins SET email = ? WHERE email = ?');
+        $updatedLogin = $req->execute(array($newEmail, $email));
+
+        return $updatedLogin;
     }
 }
