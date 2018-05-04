@@ -16,15 +16,15 @@
 
                 <div class="form-group">
                     <label for="password">Entrez votre mot de passe actuel<span class="star">*</span></label>
-                    <input type="text" name="password" id="password" required class="form-control">
+                    <input type="text" name="password" id="password" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="newPassword">Nouveau mot de passe<span class="star">*</span></label>
-                    <input type="text" name="newPassword" required class="form-control">
+                    <input type="text" name="newPassword" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="newPassword">Confirmez le nouveau mot de passe<span class="star">*</span></label>
-                    <input type="text" name="newPassword" required class="form-control">
+                    <input type="text" name="newPassword" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group reset-send">
                     <label for="submit"></label>
@@ -43,15 +43,15 @@
 
                 <div class="form-group">
                     <label for="email">Entrez votre adresse mail actuelle<span class="star">*</span></label>
-                    <input type="email" name="email" id="email" required class="form-control">
+                    <input type="email" name="email" id="email" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="newEmail">Nouvelle adresse mail de connexion<span class="star">*</span></label>
-                    <input type="email" name="newEmail" required class="form-control">
+                    <input type="email" name="newEmail" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="newEmailVerif">Confirmez la nouvelle adresse mail<span class="star">*</span></label>
-                    <input type="email" name="newEmailVerif" required class="form-control">
+                    <input type="email" name="newEmailVerif" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group reset-send">
                     <label for="submit"></label>
