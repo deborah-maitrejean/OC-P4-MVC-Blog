@@ -224,12 +224,17 @@ td.default{background-color: rgba(249, 237, 230, 0.2)!important;}
 .th{text-align: center;}
 
 /*forms*/
-#moderateCommentForm, .settings-form{
+#moderateCommentForm{
     background-color: #eee;
     opacity: 0.8;
     padding-top: 50px;
     padding-bottom: 50px;
     font-size: 16px;
+}
+.settings-row{
+    background-color: #eee;
+    opacity: 0.8;
+    padding: 15px;
 }
 .settings-form{
     margin-bottom: 25px;
