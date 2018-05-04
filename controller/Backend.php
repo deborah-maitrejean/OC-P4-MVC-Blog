@@ -55,6 +55,36 @@ class Backend{
         require('view/backend/settings.php');
     }
     public function changePassword(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_POST['submit']) && isset($_POST['password']) && isset($_POST['newPassword']) && isset($_POST['newPasswordVerif'])){
+            if (!empty($_POST['password']) && !empty($_POST['newPassword']) && !empty($_POST['newPasswordVerif'])){
+                if ($_POST['newPassword'] == $_POST['newPasswordVerif']){
+                    if ($_POST['password'] <= 255 && $_POST['newPassword'] <= 255){
+                        // hachage du mot de passe
+                        $passHash = hash('sha512', htmlspecialchars($_POST['password']));
+                        $loginManager = new LoginManager();
+                        $pass = $loginManager->checkPassword($passHash);
+                        if ($pass != null){
+                            // hachage du nouveau mot de passe
+                            $newPassHash = hash('sha512', htmlspecialchars($_POST['newPassword']));
+                            $loginManager->updatePassword($newPassHash, $passHash);
+                            $_SESSION['message'] = 'Le mot de passe a été mis à jour.';
+                        }
+                    } else{
+                        $_SESSION['message'] = 'Le mot de passe ne doit pas pas dépasser 255 caractères.';
+                    }
+                } else{
+                    $_SESSION['message'] = 'Les nouveaux mots de passe saisis ne sont pas identiques.';
+                }
+            } else{
+                $_SESSION['message'] = 'Tous les champs ne sont pas remplis.';
+            }
+        } else{
+            $_SESSION['message'] = 'Une erreur est survenue.';
+        }
+        header('location: index.php?action=settings');
     }
     public function changeLogin(){
         if(!isset($_SESSION)) {
