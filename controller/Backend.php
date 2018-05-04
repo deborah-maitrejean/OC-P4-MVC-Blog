@@ -66,10 +66,15 @@ class Backend{
                 $login = $loginManager->checkLogin($_POST['email']);
                 if ($login->getEmail() != null && $login->getEmail() == $_POST['email']){
                     if ($_POST['newEmail'] == $_POST['newEmailVerif']){
-                        $newEmail = $_POST['newEmail'];
-                        $email = $login->getEmail();
-                        $loginManager->updateLogin($newEmail, $email);
-                        $_SESSION['message'] = 'L\'identifiant a été mis à jour.';
+                        $emailPattern = "#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#";
+                        if (preg_match($emailPattern, $_POST['newEmail'])){
+                            $newEmail = $_POST['newEmail'];
+                            $email = $login->getEmail();
+                            $loginManager->updateLogin($newEmail, $email);
+                            $_SESSION['message'] = 'L\'identifiant a été mis à jour.';
+                        } else{
+                            $_SESSION['message'] = 'Le format de l\'adresse email est invalide.';
+                        }
                     } else{
                         $_SESSION['message'] = 'Les nouveaux identifiants saisis ne sont pas identiques.';
                     }
