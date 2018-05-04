@@ -57,6 +57,32 @@ class Backend{
     public function changePassword(){
     }
     public function changeLogin(){
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_POST['submit']) && isset($_POST['email']) && isset($_POST['newEmail']) && isset($_POST['newEmailVerif'])){
+            if (!empty($_POST['email']) && !empty($_POST['newEmail']) && !empty($_POST['newEmailVerif'])){
+                $loginManager = new LoginManager();
+                $login = $loginManager->checkLogin($_POST['email']);
+                if ($login->getEmail() != null && $login->getEmail() == $_POST['email']){
+                    if ($_POST['newEmail'] == $_POST['newEmailVerif']){
+                        $newEmail = $_POST['newEmail'];
+                        $email = $login->getEmail();
+                        $loginManager->updateLogin($newEmail, $email);
+                        $_SESSION['message'] = 'L\'identifiant a été mis à jour.';
+                    } else{
+                        $_SESSION['message'] = 'Les nouveaux identifiants saisis ne sont pas identiques.';
+                    }
+                } else{
+                    $_SESSION['message'] = 'L\'identifiant n\'est pas reconnu.';
+                }
+            } else{
+                $_SESSION['message'] = 'Tous les champs ne sont pas remplis.';
+            }
+        } else{
+            $_SESSION['message'] = 'Une erreur est survenue.';
+        }
+        header('location: index.php?action=settings');
     }
     public function adminHomeView(){
         require('view/backend/adminHomeView.php');
