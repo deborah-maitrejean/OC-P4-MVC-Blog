@@ -7,10 +7,10 @@ use Entity\Logins;
 require_once("model/Manager.php");
 
 class LoginManager extends Manager {
-    public function getLogin($email, $passHach){
+    public function getLogin($email){
         $db = $this->dbconnect();
-        $req = $db->prepare('SELECT * FROM logins WHERE email = ? AND password = ?');
-        $req->execute(array($email, $passHach));
+        $req = $db->prepare('SELECT * FROM logins WHERE email = ?');
+        $req->execute(array($email));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
         if ($data !== false){
@@ -51,11 +51,25 @@ class LoginManager extends Manager {
 
         return $pass;
     }
-    public function updatePassword($newPassword, $password){
+    public function updatePassword($newPassword, $email){
         $db = $this->dbconnect();
-        $req = $db->prepare('UPDATE logins SET password = ? WHERE password = ?');
-        $updatedPassword = $req->execute(array($newPassword, $password));
+        $req = $db->prepare('UPDATE logins SET password = ? WHERE email = ?');
+        $updatedPassword = $req->execute(array($newPassword, $email));
 
         return $updatedPassword;
+    }
+
+    public function getPass($email){
+        $db = $this->dbconnect();
+        $req = $db->prepare('SELECT password FROM logins WHERE email = ?');
+        $req->execute(array($email));
+        $data = $req->fetch(\PDO::FETCH_ASSOC);
+
+        if ($data !== false){
+            $pass = new Logins();
+            $pass->hydrate($data);
+
+            return $pass;
+        }
     }
 }
