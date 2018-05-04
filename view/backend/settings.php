@@ -16,15 +16,15 @@
 
                 <div class="form-group">
                     <label for="password">Entrez votre mot de passe actuel<span class="star">*</span></label>
-                    <input type="text" name="password" id="password" required class="form-control" maxlength="255">
+                    <input type="password" name="password" id="password" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="newPassword">Nouveau mot de passe<span class="star">*</span></label>
-                    <input type="text" name="newPassword" required class="form-control" maxlength="255">
+                    <input type="password" name="newPassword" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
-                    <label for="newPassword">Confirmez le nouveau mot de passe<span class="star">*</span></label>
-                    <input type="text" name="newPassword" required class="form-control" maxlength="255">
+                    <label for="newPasswordVerif">Confirmez le nouveau mot de passe<span class="star">*</span></label>
+                    <input type="password" name="newPasswordVerif" required class="form-control" maxlength="255">
                 </div>
                 <div class="form-group reset-send">
                     <label for="submit"></label>
