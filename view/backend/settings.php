@@ -42,16 +42,16 @@
                 <legend>Changer l'identifiant de connexion</legend>
 
                 <div class="form-group">
-                    <label for="login">Entrez votre identifiant actuel<span class="star">*</span></label>
-                    <input type="text" name="login" id="login" required class="form-control">
+                    <label for="email">Entrez votre adresse mail actuelle<span class="star">*</span></label>
+                    <input type="email" name="email" id="email" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="newLogin">Nouvel identifiant<span class="star">*</span></label>
-                    <input type="text" name="newLogin" required class="form-control">
+                    <label for="newEmail">Nouvelle adresse mail de connexion<span class="star">*</span></label>
+                    <input type="email" name="newEmail" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="newLoginVerif">Confirmez le nouvel identifiant<span class="star">*</span></label>
-                    <input type="text" name="newLoginVerif" required class="form-control">
+                    <label for="newEmailVerif">Confirmez la nouvelle adresse mail<span class="star">*</span></label>
+                    <input type="email" name="newEmailVerif" required class="form-control">
                 </div>
                 <div class="form-group reset-send">
                     <label for="submit"></label>
