@@ -49,7 +49,6 @@ class Backend{
     public function logOut(){
         if (session_start()){
             session_destroy();
-            setcookie('adminSession');
             header('location: index.php');
         }
     }
