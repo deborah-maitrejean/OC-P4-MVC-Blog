@@ -117,7 +117,7 @@ CREATE TABLE `logins` (
 --
 
 INSERT INTO `logins` (`id`, `email`, `password`) VALUES
-(1, 'jforteroche@gmail.com', '$2y$10$kYBFd2.0fedXdKEVbbKiD.VVhAWhdt5CNql61TLLbluofkcPoRzvG');
+(1, '', '');
 
 -- --------------------------------------------------------
 
