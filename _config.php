@@ -10,4 +10,4 @@ define('CONTROLLER', ROOT . 'controller/');
 define('VIEW', ROOT . 'view/');
 define('MODEL', ROOT . 'model/');
 define('CLASSES', ROOT . 'classes/');
-define('ASSETS', HOST . 'assets/');
+define('ASSETS', HOST . 'public/');
