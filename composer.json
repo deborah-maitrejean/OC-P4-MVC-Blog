@@ -2,7 +2,8 @@
     "name": "deborah/blog",
     "description": "MVC blog with admin interface",
     "require": {
-        "twig/twig": "^2.4"
+        "twig/twig": "^2.4",
+        "digitalnature/php-ref": "^1.2"
     },
     "authors": [
         {
