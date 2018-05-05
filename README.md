@@ -8,4 +8,7 @@ Installation
 3. install composer https://getcomposer.org/
 4. install digital nature package (var_dump shortcut) with composer
 5. install twig package with composer
-6. update RewriteRule in .htaccess file
+6. update RewriteRule in .htaccess file with your own website url, change port if you use another one
+7. 
+8.
+9.
