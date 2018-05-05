@@ -8,7 +8,7 @@
         <form action="index.php?action=updatePost&amp;postId=<?= $post->getId(); ?>" method="post">
             <div class="form-group">
                 <label for="title">Titre:</label>
-                <input type="text" name="title" value="<?=  $post->getTitle(); ?>">
+                <input type="text" name="title" value="<?=  $post->getTitle(); ?>" maxlength="255">
             </div>
             <div class="form-group">
                 <label for="content">Contenu:</label>

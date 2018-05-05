@@ -295,17 +295,21 @@ class Backend{
         }
         if (isset($_GET['postId']) && $_GET['postId'] > 0){
             if (isset($_POST['title']) && isset($_POST['content'])){
-                if (!empty($_POST['title']) && !empty($_POST['content'])){
-                    $title = strip_tags($_POST['title']);
-                    $content  = $_POST['content'];
-                    $author = strip_tags($_POST['author']);
+                if ($_POST['title'] > 255){
+                    if (!empty($_POST['title']) && !empty($_POST['content'])){
+                        $title = strip_tags($_POST['title']);
+                        $content  = $_POST['content'];
+                        $potsId = $_GET['postId'];
 
-                    $postManager = new PostManager();
-                    $post = $postManager->updatePost($title, $content, $author);
+                        $postManager = new PostManager();
+                        $post = $postManager->updatePost($title, $content, $potsId);
 
-                    $_SESSION['message'] = 'Le billet a été mis à jour.';
+                        $_SESSION['message'] = 'Le billet a été mis à jour.';
+                    } else{
+                        $_SESSION['message'] = 'Tous les champs ne sont pas remplis.';
+                    }
                 } else{
-                    $_SESSION['message'] = 'Tous les champs ne sont pas remplis.';
+                    $_SESSION['message'] = 'Le titre ne doit pas dépasser 255 caractères.';
                 }
             } else{
                 $_SESSION['message'] = 'Un problème est survenu.';
