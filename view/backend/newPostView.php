@@ -13,7 +13,7 @@
         <form action="index.php?action=publishPost" method="post">
             <div class="form-group">
                 <label for="title">Titre:</label>
-                <input type="text" name="title">
+                <input type="text" name="title" maxlength="255">
             </div>
             <div class="form-group">
                 <label for="content">Contenu:</label>

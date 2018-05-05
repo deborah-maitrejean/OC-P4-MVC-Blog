@@ -16,7 +16,7 @@ class PostManager extends Manager {
         foreach($postsNb as $key=>$value) {
             $nbPosts = $postsNb[$key];
         }
-        return $nbPosts; // le nombre de posts est retourné
+        return $nbPosts;
     }
     public function countPages($nbPosts,  $perPage){
         $nbPages = ceil($nbPosts / $perPage);
@@ -116,7 +116,6 @@ class PostManager extends Manager {
     public function publishNewPost($title, $content, $author) {
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO posts(title, content, author, creationDate) VALUES(?, ?, ?, NOW())');
-        // Récupération en paramètres des informations dont on a besoin
         $affectedLines = $post->execute(array($title, $content, $author));
 
         return $affectedLines;
