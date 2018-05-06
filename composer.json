@@ -3,7 +3,9 @@
     "description": "MVC blog with admin interface",
     "require": {
         "twig/twig": "^2.4",
-        "digitalnature/php-ref": "^1.2"
+        "digitalnature/php-ref": "^1.2",
+        "swiftmailer/swiftmailer": "^6.0",
+        "phpmailer/phpmailer": "^6.0"
     },
     "authors": [
         {
