@@ -55,9 +55,9 @@ class ContactManager {
         //Set who the message is to be sent from
         $mail->SetFrom($email, $firstName .'' .$lastName); //'adresse@mail.com', 'First Last'
         //Set an alternative reply-to address
-        $mail->AddReplyTo('replyto@example.com','First Last'); //'replyto@example.com','First Last'
+        $mail->AddReplyTo('replyto@example.com','First Last');
         //Set who the message is to be sent to
-        $mail->AddAddress('forterochej@gmail.com', 'Jen Forteroche'); //'monadressemail@serveur.tld', 'John Doe'
+        $mail->AddAddress('monadressemail@serveur.tld', 'John Doe');
         //Set the subject line
         $mail->Subject = $subject; // 'PHPMailer GMail SMTP test'
         $mail->Body = $message;
