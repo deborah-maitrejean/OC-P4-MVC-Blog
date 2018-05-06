@@ -53,7 +53,7 @@ class Backend{
         }
     }
     public function settings(){
-        require('view/backend/settings.php');
+        require('../view/backend/settings.php');
     }
     public function changePassword(){
         if(!isset($_SESSION)) {
@@ -129,10 +129,10 @@ class Backend{
         header('location: index.php?action=settings');
     }
     public function adminHomeView(){
-        require('view/backend/adminHomeView.php');
+        require('../view/backend/adminHomeView.php');
     }
     public function newPostView(){
-        require('view/backend/newPostView.php');
+        require('../view/backend/newPostView.php');
     }
     public function commentsModeration(){
         $commentManager = new CommentManager();
@@ -159,7 +159,7 @@ class Backend{
             $comments = false;
         }
 
-        require('view/backend/commentsModeration.php');
+        require('../view/backend/commentsModeration.php');
     }
     public function commentModeration(){
         if(!isset($_SESSION)) {
@@ -169,7 +169,7 @@ class Backend{
             $commentManager = new CommentManager();
             $comment = $commentManager->getComment($_GET['commentId']);
 
-            require('view/backend/commentModeration.php');
+            require('../view/backend/commentModeration.php');
         } else {
             $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
             header('location: index.php?action=commentsModeration');
@@ -233,7 +233,7 @@ class Backend{
             $posts = false;
         }
 
-        require('view/backend/postsManager.php');
+        require('../view/backend/postsManager.php');
     }
     public function publishPost(){
         if(!isset($_SESSION)) {
@@ -272,7 +272,7 @@ class Backend{
             $postManager = new PostManager();
             $post = $postManager->getPost($_GET['postId']);
 
-            require('view/backend/postView.php');
+            require('../view/backend/postView.php');
         } else{
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
             header('location: index.php?action=postsManager');
