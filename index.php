@@ -1,5 +1,5 @@
 <?php
-use \Classes\Router;
+use \Services\Router;
 
 require('vendor/digitalnature/php-ref/ref.php');
 include_once('_config.php');
