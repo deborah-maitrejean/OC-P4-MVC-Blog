@@ -5,10 +5,8 @@ A school project based on the last exercice of the "Adoptez une architecture MVC
 Installation
 1. fisrt, you have to hash admin password with hashPass.php file (install directory).
 2. install database, then add in logins table, your login and the hash password
-3. install composer https://getcomposer.org/
-4. install digital nature package (var_dump shortcut) with composer
-5. install twig package with composer
-6. update RewriteRule in .htaccess file with your own website url, change port if you use another one
-7. 
-8.
-9.
+3. update comment RewriteRule in .htaccess file with your own website url, change port if server use another one
+4. install composer https://getcomposer.org/
+5. install digital nature package (var_dump shortcut) with composer, if you use it, else delete digitalnature require in index.php
+6. install twig package with composer
+7.  

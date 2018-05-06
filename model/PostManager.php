@@ -3,8 +3,6 @@
 namespace Model;
 use Entity\Posts;
 
-require_once("model/Manager.php");
-
 class PostManager extends Manager {
     public function countPosts(){
         $db = $this->dbConnect();

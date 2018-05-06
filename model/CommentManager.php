@@ -1,10 +1,7 @@
 <?php
 
 namespace Model;
-
 use Entity\Comments;
-
-require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
@@ -23,7 +20,7 @@ class CommentManager extends Manager
         foreach($commentsNb as $key=>$value) {
             $nbComments = $commentsNb[$key];
         }
-        return $nbComments; // le nombre de commentaires est retourné
+        return $nbComments;
     }
     public function countPages($nbComments,  $perPage){
         $nbPages = ceil($nbComments / $perPage);

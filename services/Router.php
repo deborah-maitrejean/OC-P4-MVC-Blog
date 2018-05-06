@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Services;
 use \Controller\Frontend;
 use \Controller\Backend;
 

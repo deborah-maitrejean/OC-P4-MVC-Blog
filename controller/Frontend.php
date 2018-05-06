@@ -17,13 +17,13 @@ class Frontend{
         }
         $posts = $postManager->getPosts($currentPage, $perPage);
 
-        require('view/frontend/allPostsView.php');
+        require('../view/frontend/allPostsView.php');
     }
     public function listPostsExcerpt() {
         $postManager = new PostManager();
         $posts = $postManager->getPostsExcerpt();
 
-        require('view/frontend/listPostsView.php');
+        require('../view/frontend/listPostsView.php');
     }
     public function postNcomments() {
         $postManager = new PostManager();
@@ -43,8 +43,7 @@ class Frontend{
         } else{
             $comments = false;
         }
-
-        require('view/frontend/postView.php');
+        require('../view/frontend/postView.php');
     }
     public function addComment() {
         if(!isset($_SESSION)) {
@@ -63,7 +62,6 @@ class Frontend{
 
                     if ($affectedLines === false) {
                         $_SESSION['message'] = 'Impossible d\'ajouter le commentaire !';
-
                     }
                 } else{
                     $_SESSION['message'] = 'Les champs ne doivent pas dépasser 255 caractères.';
@@ -100,15 +98,15 @@ class Frontend{
                 header('Location: index.php?action=adminHomeView');
             } else{
                 session_destroy();
-                require('view/frontend/adminConnexionView.php');
+                require('../view/frontend/adminConnexionView.php');
             }
         }
     }
     public function aboutView(){
-        require('view/frontend/aboutView.php');
+        require('../view/frontend/aboutView.php');
     }
     public function contactView(){
-        require('view/frontend/contactView.php');
+        require('../view/frontend/contactView.php');
     }
     public function sendMail(){
         if(!isset($_SESSION)) {
@@ -143,12 +141,12 @@ class Frontend{
         header('Location: index.php?action=contact');
     }
     public function cookies(){
-        require('view/frontend/privacy.php');
+        require('../view/frontend/privacy.php');
     }
     public function legalesMentions(){
-        require('view/frontend/legalesMentions.php');
+        require('../view/frontend/legalesMentions.php');
     }
     public function page404(){
-        require('view/frontend/404.php');
+        require('../view/frontend/404.php');
     }
 }

@@ -4,7 +4,6 @@ namespace Model;
 
 use Entity\Logins;
 
-require_once("model/Manager.php");
 
 class LoginManager extends Manager {
     public function getLogin($email){

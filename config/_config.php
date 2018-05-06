@@ -9,5 +9,5 @@ define('HOST', 'http://'. $host . '/OC-P4-MVC-Blog/');
 define('CONTROLLER', ROOT . 'controller/');
 define('VIEW', ROOT . 'view/');
 define('MODEL', ROOT . 'model/');
-define('CLASSES', ROOT . 'classes/');
+define('CLASSES', ROOT . 'services/');
 define('ASSETS', HOST . 'public/');
