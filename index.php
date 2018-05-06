@@ -2,7 +2,7 @@
 use \Services\Router;
 
 require('vendor/digitalnature/php-ref/ref.php');
-include_once('_config.php');
+include_once('config/_config.php');
 include_once('MyAutoload.php');
 MyAutoload::start();
 
