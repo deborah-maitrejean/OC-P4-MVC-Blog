@@ -37,7 +37,7 @@
                     <label for="message">Votre message<span class="star">*</span></label>
                     <textarea name="message" id="message" rows="8" required class="form-control"></textarea>
                 </div>
-
+                <div class="form-group g-recaptcha" data-sitekey=""></div>
                 <div class="form-group reset-send">
                     <label for="submit"></label>
                     <input type="submit" id="submit" name="submit" title="Valider et envoyer le formulaire" class="btn btn-success btn-lg" value="Envoyer">
