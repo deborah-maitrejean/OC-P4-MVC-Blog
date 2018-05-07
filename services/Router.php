@@ -146,11 +146,18 @@ class Router
         $this->request = $request;
     }
 
+    /**
+     * @return array
+     */
+    public function getRoutes() {
+        return $this->routes;
+    }
+
     public function renderController()
     {
         $request = $this->request;
         try {
-            if (key_exists($request, $this->routes)) {
+            if (key_exists($request, $this->getRoutes())) {
                 $controller = $this->routes[$request]['controller'];
                 $method = $this->routes[$request]['method'];
                 if ($controller == 'Frontend') {
