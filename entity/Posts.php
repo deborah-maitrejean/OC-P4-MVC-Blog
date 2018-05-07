@@ -1,7 +1,13 @@
 <?php
+
 namespace Entity;
 
-class Posts extends Table{
+/**
+ * Class Posts
+ * @package Entity
+ */
+class Posts extends Table
+{
     private $id;
     private $author;
     private $title;
