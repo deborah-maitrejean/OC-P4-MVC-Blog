@@ -12,40 +12,130 @@ use \Controller\Backend;
 class Router
 {
     private $request;
-    private $routes = [
+    private $routes = array(
         // frontend:
-        '' => ['controller' => 'Frontend', 'method' => 'listPostsExcerpt'],
-        'home' => ['controller' => 'Frontend', 'method' => 'listPostsExcerpt'],
-        'allPostsView' => ['controller' => 'Frontend', 'method' => 'listPosts'],
-        'about' => ['controller' => 'Frontend', 'method' => 'aboutView'],
-        'contact' => ['controller' => 'Frontend', 'method' => 'contactView'],
-        'adminConnexion' => ['controller' => 'Frontend', 'method' => 'adminView'],
-        'listPosts' => ['controller' => 'Frontend', 'method' => 'listPosts'],
-        'post' => ['controller' => 'Frontend', 'method' => 'postNcomments'],
-        'addComment' => ['controller' => 'Frontend', 'method' => 'addComment'],
-        'reportComment' => ['controller' => 'Frontend', 'method' => 'reportComment'],
-        'sendMail' => ['controller' => 'Frontend', 'method' => 'sendMail'],
-        'cookies' => ['controller' => 'Frontend', 'method' => 'cookies'],
-        'legalesMentions' => ['controller' => 'Frontend', 'method' => 'legalesMentions'],
-        '404' => ['controller' => 'Frontend', 'method' => 'page404'],
+        '' => array(
+            'controller' => 'Frontend',
+            'method' => 'listPostsExcerpt'
+        ),
+        'home' => array(
+            'controller' => 'Frontend',
+            'method' => 'listPostsExcerpt'
+        ),
+        'allPostsView' => array(
+            'controller' => 'Frontend',
+            'method' => 'listPosts'
+        ),
+        'about' => array(
+            'controller' => 'Frontend',
+            'method' => 'aboutView'
+        ),
+        'contact' => array(
+            'controller' => 'Frontend',
+            'method' => 'contactView'
+        ),
+        'adminConnexion' => array(
+            'controller' => 'Frontend',
+            'method' => 'adminView'
+        ),
+        'listPosts' => array(
+            'controller' => 'Frontend',
+            'method' => 'listPosts'
+        ),
+        'post' => array(
+            'controller' => 'Frontend',
+            'method' => 'postNcomments'
+        ),
+        'addComment' => array(
+            'controller' => 'Frontend',
+            'method' => 'addComment'
+        ),
+        'reportComment' => array(
+            'controller' => 'Frontend',
+            'method' => 'reportComment'
+        ),
+        'sendMail' => array(
+            'controller' => 'Frontend',
+            'method' => 'sendMail'
+        ),
+        'cookies' => array(
+            'controller' => 'Frontend',
+            'method' => 'cookies'
+        ),
+        'legalesMentions' => array(
+            'controller' => 'Frontend',
+            'method' => 'legalesMentions'
+        ),
+        '404' => array(
+            'controller' => 'Frontend',
+            'method' => 'page404'
+        ),
         // backend:
-        'adminInterfaceLogin' => ['controller' => 'Backend', 'method' => 'loginControl'],
-        'adminHomeView' => ['controller' => 'Backend', 'method' => 'adminHomeView'],
-        'postsManager' => ['controller' => 'Backend', 'method' => 'postsManager'],
-        'newPost' => ['controller' => 'Backend', 'method' => 'newPostView'],
-        'publishPost' => ['controller' => 'Backend', 'method' => 'publishPost'],
-        'viewOrChangePost' => ['controller' => 'Backend', 'method' => 'viewOrChangePost'],
-        'updatePost' => ['controller' => 'Backend', 'method' => 'updatePost'],
-        'deletePost' => ['controller' => 'Backend', 'method' => 'deletePost'],
-        'commentsModeration' => ['controller' => 'Backend', 'method' => 'commentsModeration'],
-        'moderateComment' => ['controller' => 'Backend', 'method' => 'commentModeration'],
-        'editComment' => ['controller' => 'Backend', 'method' => 'adminUpdateComment'],
-        'deleteComment' => ['controller' => 'Backend', 'method' => 'deleteComment'],
-        'logOut' => ['controller' => 'Backend', 'method' => 'logOut'],
-        'settings' => ['controller' => 'Backend', 'method' => 'settings'],
-        'changePassword' => ['controller' => 'Backend', 'method' => 'changePassword'],
-        'changeLogin' => ['controller' => 'Backend', 'method' => 'changeLogin']
-    ];
+        'adminInterfaceLogin' => array(
+            'controller' => 'Backend',
+            'method' => 'loginControl'
+        ),
+        'adminHomeView' => array(
+            'controller' => 'Backend',
+            'method' => 'adminHomeView'
+        ),
+        'postsManager' => array(
+            'controller' => 'Backend',
+            'method' => 'postsManager'
+        ),
+        'newPost' => array(
+            'controller' => 'Backend',
+            'method' => 'newPostView'
+        ),
+        'publishPost' => array(
+            'controller' => 'Backend',
+            'method' => 'publishPost'
+        ),
+        'viewOrChangePost' => array(
+            'controller' => 'Backend',
+            'method' => 'viewOrChangePost'
+        ),
+        'updatePost' => array(
+            'controller' => 'Backend',
+            'method' => 'updatePost'
+        ),
+        'deletePost' => array(
+            'controller' => 'Backend',
+            'method' => 'deletePost'
+        ),
+        'commentsModeration' => array(
+            'controller' => 'Backend',
+            'method' => 'commentsModeration'
+        ),
+        'moderateComment' => array(
+            'controller' => 'Backend',
+            'method' => 'commentModeration'
+        ),
+        'editComment' => array(
+            'controller' => 'Backend',
+            'method' => 'adminUpdateComment'
+        ),
+        'deleteComment' => array(
+            'controller' => 'Backend',
+            'method' => 'deleteComment'
+        ),
+        'logOut' => array(
+            'controller' => 'Backend',
+            'method' => 'logOut'
+        ),
+        'settings' => array(
+            'controller' => 'Backend',
+            'method' => 'settings'
+        ),
+        'changePassword' => array(
+            'controller' => 'Backend',
+            'method' => 'changePassword'
+        ),
+        'changeLogin' => array(
+            'controller' => 'Backend',
+            'method' => 'changeLogin'
+        )
+    );
 
     /**
      * Router constructor.
