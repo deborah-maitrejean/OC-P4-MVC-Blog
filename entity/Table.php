@@ -9,7 +9,14 @@
 namespace Entity;
 
 
+/**
+ * Class Table
+ * @package Entity
+ */
 class Table {
+    /**
+     * @param array $data
+     */
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value){

@@ -9,7 +9,20 @@ require '../vendor/phpmailer/phpmailer/src/Exception.php';
 require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 
+/**
+ * Class ContactManager
+ * @package model
+ */
 class ContactManager {
+    /**
+     * @param $lastName
+     * @param $firstName
+     * @param $tel
+     * @param $email
+     * @param $subject
+     * @param $message
+     * @throws Exception
+     */
     public function sendMail($lastName, $firstName, $tel, $email, $subject, $message){
         //Create a new PHPMailer instance
         $mail = new PHPMailer(true); // Passing `true` enables exceptions

@@ -1,6 +1,10 @@
 <?php
 namespace Entity;
 
+/**
+ * Class Posts
+ * @package Entity
+ */
 class Posts extends Table{
     private $id;
     private $author;

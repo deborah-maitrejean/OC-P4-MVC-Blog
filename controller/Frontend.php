@@ -4,6 +4,10 @@ use \Model\CommentManager;
 use \Model\PostManager;
 use \Model\ContactManager;
 
+/**
+ * Class Frontend
+ * @package Controller
+ */
 class Frontend{
     public function listPosts() {
         $postManager = new PostManager();

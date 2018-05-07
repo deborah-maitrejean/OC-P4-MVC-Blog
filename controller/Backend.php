@@ -4,6 +4,10 @@ use \Model\CommentManager;
 use \Model\LoginManager;
 use \Model\PostManager;
 
+/**
+ * Class Backend
+ * @package Controller
+ */
 class Backend{
     public function loginControl(){
         if(!isset($_SESSION)) {

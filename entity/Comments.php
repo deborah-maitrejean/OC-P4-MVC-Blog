@@ -1,6 +1,10 @@
 <?php
 namespace Entity;
 
+/**
+ * Class Comments
+ * @package Entity
+ */
 class Comments extends Table
 {
     private $id;

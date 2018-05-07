@@ -1,6 +1,10 @@
 <?php
 namespace Entity;
 
+/**
+ * Class Logins
+ * @package Entity
+ */
 class Logins extends Table
 {
     private $id;

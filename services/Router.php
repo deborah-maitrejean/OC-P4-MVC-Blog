@@ -3,6 +3,10 @@ namespace Services;
 use \Controller\Frontend;
 use \Controller\Backend;
 
+/**
+ * Class Router
+ * @package Services
+ */
 class Router {
     private $request;
     private $routes = [
@@ -39,6 +43,11 @@ class Router {
         'changePassword' => ['controller'=>'Backend', 'method'=>'changePassword'],
         'changeLogin' => ['controller'=>'Backend', 'method'=>'changeLogin']
     ];
+
+    /**
+     * Router constructor.
+     * @param $request
+     */
     public function __construct($request) {
         $this->request = $request;
     }
