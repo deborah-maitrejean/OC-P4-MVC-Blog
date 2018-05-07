@@ -146,20 +146,26 @@ class Router
         $this->request = $request;
     }
 
+    public function getAction()
+    {
+        $action = $this->request;
+        return $action;
+    }
+
     /**
      * @return array
      */
-    public function getRoutes() {
+    public function getRoutes()
+    {
         return $this->routes;
     }
 
     public function renderController()
     {
-        $request = $this->request;
         try {
-            if (key_exists($request, $this->getRoutes())) {
-                $controller = $this->routes[$request]['controller'];
-                $method = $this->routes[$request]['method'];
+            if (key_exists($this->getAction(), $this->getRoutes())) {
+                $controller = $this->getRoutes()[$this->getAction()]['controller'];
+                $method = $this->getRoutes()[$this->getAction()]['method'];
                 if ($controller == 'Frontend') {
                     $currentController = new Frontend();
                 } else {
