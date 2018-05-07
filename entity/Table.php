@@ -13,13 +13,14 @@ namespace Entity;
  * Class Table
  * @package Entity
  */
-class Table {
+class Table
+{
     /**
      * @param array $data
      */
     public function hydrate(array $data)
     {
-        foreach ($data as $key => $value){
+        foreach ($data as $key => $value) {
             $setter = 'set' . ucfirst($key);
             $this->$setter($value);
         }

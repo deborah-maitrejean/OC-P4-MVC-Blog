@@ -1,24 +1,27 @@
 <?php
 
 namespace Model;
+
 use Entity\Posts;
 
 /**
  * Class PostManager
  * @package Model
  */
-class PostManager extends Manager {
+class PostManager extends Manager
+{
     /**
      * @return mixed
      */
-    public function countPosts(){
+    public function countPosts()
+    {
         $db = $this->dbConnect();
         $req = $db->query('SELECT COUNT(id) FROM posts');
 
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $data = $req->fetchAll();
         $postsNb = $data[0];
-        foreach($postsNb as $key=>$value) {
+        foreach ($postsNb as $key => $value) {
             $nbPosts = $postsNb[$key];
         }
         return $nbPosts;
@@ -29,7 +32,8 @@ class PostManager extends Manager {
      * @param $perPage
      * @return float
      */
-    public function countPages($nbPosts, $perPage){
+    public function countPages($nbPosts, $perPage)
+    {
         $nbPages = ceil($nbPosts / $perPage);
 
         return $nbPages;
@@ -40,12 +44,13 @@ class PostManager extends Manager {
      * @param $perPage
      * @return array
      */
-    public function getPosts($currentPage, $perPage) {
+    public function getPosts($currentPage, $perPage)
+    {
         $db = $this->dbConnect();
-        $req = $db->query("SELECT * , DATE_FORMAT(creationDate, '%d/%m/%Y à %Hh%im%ss') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT ".(($currentPage-1)*$perPage).",$perPage");
+        $req = $db->query("SELECT * , DATE_FORMAT(creationDate, '%d/%m/%Y à %Hh%im%ss') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT " . (($currentPage - 1) * $perPage) . ",$perPage");
 
         $posts = array();
-        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
             $post = new Posts();
             $post->hydrate($data);
             $posts[] = $post;
@@ -58,12 +63,13 @@ class PostManager extends Manager {
     /**
      * @return array
      */
-    public function getAllPosts() {
+    public function getAllPosts()
+    {
         $db = $this->dbConnect();
         $req = $db->query('SELECT * , DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate');
         $posts = array();
 
-        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
             $post = new Posts();
             $post->hydrate($data);
             $posts[] = $post;
@@ -80,17 +86,18 @@ class PostManager extends Manager {
      * @param string $params
      * @return array
      */
-    public function getAllPostsExcerpt($currentPage, $perPage, $params = '') {
+    public function getAllPostsExcerpt($currentPage, $perPage, $params = '')
+    {
         $db = $this->dbConnect();
 
-        if ($params == 'date'){
-            $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate LIMIT '.(($currentPage-1)*$perPage).', '.$perPage.' ');
-        } else{
-            $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT '.(($currentPage-1)*$perPage).', '.$perPage.' ');
+        if ($params == 'date') {
+            $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate LIMIT ' . (($currentPage - 1) * $perPage) . ', ' . $perPage . ' ');
+        } else {
+            $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT ' . (($currentPage - 1) * $perPage) . ', ' . $perPage . ' ');
         }
         $posts = array();
 
-        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
             $post = new Posts();
             $post->hydrate($data);
             $posts[] = $post;
@@ -104,12 +111,13 @@ class PostManager extends Manager {
     /**
      * @return array
      */
-    public function getAllPostsExcerptDesc() {
+    public function getAllPostsExcerptDesc()
+    {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 300) AS postExcerpt, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC');
         $posts = array();
 
-        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
             $post = new Posts();
             $post->hydrate($data);
             $posts[] = $post;
@@ -123,12 +131,13 @@ class PostManager extends Manager {
     /**
      * @return array
      */
-    public function getPostsExcerpt(){
+    public function getPostsExcerpt()
+    {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, SUBSTRING(content, 1, 380) AS postExcerpt, author, DATE_FORMAT(creationDate,  \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts ORDER BY creationDate DESC LIMIT 0,4');
         $posts = array();
 
-        while ($data = $req->fetch(\PDO::FETCH_ASSOC)){
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
             $post = new Posts();
             $post->hydrate($data);
             $posts[] = $post;
@@ -143,7 +152,8 @@ class PostManager extends Manager {
      * @param $postId
      * @return Posts
      */
-    public function getPost($postId) {
+    public function getPost($postId)
+    {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%im%ss\') AS creationDateFr FROM posts WHERE id = ?');
         $req->execute(array($postId));
@@ -161,7 +171,8 @@ class PostManager extends Manager {
      * @param $author
      * @return bool
      */
-    public function publishNewPost($title, $content, $author) {
+    public function publishNewPost($title, $content, $author)
+    {
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO posts(title, content, author, creationDate) VALUES(?, ?, ?, NOW())');
         $affectedLines = $post->execute(array($title, $content, $author));
@@ -172,7 +183,8 @@ class PostManager extends Manager {
     /**
      * @param $postId
      */
-    public function deletePost($postId){
+    public function deletePost($postId)
+    {
         $db = $this->dbConnect();
         $post = $db->prepare('DELETE FROM posts WHERE id = ?');
         $affectedLines = $post->execute(array($postId));
@@ -184,7 +196,8 @@ class PostManager extends Manager {
      * @param $postId
      * @return bool
      */
-    public function updatePost($title, $content, $postId){
+    public function updatePost($title, $content, $postId)
+    {
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
         $affectedPost = $req->execute(array($title, $content, $postId));
