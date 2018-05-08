@@ -48,7 +48,7 @@ if(!isset($_SESSION)){session_start();}
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Billet simple pour l'Alaska</a>
+            <a class="navbar-brand" href="index.php?action=home">Billet simple pour l'Alaska</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
