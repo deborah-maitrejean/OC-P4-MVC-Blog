@@ -24,7 +24,8 @@ class Router
         ),
         'allPostsView' => array(
             'controller' => 'Frontend',
-            'method' => 'listPosts'
+            'method' => 'listPosts',
+            'param' => 'page'
         ),
         'about' => array(
             'controller' => 'Frontend',
@@ -84,7 +85,8 @@ class Router
         ),
         'postsManager' => array(
             'controller' => 'Backend',
-            'method' => 'postsManager'
+            'method' => 'postsManager',
+            'param' => 'page'
         ),
         'newPost' => array(
             'controller' => 'Backend',
@@ -111,7 +113,8 @@ class Router
         ),
         'commentsModeration' => array(
             'controller' => 'Backend',
-            'method' => 'commentsModeration'
+            'method' => 'commentsModeration',
+            'param' => 'page'
         ),
         'moderateComment' => array(
             'controller' => 'Backend',
