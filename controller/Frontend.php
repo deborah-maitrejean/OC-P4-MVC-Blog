@@ -41,21 +41,27 @@ class Frontend
         $postManager = new PostManager();
         $post = $postManager->getPost($_GET['id']);
 
-        $commentManager = new CommentManager();
-        $nbComments = $commentManager->countComments($post->getId());
-        if ($nbComments > 0) {
-            $perPage = 4;
-            $nbPages = $commentManager->countPages($nbComments, $perPage);
-            if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages) {
-                $currentPage = $_GET['page'];
+        if ($post != ''){
+            $commentManager = new CommentManager();
+            $nbComments = $commentManager->countComments($post->getId());
+            if ($nbComments > 0) {
+                $perPage = 4;
+                $nbPages = $commentManager->countPages($nbComments, $perPage);
+                if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages) {
+                    $currentPage = $_GET['page'];
+                } else {
+                    $currentPage = 1;
+                }
+                $comments = $commentManager->getComments($_GET['id'], $currentPage, $perPage);
             } else {
-                $currentPage = 1;
+                $comments = false;
             }
-            $comments = $commentManager->getComments($_GET['id'], $currentPage, $perPage);
+            require('../view/frontend/postView.php');
         } else {
-            $comments = false;
+            header('HTTP/1.0 404 Not Found');
+            include_once("../view/frontend/404.php");
+            exit();
         }
-        require('../view/frontend/postView.php');
     }
 
     public function addComment()
