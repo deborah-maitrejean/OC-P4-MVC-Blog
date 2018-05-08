@@ -155,8 +155,8 @@ class Router
         // explode uri
         $uriParts = explode('?', $uri);
         $par = explode('&', $uri);
-        //$path = $uriParts[0];
-        //$pathParts = explode("/", $path);
+        $path = $uriParts[0];
+        $pathParts = explode("/", $path);
 
         if (isset($uriParts[1]) && $uriParts[1] != "" && isset($par[1]) && $par[1] != null) {
             // get param name
@@ -170,6 +170,19 @@ class Router
             // get action name
             $actionName = explode("=", $uriParts[1]);
             $this->action = $actionName[1];
+        }
+
+        if ($pathParts[2] != 'index.php'){
+            header('HTTP/1.0 404 Not Found');
+            include_once("../view/frontend/404.php");
+            exit();
+        }
+
+        $actionPath = preg_split("/=/", "$uriParts[1]");
+        if ($actionPath[0] != 'action'){
+            header('HTTP/1.0 404 Not Found');
+            include_once("../view/frontend/404.php");
+            exit();
         }
     }
 
