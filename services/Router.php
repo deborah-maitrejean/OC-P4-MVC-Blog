@@ -49,11 +49,13 @@ class Router
         ),
         'addComment' => array(
             'controller' => 'Frontend',
-            'method' => 'addComment'
+            'method' => 'addComment',
+            'param' => 'id', 'postTitle',
         ),
         'reportComment' => array(
             'controller' => 'Frontend',
-            'method' => 'reportComment'
+            'method' => 'reportComment',
+            'param' => 'commentId','postId'
         ),
         'sendMail' => array(
             'controller' => 'Frontend',
@@ -94,15 +96,18 @@ class Router
         ),
         'viewOrChangePost' => array(
             'controller' => 'Backend',
-            'method' => 'viewOrChangePost'
+            'method' => 'viewOrChangePost',
+            'param' => 'postId'
         ),
         'updatePost' => array(
             'controller' => 'Backend',
-            'method' => 'updatePost'
+            'method' => 'updatePost',
+            'param' => 'postId'
         ),
         'deletePost' => array(
             'controller' => 'Backend',
-            'method' => 'deletePost'
+            'method' => 'deletePost',
+            'param' => 'postId'
         ),
         'commentsModeration' => array(
             'controller' => 'Backend',
@@ -110,15 +115,18 @@ class Router
         ),
         'moderateComment' => array(
             'controller' => 'Backend',
-            'method' => 'commentModeration'
+            'method' => 'commentModeration',
+            'param' => 'commentId'
         ),
         'editComment' => array(
             'controller' => 'Backend',
-            'method' => 'adminUpdateComment'
+            'method' => 'adminUpdateComment',
+            'param' => 'commentId', 'reported'
         ),
         'deleteComment' => array(
             'controller' => 'Backend',
-            'method' => 'deleteComment'
+            'method' => 'deleteComment',
+            'param' => 'commentId'
         ),
         'logOut' => array(
             'controller' => 'Backend',
