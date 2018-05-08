@@ -306,7 +306,12 @@ class Backend
             $postManager = new PostManager();
             $post = $postManager->getPost($_GET['postId']);
 
-            require('../view/backend/postView.php');
+            if ($post != ''){
+                require('../view/backend/postView.php');
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
+                header('location: index.php?action=postsManager');
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
             header('location: index.php?action=postsManager');
@@ -322,7 +327,11 @@ class Backend
             $postManager = new PostManager();
             $post = $postManager->deletePost($_GET['postId']);
 
-            $_SESSION['message'] = 'Le billet a été supprimé.';
+            if ($post != null) {
+                $_SESSION['message'] = 'Le billet a été supprimé.';
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé';
         }
