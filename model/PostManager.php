@@ -159,8 +159,12 @@ class PostManager extends Manager
         $req->execute(array($postId));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
-        $post = new Posts();
-        $post->hydrate($data);
+        if ($data != false){
+            $post = new Posts();
+            $post->hydrate($data);
+        } else{
+            $post = '';
+        }
 
         return $post;
     }
