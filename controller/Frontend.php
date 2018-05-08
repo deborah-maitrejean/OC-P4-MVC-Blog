@@ -38,6 +38,9 @@ class Frontend
 
     public function postNcomments()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $postManager = new PostManager();
         $post = $postManager->getPost($_GET['id']);
 
@@ -58,8 +61,8 @@ class Frontend
             }
             require('../view/frontend/postView.php');
         } else {
-            header('HTTP/1.0 404 Not Found');
-            include_once("../view/frontend/404.php");
+            header('Location: index.php?action=allPostsView');
+            $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
             exit();
         }
     }
