@@ -110,7 +110,6 @@ class Frontend
 
     public function adminView()
     {
-        ;
         session_start();
         if (session_status() === 2) {
             if (isset($_SESSION) && isset($_SESSION['connected'])) {
