@@ -169,6 +169,8 @@ class Router
         } elseif (isset($uriParts[1]) && $uriParts[1] != "") {
             // get action name
             $actionName = explode("=", $uriParts[1]);
+            $actionPath = preg_split("/=/", "$uriParts[1]");
+
             if (isset($actionName[1])) {
                 $this->action = $actionName[1];
             } else {
@@ -176,20 +178,19 @@ class Router
                 include_once("../view/frontend/404.php");
                 exit();
             }
+
+            if ($actionPath[0] != 'action') {
+                header('HTTP/1.0 404 Not Found');
+                include_once("../view/frontend/404.php");
+                exit();
+            }
         }
 
         if ($pathParts[2] != 'index.php') {
-            header('HTTP/1.0 404 Not Found');
-            include_once("../view/frontend/404.php");
+            header('Location: index.php?action=home');
             exit();
         }
 
-        $actionPath = preg_split("/=/", "$uriParts[1]");
-        if ($actionPath[0] != 'action') {
-            header('HTTP/1.0 404 Not Found');
-            include_once("../view/frontend/404.php");
-            exit();
-        }
     }
 
     public function renderController()
