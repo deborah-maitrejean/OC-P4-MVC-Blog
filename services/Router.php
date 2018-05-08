@@ -149,9 +149,9 @@ class Router
         if (isset($uriParts[1]) && $uriParts[1] != "" && isset($par[1]) && $par[1] != null) {
             $this->param = $par[1];
             // get action name
-            $actionName = preg_split("/&/", " $uriParts[1]");
-            $truc = preg_split("/=/", " $actionName[0]");
-            $this->action = $truc[1];
+            $actionNparam = preg_split("/&/", " $uriParts[1]");
+            $actionName = preg_split("/=/", " $actionNparam[0]");
+            $this->action = $actionName[1];
         } elseif (isset($uriParts[1]) && $uriParts[1] != ""){
             // get action name
             $actionName = explode("=", $uriParts[1]);
