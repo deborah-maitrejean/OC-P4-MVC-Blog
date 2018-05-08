@@ -173,7 +173,9 @@ class Router
                 }
                 $currentController->$method();
             } else {
-                header('Location: index.php?action=404','HTTP/1.0 404 Not Found');
+                header('HTTP/1.0 404 Not Found');
+                include_once("../view/frontend/404.php");
+                exit();
             }
         } catch (Exception $e) {
             echo 'Exception reçue : ', $e->getMessage(), "\n";
