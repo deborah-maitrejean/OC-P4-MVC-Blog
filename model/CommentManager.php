@@ -81,7 +81,6 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comments(postId, postTitle, author, content, creationDate) VALUES(?, ?, ?, ?, NOW())');
-        // Récupération en paramètres des informations dont on a besoin
         $affectedLines = $comments->execute(array($postId, $postTitle, $author, $comment));
 
         return $affectedLines;
@@ -98,10 +97,13 @@ class CommentManager extends Manager
         $req->execute(array($commentId));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
-        $comment = new Comments();
-        $comment->hydrate($data);
-
-        return $comment;
+        if ($data != false) {
+            $comment = new Comments();
+            $comment->hydrate($data);
+            return $comment;
+        } else {
+            return $comment = false;
+        }
     }
 
     /**
