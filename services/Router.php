@@ -11,7 +11,7 @@ use \Controller\Backend;
  */
 class Router
 {
-    private $request;
+    private $action;
     private $routes = array(
         // frontend:
         '' => array(
@@ -137,35 +137,34 @@ class Router
         )
     );
 
-    /**
-     * Router constructor.
-     * @param $request
-     */
-    public function __construct($request)
+    public function __construct($uri)
     {
-        $this->request = $request;
-    }
+        // explode uri
+        $uriParts = explode('?', $uri);
+        $par = explode('&', $uri);
+        //$path = $uriParts[0];
+        //$pathParts = explode("/", $path);
 
-    public function getAction()
-    {
-        $action = $this->request;
-        return $action;
-    }
-
-    /**
-     * @return array
-     */
-    public function getRoutes()
-    {
-        return $this->routes;
+        // get param
+        if (isset($uriParts[1]) && $uriParts[1] != "" && isset($par[1]) && $par[1] != null) {
+            $this->param = $par[1];
+            // get action name
+            $actionName = preg_split("/&/", " $uriParts[1]");
+            $truc = preg_split("/=/", " $actionName[0]");
+            $this->action = $truc[1];
+        } elseif (isset($uriParts[1]) && $uriParts[1] != ""){
+            // get action name
+            $actionName = explode("=", $uriParts[1]);
+            $this->action = $actionName[1];
+        }
     }
 
     public function renderController()
     {
         try {
-            if (key_exists($this->getAction(), $this->getRoutes())) {
-                $controller = $this->getRoutes()[$this->getAction()]['controller'];
-                $method = $this->getRoutes()[$this->getAction()]['method'];
+            if (key_exists($this->action, $this->routes)) {
+                $controller = $this->routes[$this->action]['controller'];
+                $method = $this->routes[$this->action]['method'];
                 if ($controller == 'Frontend') {
                     $currentController = new Frontend();
                 } else {
