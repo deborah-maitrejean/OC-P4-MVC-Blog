@@ -192,8 +192,12 @@ class Backend
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
             $commentManager = new CommentManager();
             $comment = $commentManager->getComment($_GET['commentId']);
-
-            require('../view/backend/commentModeration.php');
+            if($comment != false){
+                require('../view/backend/commentModeration.php');
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de commentaire envoyé !';
+                header('location: index.php?action=commentsModeration');
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
             header('location: index.php?action=commentsModeration');
@@ -233,7 +237,11 @@ class Backend
             $commentManager = new CommentManager();
             $deletedComment = $commentManager->deleteComment($_GET['commentId']);
 
-            $_SESSION['message'] = 'La suppression a réussi.';
+            if ($deletedComment != null){
+                $_SESSION['message'] = 'La suppression a réussi.';
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de commentaire envoyé !';
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
         }
