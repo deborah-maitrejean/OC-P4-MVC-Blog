@@ -137,6 +137,10 @@ class Router
         )
     );
 
+    /**
+     * Router constructor.
+     * @param $uri
+     */
     public function __construct($uri)
     {
         // explode uri
@@ -152,7 +156,7 @@ class Router
             $actionNparam = preg_split("/&/", " $uriParts[1]");
             $actionName = preg_split("/=/", " $actionNparam[0]");
             $this->action = $actionName[1];
-        } elseif (isset($uriParts[1]) && $uriParts[1] != ""){
+        } elseif (isset($uriParts[1]) && $uriParts[1] != "") {
             // get action name
             $actionName = explode("=", $uriParts[1]);
             $this->action = $actionName[1];
