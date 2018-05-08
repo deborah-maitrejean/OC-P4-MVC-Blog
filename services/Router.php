@@ -44,7 +44,8 @@ class Router
         ),
         'post' => array(
             'controller' => 'Frontend',
-            'method' => 'postNcomments'
+            'method' => 'postNcomments',
+            'param' => 'id'
         ),
         'addComment' => array(
             'controller' => 'Frontend',
@@ -149,9 +150,10 @@ class Router
         //$path = $uriParts[0];
         //$pathParts = explode("/", $path);
 
-        // get param
         if (isset($uriParts[1]) && $uriParts[1] != "" && isset($par[1]) && $par[1] != null) {
-            $this->param = $par[1];
+            // get param name
+            $paramName = preg_split("/=/", "$par[1]");
+            $this->param = $paramName[0];
             // get action name
             $actionNparam = preg_split("/&/", " $uriParts[1]");
             $actionName = preg_split("/=/", " $actionNparam[0]");
@@ -169,6 +171,15 @@ class Router
             if (key_exists($this->action, $this->routes)) {
                 $controller = $this->routes[$this->action]['controller'];
                 $method = $this->routes[$this->action]['method'];
+                if (isset($this->param) && $this->param != null){
+                    if ($this->param == $this->routes[$this->action]['param']){
+                        $parameter = $this->routes[$this->action]['param'];
+                    } else {
+                        header('HTTP/1.0 404 Not Found');
+                        include_once("../view/frontend/404.php");
+                        exit();
+                    }
+                }
                 if ($controller == 'Frontend') {
                     $currentController = new Frontend();
                 } else {
