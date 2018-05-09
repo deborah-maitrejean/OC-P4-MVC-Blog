@@ -19,6 +19,6 @@ class MyAutoload
     public static function autoload($class)
     {
         $path = str_replace('\\', '/', $class);
-        require '../' . $path . '.php';
+        require '../' . lcfirst($path) . '.php';
     }
 }

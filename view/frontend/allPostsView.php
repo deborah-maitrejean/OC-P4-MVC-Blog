@@ -2,6 +2,12 @@
 
 <?php ob_start(); ?>
 
+<?php if(!isset($_SESSION)){session_start();} ?>
+<?php if (isset($_SESSION['message'])): ?>
+    <div class="message"><?= $_SESSION['message']; ?></div>
+    <?php unset($_SESSION['message']); ?>
+<?php endif; ?>
+
 <?php foreach ($posts as $post): ?>
     <div class="row" id="post-content">
         <div class="col-lg-12">

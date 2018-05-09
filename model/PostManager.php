@@ -159,8 +159,12 @@ class PostManager extends Manager
         $req->execute(array($postId));
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
-        $post = new Posts();
-        $post->hydrate($data);
+        if ($data != false){
+            $post = new Posts();
+            $post->hydrate($data);
+        } else{
+            $post = '';
+        }
 
         return $post;
     }
@@ -182,12 +186,14 @@ class PostManager extends Manager
 
     /**
      * @param $postId
+     * @return bool
      */
     public function deletePost($postId)
     {
         $db = $this->dbConnect();
-        $post = $db->prepare('DELETE FROM posts WHERE id = ?');
-        $affectedLines = $post->execute(array($postId));
+        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $post = $req->execute(array($postId));
+        return $post;
     }
 
     /**

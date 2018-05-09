@@ -38,24 +38,33 @@ class Frontend
 
     public function postNcomments()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $postManager = new PostManager();
         $post = $postManager->getPost($_GET['id']);
 
-        $commentManager = new CommentManager();
-        $nbComments = $commentManager->countComments($post->getId());
-        if ($nbComments > 0) {
-            $perPage = 4;
-            $nbPages = $commentManager->countPages($nbComments, $perPage);
-            if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages) {
-                $currentPage = $_GET['page'];
+        if ($post != ''){
+            $commentManager = new CommentManager();
+            $nbComments = $commentManager->countComments($post->getId());
+            if ($nbComments > 0) {
+                $perPage = 4;
+                $nbPages = $commentManager->countPages($nbComments, $perPage);
+                if (isset($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $nbPages) {
+                    $currentPage = $_GET['page'];
+                } else {
+                    $currentPage = 1;
+                }
+                $comments = $commentManager->getComments($_GET['id'], $currentPage, $perPage);
             } else {
-                $currentPage = 1;
+                $comments = false;
             }
-            $comments = $commentManager->getComments($_GET['id'], $currentPage, $perPage);
+            require('../view/frontend/postView.php');
         } else {
-            $comments = false;
+            header('Location: index.php?action=allPostsView');
+            $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
+            exit();
         }
-        require('../view/frontend/postView.php');
     }
 
     public function addComment()
@@ -110,7 +119,6 @@ class Frontend
 
     public function adminView()
     {
-        ;
         session_start();
         if (session_status() === 2) {
             if (isset($_SESSION) && isset($_SESSION['connected'])) {
@@ -150,7 +158,11 @@ class Frontend
                             htmlspecialchars($_POST['subject']),
                             htmlspecialchars($_POST['message'])
                         );
-                        $_SESSION['message'] = 'Votre message nous a bien été transmis.';
+                        if ($contactManager){
+                            $_SESSION['message'] = 'Votre message nous a bien été transmis.';
+                        } else {
+                            $_SESSION['message'] = 'Une erreur est survenue.';
+                        }
                     } else {
                         $_SESSION['message'] = 'Le numéro de téléphone n\'est pas au bon format.';
                     }

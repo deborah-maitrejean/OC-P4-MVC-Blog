@@ -192,8 +192,12 @@ class Backend
         if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
             $commentManager = new CommentManager();
             $comment = $commentManager->getComment($_GET['commentId']);
-
-            require('../view/backend/commentModeration.php');
+            if($comment != false){
+                require('../view/backend/commentModeration.php');
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de commentaire envoyé !';
+                header('location: index.php?action=commentsModeration');
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
             header('location: index.php?action=commentsModeration');
@@ -233,7 +237,11 @@ class Backend
             $commentManager = new CommentManager();
             $deletedComment = $commentManager->deleteComment($_GET['commentId']);
 
-            $_SESSION['message'] = 'La suppression a réussi.';
+            if ($deletedComment == true){
+                $_SESSION['message'] = 'La suppression a réussi.';
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de commentaire envoyé !';
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de commentaire envoyé !';
         }
@@ -306,7 +314,12 @@ class Backend
             $postManager = new PostManager();
             $post = $postManager->getPost($_GET['postId']);
 
-            require('../view/backend/postView.php');
+            if ($post != ''){
+                require('../view/backend/postView.php');
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
+                header('location: index.php?action=postsManager');
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé !';
             header('location: index.php?action=postsManager');
@@ -322,7 +335,11 @@ class Backend
             $postManager = new PostManager();
             $post = $postManager->deletePost($_GET['postId']);
 
-            $_SESSION['message'] = 'Le billet a été supprimé.';
+            if ($post == true) {
+                $_SESSION['message'] = 'Le billet a été supprimé.';
+            } else {
+                $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
+            }
         } else {
             $_SESSION['message'] = 'Aucun identifiant de billet envoyé';
         }
