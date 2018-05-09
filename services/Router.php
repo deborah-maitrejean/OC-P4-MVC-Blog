@@ -187,6 +187,9 @@ class Router
                 include_once("../view/frontend/404.php");
                 exit();
             }
+        } else{
+            header('Location: index.php?action=home');
+            exit();
         }
 
         if ($pathParts[2] != 'index.php') {
