@@ -5,6 +5,7 @@ namespace Services;
 use \Controller\Frontend;
 use \Controller\Backend;
 use \Controller\Contact;
+use \Controller\Login;
 
 /**
  * Class Router
@@ -76,11 +77,24 @@ class Router
             'controller' => 'Contact',
             'method' => 'sendMail'
         ),
-        // backend:
+        // login:
         'adminInterfaceLogin' => array(
-            'controller' => 'Backend',
+            'controller' => 'Login',
             'method' => 'loginControl'
         ),
+        'logOut' => array(
+            'controller' => 'Login',
+            'method' => 'logOut'
+        ),
+        'changePassword' => array(
+            'controller' => 'Login',
+            'method' => 'changePassword'
+        ),
+        'changeLogin' => array(
+            'controller' => 'Login',
+            'method' => 'changeLogin'
+        ),
+        // backend:
         'adminHomeView' => array(
             'controller' => 'Backend',
             'method' => 'adminHomeView'
@@ -133,21 +147,9 @@ class Router
             'method' => 'deleteComment',
             'param' => 'commentId'
         ),
-        'logOut' => array(
-            'controller' => 'Backend',
-            'method' => 'logOut'
-        ),
         'settings' => array(
             'controller' => 'Backend',
             'method' => 'settings'
-        ),
-        'changePassword' => array(
-            'controller' => 'Backend',
-            'method' => 'changePassword'
-        ),
-        'changeLogin' => array(
-            'controller' => 'Backend',
-            'method' => 'changeLogin'
         )
     );
 
@@ -220,6 +222,8 @@ class Router
                     $currentController = new Frontend();
                 } elseif ($controller == 'Backend') {
                     $currentController = new Backend();
+                } elseif ($controller == 'Login') {
+                    $currentController = new Login();
                 } else {
                     $currentController = new Contact();
                 }
