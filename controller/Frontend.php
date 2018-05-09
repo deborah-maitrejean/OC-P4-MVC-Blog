@@ -160,7 +160,7 @@ class Frontend
                     if (!empty($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['tel']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])) {
                         if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
                             if (preg_match("#^0[1-9]([-. ]?[0-9]{2}){4}$#", $_POST['tel'])) {
-                                $_SESSION['message'] = 'Votre message nous a bien été transmis.'
+                                $_SESSION['message'] = 'Votre message nous a bien été transmis.';
                                 $contactManager = new ContactManager();
                                 $contactManager->sendMail(
                                     htmlspecialchars($_POST['lastName']),
