@@ -86,8 +86,11 @@ class ContactManager
 
         //Send the message, check for errors
         if (!$mail->Send()) {
-            //echo 'Mailer Error: ' . $mail->ErrorInfo;
+            $contactManager = false;
+            return $contactManager;
         } else {
+            $contactManager = true;
+            return $contactManager;
             session_destroy();
         }
     }
