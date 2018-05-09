@@ -158,7 +158,11 @@ class Frontend
                             htmlspecialchars($_POST['subject']),
                             htmlspecialchars($_POST['message'])
                         );
-                        $_SESSION['message'] = 'Votre message nous a bien été transmis.';
+                        if ($contactManager){
+                            $_SESSION['message'] = 'Votre message nous a bien été transmis.';
+                        } else {
+                            $_SESSION['message'] = 'Une erreur est survenue.';
+                        }
                     } else {
                         $_SESSION['message'] = 'Le numéro de téléphone n\'est pas au bon format.';
                     }
