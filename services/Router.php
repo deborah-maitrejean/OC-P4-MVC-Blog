@@ -4,6 +4,7 @@ namespace Services;
 
 use \Controller\Frontend;
 use \Controller\Backend;
+use \Controller\Contact;
 
 /**
  * Class Router
@@ -58,10 +59,6 @@ class Router
             'method' => 'reportComment',
             'param' => 'commentId','postId'
         ),
-        'sendMail' => array(
-            'controller' => 'Frontend',
-            'method' => 'sendMail'
-        ),
         'cookies' => array(
             'controller' => 'Frontend',
             'method' => 'cookies'
@@ -73,6 +70,11 @@ class Router
         '404' => array(
             'controller' => 'Frontend',
             'method' => 'page404'
+        ),
+        // contact:
+        'sendMail' => array(
+            'controller' => 'Contact',
+            'method' => 'sendMail'
         ),
         // backend:
         'adminInterfaceLogin' => array(
@@ -216,8 +218,10 @@ class Router
                 }
                 if ($controller == 'Frontend') {
                     $currentController = new Frontend();
-                } else {
+                } elseif ($controller == 'Backend') {
                     $currentController = new Backend();
+                } else {
+                    $currentController = new Contact();
                 }
                 $currentController->$method();
             } else {
