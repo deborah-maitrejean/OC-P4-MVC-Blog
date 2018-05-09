@@ -237,7 +237,7 @@ class Backend
             $commentManager = new CommentManager();
             $deletedComment = $commentManager->deleteComment($_GET['commentId']);
 
-            if ($deletedComment != null){
+            if ($deletedComment == true){
                 $_SESSION['message'] = 'La suppression a réussi.';
             } else {
                 $_SESSION['message'] = 'Mauvais identifiant de commentaire envoyé !';
