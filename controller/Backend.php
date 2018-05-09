@@ -335,7 +335,7 @@ class Backend
             $postManager = new PostManager();
             $post = $postManager->deletePost($_GET['postId']);
 
-            if ($post != null) {
+            if ($post == true) {
                 $_SESSION['message'] = 'Le billet a été supprimé.';
             } else {
                 $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
