@@ -4,6 +4,8 @@ namespace Services;
 
 use \Controller\Frontend;
 use \Controller\Backend;
+use \Controller\Contact;
+use \Controller\Login;
 
 /**
  * Class Router
@@ -58,10 +60,6 @@ class Router
             'method' => 'reportComment',
             'param' => 'commentId','postId'
         ),
-        'sendMail' => array(
-            'controller' => 'Frontend',
-            'method' => 'sendMail'
-        ),
         'cookies' => array(
             'controller' => 'Frontend',
             'method' => 'cookies'
@@ -74,11 +72,29 @@ class Router
             'controller' => 'Frontend',
             'method' => 'page404'
         ),
-        // backend:
+        // contact:
+        'sendMail' => array(
+            'controller' => 'Contact',
+            'method' => 'sendMail'
+        ),
+        // login:
         'adminInterfaceLogin' => array(
-            'controller' => 'Backend',
+            'controller' => 'Login',
             'method' => 'loginControl'
         ),
+        'logOut' => array(
+            'controller' => 'Login',
+            'method' => 'logOut'
+        ),
+        'changePassword' => array(
+            'controller' => 'Login',
+            'method' => 'changePassword'
+        ),
+        'changeLogin' => array(
+            'controller' => 'Login',
+            'method' => 'changeLogin'
+        ),
+        // backend:
         'adminHomeView' => array(
             'controller' => 'Backend',
             'method' => 'adminHomeView'
@@ -131,21 +147,9 @@ class Router
             'method' => 'deleteComment',
             'param' => 'commentId'
         ),
-        'logOut' => array(
-            'controller' => 'Backend',
-            'method' => 'logOut'
-        ),
         'settings' => array(
             'controller' => 'Backend',
             'method' => 'settings'
-        ),
-        'changePassword' => array(
-            'controller' => 'Backend',
-            'method' => 'changePassword'
-        ),
-        'changeLogin' => array(
-            'controller' => 'Backend',
-            'method' => 'changeLogin'
         )
     );
 
@@ -216,8 +220,12 @@ class Router
                 }
                 if ($controller == 'Frontend') {
                     $currentController = new Frontend();
-                } else {
+                } elseif ($controller == 'Backend') {
                     $currentController = new Backend();
+                } elseif ($controller == 'Login') {
+                    $currentController = new Login();
+                } else {
+                    $currentController = new Contact();
                 }
                 $currentController->$method();
             } else {
