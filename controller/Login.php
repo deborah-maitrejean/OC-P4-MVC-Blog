@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use \Model\LoginManager;
+
 
 /**
  * Class Login
