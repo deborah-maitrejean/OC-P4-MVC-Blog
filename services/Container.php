@@ -5,6 +5,10 @@ namespace Services;
 
 class Container
 {
+    /**
+     * @param $controller
+     * @return Backend|Contact|Frontend|Login
+     */
     public function getController($controller)
     {
         $this->controller = $controller;
