@@ -206,6 +206,39 @@ class Router
         */
     }
 
+    /**
+     * @return array
+     */
+    public function resolve()
+    {
+        $controller = null;
+        foreach ($this->routes as $pattern => $controllerMethod) {
+            if (preg_match($pattern, $this->uri, $matches)) {
+                $controller = $this->routes[$pattern]['controller'];
+                $method = $this->routes[$pattern]['method'];
+                $this->params = [];
+                foreach ($matches as $key => $value) {
+                    if ($key > 0) {
+                        $this->params[] = $value;
+                    }
+                }
+            }
+        }
+        if (!is_null($controller)) {
+            $this->controller = $controller;
+            $this->method = $method;
+            return [
+                'controller' => $this->controller,
+                'method' => $this->method,
+                'params' => $this->params,
+            ];
+        } else {
+            return [
+                'controller' => 'dsadassadsdadsa'
+            ];
+        }
+    }
+/*
     public function renderController()
     {
         try {
@@ -239,5 +272,5 @@ class Router
         } catch (Exception $e) {
             echo 'Exception reçue : ', $e->getMessage(), "\n";
         }
-    }
+    }*/
 }
