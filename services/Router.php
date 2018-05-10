@@ -157,8 +157,11 @@ class Router
      * Router constructor.
      * @param $uri
      */
+
     public function __construct($uri)
     {
+        $this->uri = substr($uri, strpos($uri, "=") + 1);
+        /*
         // explode uri
         $uriParts = explode('?', $uri);
         $par = explode('&', $uri);
@@ -200,7 +203,7 @@ class Router
             header('Location: index.php?action=home');
             exit();
         }
-
+        */
     }
 
     public function renderController()
