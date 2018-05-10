@@ -1,7 +1,10 @@
 <?php
 
 namespace Services;
-
+use \Controller\Frontend;
+use \Controller\Login;
+use \Controller\Backend;
+use \Controller\Contact;
 
 class Container
 {
