@@ -16,138 +16,138 @@ class Router
     private $action;
     private $routes = array(
         // frontend:
-        '' => array(
+        '#^$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPostsExcerpt'
         ),
-        'home' => array(
+        '#^home$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPostsExcerpt'
         ),
-        'allPostsView' => array(
+        '#^allPostsView$#' => array( //#^allPostsView&page=([0-9]+)&page=([0-9]+)$#
             'controller' => 'Frontend',
             'method' => 'listPosts',
             'param' => 'page'
         ),
-        'about' => array(
+        '#^about$#' => array(
             'controller' => 'Frontend',
             'method' => 'aboutView'
         ),
-        'contact' => array(
+        '#^contact$#' => array(
             'controller' => 'Frontend',
             'method' => 'contactView'
         ),
-        'adminConnexion' => array(
+        '#^adminConnexion$#' => array(
             'controller' => 'Frontend',
             'method' => 'adminView'
         ),
-        'listPosts' => array(
+        '#^listPosts$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPosts'
         ),
-        'post' => array(
+        '#^post$#' => array(
             'controller' => 'Frontend',
             'method' => 'postNcomments',
             'param' => 'id'
         ),
-        'addComment' => array(
+        '#^addComment$#' => array(
             'controller' => 'Frontend',
             'method' => 'addComment',
             'param' => 'id', 'postTitle',
         ),
-        'reportComment' => array(
+        '#^reportComment$#' => array(
             'controller' => 'Frontend',
             'method' => 'reportComment',
             'param' => 'commentId','postId'
         ),
-        'cookies' => array(
+        '#^cookies$#' => array(
             'controller' => 'Frontend',
             'method' => 'cookies'
         ),
-        'legalesMentions' => array(
+        '#^legalesMentions$#' => array(
             'controller' => 'Frontend',
             'method' => 'legalesMentions'
         ),
-        '404' => array(
+        '#^404$#' => array(
             'controller' => 'Frontend',
             'method' => 'page404'
         ),
         // contact:
-        'sendMail' => array(
+        '#^sendMail$#' => array(
             'controller' => 'Contact',
             'method' => 'sendMail'
         ),
         // login:
-        'adminInterfaceLogin' => array(
+        '#^adminInterfaceLogin$#' => array(
             'controller' => 'Login',
             'method' => 'loginControl'
         ),
-        'logOut' => array(
+        '#^logOut$#' => array(
             'controller' => 'Login',
             'method' => 'logOut'
         ),
-        'changePassword' => array(
+        '#^changePassword$#' => array(
             'controller' => 'Login',
             'method' => 'changePassword'
         ),
-        'changeLogin' => array(
+        '#^changeLogin$#' => array(
             'controller' => 'Login',
             'method' => 'changeLogin'
         ),
         // backend:
-        'adminHomeView' => array(
+        '#^adminHomeView$#' => array(
             'controller' => 'Backend',
             'method' => 'adminHomeView'
         ),
-        'postsManager' => array(
+        '#^postsManager$#' => array(
             'controller' => 'Backend',
             'method' => 'postsManager',
             'param' => 'page'
         ),
-        'newPost' => array(
+        '#^newPost$#' => array(
             'controller' => 'Backend',
             'method' => 'newPostView'
         ),
-        'publishPost' => array(
+        '#^publishPost$#' => array(
             'controller' => 'Backend',
             'method' => 'publishPost'
         ),
-        'viewOrChangePost' => array(
+        '#^viewOrChangePost$#' => array(
             'controller' => 'Backend',
             'method' => 'viewOrChangePost',
             'param' => 'postId'
         ),
-        'updatePost' => array(
+        '#^updatePost$#' => array(
             'controller' => 'Backend',
             'method' => 'updatePost',
             'param' => 'postId'
         ),
-        'deletePost' => array(
+        '#^deletePost$#' => array(
             'controller' => 'Backend',
             'method' => 'deletePost',
             'param' => 'postId'
         ),
-        'commentsModeration' => array(
+        '#^commentsModeration$#' => array(
             'controller' => 'Backend',
             'method' => 'commentsModeration',
             'param' => 'page'
         ),
-        'moderateComment' => array(
+        '#^moderateComment$#' => array(
             'controller' => 'Backend',
             'method' => 'commentModeration',
             'param' => 'commentId'
         ),
-        'editComment' => array(
+        '#^editComment$#' => array(
             'controller' => 'Backend',
             'method' => 'adminUpdateComment',
             'param' => 'commentId', 'reported'
         ),
-        'deleteComment' => array(
+        '#^deleteComment$#' => array(
             'controller' => 'Backend',
             'method' => 'deleteComment',
             'param' => 'commentId'
         ),
-        'settings' => array(
+        '#^settings$#' => array(
             'controller' => 'Backend',
             'method' => 'settings'
         )
