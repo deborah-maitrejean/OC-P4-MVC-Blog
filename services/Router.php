@@ -13,7 +13,11 @@ use \Controller\Login;
  */
 class Router
 {
-    private $action;
+    private $uri;
+    private $controller;
+    private $method;
+    private $params;
+    //private $action;
     private $routes = array(
         // frontend:
         '#^$#' => array(
