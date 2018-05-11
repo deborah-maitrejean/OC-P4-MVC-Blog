@@ -197,16 +197,14 @@ class PostManager extends Manager
     }
 
     /**
-     * @param $title
-     * @param $content
-     * @param $postId
+     * @param Posts $post
      * @return bool
      */
-    public function updatePost($title, $content, $postId)
+    public function updatePost(Posts $post)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
-        $affectedPost = $req->execute(array($title, $content, $postId));
+        $affectedPost = $req->execute(array($post->getTitle(), $post->getContent(), $post->getId()));
 
         return $affectedPost;
     }

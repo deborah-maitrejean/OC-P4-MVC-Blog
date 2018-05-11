@@ -233,7 +233,10 @@ class Backend
                         $potsId = $_GET['postId'];
 
                         $postManager = new PostManager();
-                        $post = $postManager->updatePost($title, $content, $potsId);
+                        $post = $postManager->getPost($potsId);
+                        $post->setTitle($title);
+                        $post->setContent($content);
+                        $post = $postManager->updatePost($post);
 
                         $_SESSION['message'] = 'Le billet a été mis à jour.';
                     } else {
