@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             <h3><i class="fa fa-bookmark"></i>&nbsp;&nbsp;<?= htmlspecialchars($post->getTitle()); ?></h3>
             <hr>
-            <p><?= strip_tags($post->getContent()); ?></p>
+            <p><?= $post->getContent(); ?></p>
             <hr>
             <div class="row">
                 <div class="col-xs-7 col-sm-8 col-md-6 col-lg-6">

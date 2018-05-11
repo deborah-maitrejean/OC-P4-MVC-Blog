@@ -11,7 +11,7 @@
             </div>
             <br>
             <div class="error-actions">
-                <a href="index.php" class="btn btn-primary btn-lg">
+                <a href="index.php?action=home" class="btn btn-primary btn-lg">
                     <span class="glyphicon glyphicon-home"></span> Retour à l'accueil
                 </a>
             </div>

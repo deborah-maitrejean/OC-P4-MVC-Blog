@@ -13,141 +13,160 @@ use \Controller\Login;
  */
 class Router
 {
-    private $action;
+    private $uri;
+    private $controller;
+    private $method;
+    private $params;
     private $routes = array(
         // frontend:
-        '' => array(
+        '#^$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPostsExcerpt'
         ),
-        'home' => array(
+        '#^home$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPostsExcerpt'
         ),
-        'allPostsView' => array(
+        '#^allPostsView$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPosts',
-            'param' => 'page'
         ),
-        'about' => array(
+        '#^allPostsView&page=([0-9]+)$#' => array(
+            'controller' => 'Frontend',
+            'method' => 'listPosts',
+        ),
+        '#^about$#' => array(
             'controller' => 'Frontend',
             'method' => 'aboutView'
         ),
-        'contact' => array(
+        '#^contact$#' => array(
             'controller' => 'Frontend',
             'method' => 'contactView'
         ),
-        'adminConnexion' => array(
+        '#^adminConnexion$#' => array(
             'controller' => 'Frontend',
             'method' => 'adminView'
         ),
-        'listPosts' => array(
+        '#^listPosts$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPosts'
         ),
-        'post' => array(
+        '#^post$#' => array(
             'controller' => 'Frontend',
             'method' => 'postNcomments',
-            'param' => 'id'
         ),
-        'addComment' => array(
+        '#^post&id=([0-9]+)$#' => array(
+            'controller' => 'Frontend',
+            'method' => 'postNcomments',
+        ),
+        '#^post&id=([0-9]+)&page=([0-9]+)$#' => array(
+            'controller' => 'Frontend',
+            'method' => 'postNcomments',
+        ),
+        '#^addComment&id=([0-9]+)&postTitle=([a-zA-Z0-9-_%éèâàôûï]+)$#' => array(
             'controller' => 'Frontend',
             'method' => 'addComment',
-            'param' => 'id', 'postTitle',
         ),
-        'reportComment' => array(
+        '#^reportComment&commentId=([0-9]+)&reported=1&postId=([0-9]+)$#' => array(
             'controller' => 'Frontend',
             'method' => 'reportComment',
-            'param' => 'commentId','postId'
         ),
-        'cookies' => array(
+        '#^cookies$#' => array(
             'controller' => 'Frontend',
             'method' => 'cookies'
         ),
-        'legalesMentions' => array(
+        '#^legalesMentions$#' => array(
             'controller' => 'Frontend',
             'method' => 'legalesMentions'
         ),
-        '404' => array(
+        '#^404$#' => array(
             'controller' => 'Frontend',
             'method' => 'page404'
         ),
         // contact:
-        'sendMail' => array(
+        '#^sendMail$#' => array(
             'controller' => 'Contact',
             'method' => 'sendMail'
         ),
         // login:
-        'adminInterfaceLogin' => array(
+        '#^adminInterfaceLogin$#' => array(
             'controller' => 'Login',
             'method' => 'loginControl'
         ),
-        'logOut' => array(
+        '#^logOut$#' => array(
             'controller' => 'Login',
             'method' => 'logOut'
         ),
-        'changePassword' => array(
+        '#^changePassword$#' => array(
             'controller' => 'Login',
             'method' => 'changePassword'
         ),
-        'changeLogin' => array(
+        '#^changeLogin$#' => array(
             'controller' => 'Login',
             'method' => 'changeLogin'
         ),
         // backend:
-        'adminHomeView' => array(
+        '#^adminHomeView$#' => array(
             'controller' => 'Backend',
             'method' => 'adminHomeView'
         ),
-        'postsManager' => array(
+        '#^postsManager$#' => array(
             'controller' => 'Backend',
             'method' => 'postsManager',
-            'param' => 'page'
         ),
-        'newPost' => array(
+        '#^postsManager&page=([0-9]+)$#' => array(
+            'controller' => 'Backend',
+            'method' => 'postsManager',
+        ),
+        '#^postsManager&orderBy=date$#' => array(
+            'controller' => 'Backend',
+            'method' => 'postsManager',
+        ),
+        '#^newPost$#' => array(
             'controller' => 'Backend',
             'method' => 'newPostView'
         ),
-        'publishPost' => array(
+        '#^publishPost$#' => array(
             'controller' => 'Backend',
             'method' => 'publishPost'
         ),
-        'viewOrChangePost' => array(
+        '#^viewOrChangePost&postId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'viewOrChangePost',
-            'param' => 'postId'
         ),
-        'updatePost' => array(
+        '#^updatePost&postId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'updatePost',
-            'param' => 'postId'
         ),
-        'deletePost' => array(
+        '#^deletePost&postId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'deletePost',
-            'param' => 'postId'
         ),
-        'commentsModeration' => array(
+        '#^commentsModeration$#' => array(
             'controller' => 'Backend',
             'method' => 'commentsModeration',
-            'param' => 'page'
         ),
-        'moderateComment' => array(
+        '#^commentsModeration&orderBy=(date|posts)$#' => array(
+            'controller' => 'Backend',
+            'method' => 'commentsModeration',
+        ),
+        '#^commentsModeration&page=([0-9]+)$#' => array(
+            'controller' => 'Backend',
+            'method' => 'commentsModeration',
+        ),
+        '#^moderateComment&commentId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'commentModeration',
-            'param' => 'commentId'
         ),
-        'editComment' => array(
+        '#^editComment&commentId=([0-9]+)&reported=0$#' => array(
             'controller' => 'Backend',
             'method' => 'adminUpdateComment',
-            'param' => 'commentId', 'reported'
         ),
-        'deleteComment' => array(
+        '#^deleteComment&commentId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'deleteComment',
-            'param' => 'commentId'
         ),
-        'settings' => array(
+        '#^settings$#' => array(
             'controller' => 'Backend',
             'method' => 'settings'
         )
@@ -157,84 +176,47 @@ class Router
      * Router constructor.
      * @param $uri
      */
+
     public function __construct($uri)
     {
-        // explode uri
-        $uriParts = explode('?', $uri);
-        $par = explode('&', $uri);
-        $path = $uriParts[0];
-        $pathParts = explode("/", $path);
-
-        if (isset($uriParts[1]) && $uriParts[1] != "" && isset($par[1]) && $par[1] != null) {
-            // get param name
-            $paramName = preg_split("/=/", "$par[1]");
-            $this->param = $paramName[0];
-            // get action name
-            $actionNparam = preg_split("/&/", " $uriParts[1]");
-            $actionName = preg_split("/=/", " $actionNparam[0]");
-            $this->action = $actionName[1];
-        } elseif (isset($uriParts[1]) && $uriParts[1] != "") {
-            // get action name
-            $actionName = explode("=", $uriParts[1]);
-            $actionPath = preg_split("/=/", "$uriParts[1]");
-
-            if (isset($actionName[1])) {
-                $this->action = $actionName[1];
-            } else {
-                header('HTTP/1.0 404 Not Found');
-                include_once("../view/frontend/404.php");
-                exit();
-            }
-
-            if ($actionPath[0] != 'action') {
-                header('HTTP/1.0 404 Not Found');
-                include_once("../view/frontend/404.php");
-                exit();
-            }
-        } else{
-            header('Location: index.php?action=home');
-            exit();
-        }
-
-        if ($pathParts[2] != 'index.php') {
-            header('Location: index.php?action=home');
-            exit();
-        }
-
+        $this->uri = substr($uri, strpos($uri, "=") + 1);
     }
 
-    public function renderController()
+    /**
+     * @return array
+     */
+    public function resolve()
     {
-        try {
-            if (key_exists($this->action, $this->routes)) {
-                $controller = $this->routes[$this->action]['controller'];
-                $method = $this->routes[$this->action]['method'];
-                if (isset($this->param) && $this->param != null){
-                    if ($this->param == $this->routes[$this->action]['param']){
-                        $parameter = $this->routes[$this->action]['param'];
-                    } else {
-                        header('HTTP/1.0 404 Not Found');
-                        include_once("../view/frontend/404.php");
-                        exit();
+        if (false === array_key_exists('action', $_GET)){
+            header('Location: index.php?action=home');
+            exit();
+        } else {
+            $controller = null;
+            foreach ($this->routes as $pattern => $controllerMethod) {
+                if (preg_match($pattern, $this->uri, $matches)) {
+                    $controller = $this->routes[$pattern]['controller'];
+                    $method = $this->routes[$pattern]['method'];
+                    $this->params = [];
+                    foreach ($matches as $key => $value) {
+                        if ($key > 0) {
+                            $this->params[] = $value;
+                        }
                     }
                 }
-                if ($controller == 'Frontend') {
-                    $currentController = new Frontend();
-                } elseif ($controller == 'Backend') {
-                    $currentController = new Backend();
-                } elseif ($controller == 'Login') {
-                    $currentController = new Login();
-                } else {
-                    $currentController = new Contact();
-                }
-                $currentController->$method();
+            }
+            if (!is_null($controller)) {
+                $this->controller = $controller;
+                $this->method = $method;
+                return [
+                    'controller' => $this->controller,
+                    'method' => $this->method,
+                    'params' => $this->params,
+                ];
             } else {
                 header('HTTP/1.0 404 Not Found');
                 include_once("../view/frontend/404.php");
                 exit();
             }
-        } catch (Exception $e) {
-            echo 'Exception reçue : ', $e->getMessage(), "\n";
         }
     }
 }

@@ -16,13 +16,11 @@ if(!isset($_SESSION)){session_start();}
     <meta name="copyright" content="Jean Forteroche">
 
     <!-- Add icon library -->
-    <link href="public/css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= ASSETS ?>css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <!-- TinyMCE editor -->
-    <link rel="stylesheet" type="text/css" href="">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

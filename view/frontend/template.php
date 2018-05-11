@@ -15,8 +15,8 @@ if(!isset($_SESSION)){session_start();}
     <meta name="robots" content="index, follow, noarchive">
     <meta name="copyright" content="Déborah Maitrejean">
 
-    <link href="public/css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link href="<?= ASSETS ?>css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/style.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">

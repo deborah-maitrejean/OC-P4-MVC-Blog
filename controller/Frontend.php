@@ -25,7 +25,7 @@ class Frontend
         }
         $posts = $postManager->getPosts($currentPage, $perPage);
 
-        require('../view/frontend/allPostsView.php');
+        require(VIEW.'frontend/allPostsView.php');
     }
 
     public function listPostsExcerpt()
@@ -33,7 +33,7 @@ class Frontend
         $postManager = new PostManager();
         $posts = $postManager->getPostsExcerpt();
 
-        require('../view/frontend/listPostsView.php');
+        require(VIEW.'frontend/listPostsView.php');
     }
 
     public function postNcomments()
@@ -59,7 +59,7 @@ class Frontend
             } else {
                 $comments = false;
             }
-            require('../view/frontend/postView.php');
+            require(VIEW.'frontend/postView.php');
         } else {
             header('Location: index.php?action=allPostsView');
             $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
@@ -125,33 +125,33 @@ class Frontend
                 header('Location: index.php?action=adminHomeView');
             } else {
                 session_destroy();
-                require('../view/frontend/adminConnexionView.php');
+                require(VIEW.'frontend/adminConnexionView.php');
             }
         }
     }
 
     public function aboutView()
     {
-        require('../view/frontend/aboutView.php');
+        require(VIEW.'frontend/aboutView.php');
     }
 
     public function contactView()
     {
-        require('../view/frontend/contactView.php');
+        require(VIEW.'frontend/contactView.php');
     }
 
     public function cookies()
     {
-        require('../view/frontend/privacy.php');
+        require(VIEW.'frontend/privacy.php');
     }
 
     public function legalesMentions()
     {
-        require('../view/frontend/legalesMentions.php');
+        require(VIEW.'frontend/legalesMentions.php');
     }
 
     public function page404()
     {
-        require('../view/frontend/404.php');
+        require(VIEW.'frontend/404.php');
     }
 }

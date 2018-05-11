@@ -14,17 +14,17 @@ class Backend
 {
     public function settings()
     {
-        require('../view/backend/settings.php');
+        require(VIEW.'backend/settings.php');
     }
 
     public function adminHomeView()
     {
-        require('../view/backend/adminHomeView.php');
+        require(VIEW.'backend/adminHomeView.php');
     }
 
     public function newPostView()
     {
-        require('../view/backend/newPostView.php');
+        require(VIEW.'backend/newPostView.php');
     }
 
     public function commentsModeration()
@@ -53,7 +53,7 @@ class Backend
             $comments = false;
         }
 
-        require('../view/backend/commentsModeration.php');
+        require(VIEW.'backend/commentsModeration.php');
     }
 
     public function commentModeration()
@@ -65,7 +65,7 @@ class Backend
             $commentManager = new CommentManager();
             $comment = $commentManager->getComment($_GET['commentId']);
             if($comment != false){
-                require('../view/backend/commentModeration.php');
+                require(VIEW.'backend/commentModeration.php');
             } else {
                 $_SESSION['message'] = 'Mauvais identifiant de commentaire envoyé !';
                 header('location: index.php?action=commentsModeration');
@@ -143,7 +143,7 @@ class Backend
             $posts = false;
         }
 
-        require('../view/backend/postsManager.php');
+        require(VIEW.'backend/postsManager.php');
     }
 
     public function publishPost()
@@ -187,7 +187,7 @@ class Backend
             $post = $postManager->getPost($_GET['postId']);
 
             if ($post != ''){
-                require('../view/backend/postView.php');
+                require(VIEW.'backend/postView.php');
             } else {
                 $_SESSION['message'] = 'Mauvais identifiant de billet envoyé !';
                 header('location: index.php?action=postsManager');
