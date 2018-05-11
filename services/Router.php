@@ -226,6 +226,10 @@ class Router
                         $this->params[] = $value;
                     }
                 }
+            } else {
+                header('HTTP/1.0 404 Not Found');
+                include_once("../view/frontend/404.php");
+                exit();
             }
         }
         if (!is_null($controller)) {
