@@ -5,11 +5,11 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 $host = $_SERVER['HTTP_HOST'];
 $uri = $_SERVER['REQUEST_URI'];
 
-// je définis mes contantes
+// define contantes
 define('ROOT', $root . '/OC-P4-MVC-Blog/');
 define('HOST', 'http://' . $host . '/OC-P4-MVC-Blog/');
-define('CONTROLLER', ROOT . 'controller/');
+//define('CONTROLLER', ROOT . 'controller/');
 define('VIEW', ROOT . 'view/');
-define('MODEL', ROOT . 'model/');
-define('CLASSES', ROOT . 'services/');
+//define('MODEL', ROOT . 'model/');
+//define('CLASSES', ROOT . 'services/');
 define('ASSETS', HOST . 'public/');
