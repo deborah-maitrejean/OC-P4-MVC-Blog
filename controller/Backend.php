@@ -205,7 +205,8 @@ class Backend
         }
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
             $postManager = new PostManager();
-            $post = $postManager->deletePost($_GET['postId']);
+            $post = $postManager->getPost($_GET['postId']);
+            $post = $postManager->deletePost($post);
 
             if ($post == true) {
                 $_SESSION['message'] = 'Le billet a été supprimé.';

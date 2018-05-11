@@ -185,14 +185,14 @@ class PostManager extends Manager
     }
 
     /**
-     * @param $postId
+     * @param Posts $post
      * @return bool
      */
-    public function deletePost($postId)
+    public function deletePost(Posts $post)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('DELETE FROM posts WHERE id = ?');
-        $post = $req->execute(array($postId));
+        $post = $req->execute(array($post->getId()));
         return $post;
     }
 
