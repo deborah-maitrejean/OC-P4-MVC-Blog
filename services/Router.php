@@ -28,10 +28,13 @@ class Router
             'controller' => 'Frontend',
             'method' => 'listPostsExcerpt'
         ),
-        '#^allPostsView$#' => array( //#^allPostsView&page=([0-9]+)&page=([0-9]+)$#
+        '#^allPostsView$#' => array(
             'controller' => 'Frontend',
             'method' => 'listPosts',
-            'param' => 'page'
+        ),
+        '#^allPostsView&page=([0-9]+)$#' => array(
+            'controller' => 'Frontend',
+            'method' => 'listPosts',
         ),
         '#^about$#' => array(
             'controller' => 'Frontend',
@@ -52,17 +55,22 @@ class Router
         '#^post$#' => array(
             'controller' => 'Frontend',
             'method' => 'postNcomments',
-            'param' => 'id'
         ),
-        '#^addComment$#' => array(
+        '#^post&id=([0-9]+)$#' => array(
+            'controller' => 'Frontend',
+            'method' => 'postNcomments',
+        ),
+        '#^post&id=([0-9]+)&page=([0-9]+)$#' => array(
+            'controller' => 'Frontend',
+            'method' => 'postNcomments',
+        ),
+        '#^addComment&id=([0-9]+)&postTitle=([a-zA-Z0-9-_%éèâàôûï]+)$#' => array(
             'controller' => 'Frontend',
             'method' => 'addComment',
-            'param' => 'id', 'postTitle',
         ),
-        '#^reportComment$#' => array(
+        '#^reportComment&commentId=([0-9]+)&reported=1&postId=([0-9]+)$#' => array(
             'controller' => 'Frontend',
             'method' => 'reportComment',
-            'param' => 'commentId','postId'
         ),
         '#^cookies$#' => array(
             'controller' => 'Frontend',
@@ -106,7 +114,14 @@ class Router
         '#^postsManager$#' => array(
             'controller' => 'Backend',
             'method' => 'postsManager',
-            'param' => 'page'
+        ),
+        '#^postsManager&page=([0-9]+)$#' => array(
+            'controller' => 'Backend',
+            'method' => 'postsManager',
+        ),
+        '#^postsManager&orderBy=date$#' => array(
+            'controller' => 'Backend',
+            'method' => 'postsManager',
         ),
         '#^newPost$#' => array(
             'controller' => 'Backend',
@@ -116,40 +131,41 @@ class Router
             'controller' => 'Backend',
             'method' => 'publishPost'
         ),
-        '#^viewOrChangePost$#' => array(
+        '#^viewOrChangePost&postId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'viewOrChangePost',
-            'param' => 'postId'
         ),
-        '#^updatePost$#' => array(
+        '#^updatePost&postId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'updatePost',
-            'param' => 'postId'
         ),
-        '#^deletePost$#' => array(
+        '#^deletePost&postId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'deletePost',
-            'param' => 'postId'
         ),
         '#^commentsModeration$#' => array(
             'controller' => 'Backend',
             'method' => 'commentsModeration',
-            'param' => 'page'
         ),
-        '#^moderateComment$#' => array(
+        '#^commentsModeration&orderBy=(date|posts)$#' => array(
+            'controller' => 'Backend',
+            'method' => 'commentsModeration',
+        ),
+        '#^commentsModeration&page=([0-9]+)$#' => array(
+            'controller' => 'Backend',
+            'method' => 'commentsModeration',
+        ),
+        '#^moderateComment&commentId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'commentModeration',
-            'param' => 'commentId'
         ),
-        '#^editComment$#' => array(
+        '#^editComment&commentId=([0-9]+)&reported=0$#' => array(
             'controller' => 'Backend',
             'method' => 'adminUpdateComment',
-            'param' => 'commentId', 'reported'
         ),
-        '#^deleteComment$#' => array(
+        '#^deleteComment&commentId=([0-9]+)$#' => array(
             'controller' => 'Backend',
             'method' => 'deleteComment',
-            'param' => 'commentId'
         ),
         '#^settings$#' => array(
             'controller' => 'Backend',
@@ -226,10 +242,6 @@ class Router
                         $this->params[] = $value;
                     }
                 }
-            } else {
-                header('HTTP/1.0 404 Not Found');
-                include_once("../view/frontend/404.php");
-                exit();
             }
         }
         if (!is_null($controller)) {
@@ -241,9 +253,9 @@ class Router
                 'params' => $this->params,
             ];
         } else {
-            return [
-                'controller' => 'dsadassadsdadsa'
-            ];
+            header('HTTP/1.0 404 Not Found');
+            include_once("../view/frontend/404.php");
+            exit();
         }
     }
 /*
