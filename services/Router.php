@@ -17,7 +17,6 @@ class Router
     private $controller;
     private $method;
     private $params;
-    //private $action;
     private $routes = array(
         // frontend:
         '#^$#' => array(
@@ -181,49 +180,6 @@ class Router
     public function __construct($uri)
     {
         $this->uri = substr($uri, strpos($uri, "=") + 1);
-        /*
-        // explode uri
-        $uriParts = explode('?', $uri);
-        $par = explode('&', $uri);
-        $path = $uriParts[0];
-        $pathParts = explode("/", $path);
-
-        if (isset($uriParts[1]) && $uriParts[1] != "" && isset($par[1]) && $par[1] != null) {
-            // get param name
-            $paramName = preg_split("/=/", "$par[1]");
-            $this->param = $paramName[0];
-            // get action name
-            $actionNparam = preg_split("/&/", " $uriParts[1]");
-            $actionName = preg_split("/=/", " $actionNparam[0]");
-            $this->action = $actionName[1];
-        } elseif (isset($uriParts[1]) && $uriParts[1] != "") {
-            // get action name
-            $actionName = explode("=", $uriParts[1]);
-            $actionPath = preg_split("/=/", "$uriParts[1]");
-
-            if (isset($actionName[1])) {
-                $this->action = $actionName[1];
-            } else {
-                header('HTTP/1.0 404 Not Found');
-                include_once("../view/frontend/404.php");
-                exit();
-            }
-
-            if ($actionPath[0] != 'action') {
-                header('HTTP/1.0 404 Not Found');
-                include_once("../view/frontend/404.php");
-                exit();
-            }
-        } else{
-            header('Location: index.php?action=home');
-            exit();
-        }
-
-        if ($pathParts[2] != 'index.php') {
-            header('Location: index.php?action=home');
-            exit();
-        }
-        */
     }
 
     /**
@@ -263,39 +219,4 @@ class Router
             }
         }
     }
-/*
-    public function renderController()
-    {
-        try {
-            if (key_exists($this->action, $this->routes)) {
-                $controller = $this->routes[$this->action]['controller'];
-                $method = $this->routes[$this->action]['method'];
-                if (isset($this->param) && $this->param != null){
-                    if ($this->param == $this->routes[$this->action]['param']){
-                        $parameter = $this->routes[$this->action]['param'];
-                    } else {
-                        header('HTTP/1.0 404 Not Found');
-                        include_once("../view/frontend/404.php");
-                        exit();
-                    }
-                }
-                if ($controller == 'Frontend') {
-                    $currentController = new Frontend();
-                } elseif ($controller == 'Backend') {
-                    $currentController = new Backend();
-                } elseif ($controller == 'Login') {
-                    $currentController = new Login();
-                } else {
-                    $currentController = new Contact();
-                }
-                $currentController->$method();
-            } else {
-                header('HTTP/1.0 404 Not Found');
-                include_once("../view/frontend/404.php");
-                exit();
-            }
-        } catch (Exception $e) {
-            echo 'Exception reçue : ', $e->getMessage(), "\n";
-        }
-    }*/
 }

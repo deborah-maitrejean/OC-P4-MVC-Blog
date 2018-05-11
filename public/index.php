@@ -10,7 +10,6 @@ MyAutoload::start();
 
 $container = new Container();
 $router = new Router($uri);
-//$router->renderController();
 
 $resolve = $router->resolve();
 $controller = $container->getController($resolve['controller']);
