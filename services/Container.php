@@ -33,4 +33,7 @@ class Container
 
         return $controller;
     }
+    public function getRoutes(){
+
+    }
 }
