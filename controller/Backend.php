@@ -3,7 +3,6 @@
 namespace Controller;
 
 use \Model\CommentManager;
-use \Model\LoginManager;
 use \Model\PostManager;
 
 /**

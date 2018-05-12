@@ -2,8 +2,6 @@
 
 namespace Controller;
 
-use \Model\CommentManager;
-use \Model\PostManager;
 use \Model\ContactManager;
 
 /**
