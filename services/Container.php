@@ -1,6 +1,7 @@
 <?php
 
 namespace Services;
+use \Config\Routes;
 use \Controller\Frontend;
 use \Controller\Login;
 use \Controller\Backend;
@@ -32,5 +33,15 @@ class Container
         }
 
         return $controller;
+    }
+
+    /**
+     * @param $routes
+     * @return mixed
+     */
+    public function getRoutes($routes)
+    {
+        $this->routes = $routes;
+        return $routes;
     }
 }
