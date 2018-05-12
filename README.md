@@ -13,4 +13,3 @@ Installation
 9. install phpmailer, update ContactManager $mail with your own mail address, host, port... 
 9. get your reCAPTCHA key on https://www.google.com/recaptcha/intro/android.html, then add your website key into data-sitekey="" in contactView.php file. 
 then uncomment reCaptcha verifications in Frontend controller backend method.
-10.
