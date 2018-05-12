@@ -1,7 +1,7 @@
 <?php
 
 namespace Services;
-
+use \Config\Routes;
 
 /**
  * Class Router
@@ -23,6 +23,13 @@ class Router
     public function __construct($uri)
     {
         $this->uri = substr($uri, strpos($uri, "=") + 1);
+    }
+
+    public function allRoutes()
+    {
+        $container = new Container();
+        $this->routes = $container->getRoutes(Routes::$routes);
+        return $this->routes;
     }
 
     /**
