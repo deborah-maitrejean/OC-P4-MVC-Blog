@@ -2,10 +2,6 @@
 
 namespace Services;
 
-use \Controller\Frontend;
-use \Controller\Backend;
-use \Controller\Contact;
-use \Controller\Login;
 
 /**
  * Class Router
