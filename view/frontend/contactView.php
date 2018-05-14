@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email" class="">Votre adresse mail<span class="star">*</span></label>
-                    <input type="email" name="email" id="email" title="Adresse mail" placeholder="@ adresse e-mail" required class="form-control" maxlength="100" >
+                    <input type="email" name="email" id="email" title="Adresse mail" placeholder="@ adresse e-mail" required class="form-control" maxlength="255" >
                 </div>
                 <div class="form-group">
                     <label for="subject">Objet<span class="star">*</span></label>
