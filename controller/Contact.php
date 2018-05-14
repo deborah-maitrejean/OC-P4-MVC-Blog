@@ -36,7 +36,6 @@ class Contact
                         if (strlen($_POST['subject']) <= 150) {
                             if (strlen($_POST['email']) <= 255) {
                                 if (preg_match("#^0[1-9]([-. ]?[0-9]{2}){4}$#", $_POST['tel'])) {
-                                    $_SESSION['message'] = 'Votre message nous a bien été transmis.';
                                     $contactManager = new ContactManager();
                                     $contactManager->sendMail(
                                         htmlspecialchars($_POST['lastName']),
