@@ -32,28 +32,36 @@ class Contact
         if (isset($_POST['submit']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['tel']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
             if (!empty($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['tel']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])) {
                 if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
-                    if (strlen($_POST['email']) <= 255) {
-                        if (preg_match("#^0[1-9]([-. ]?[0-9]{2}){4}$#", $_POST['tel'])) {
-                            $_SESSION['message'] = 'Votre message nous a bien été transmis.';
-                            $contactManager = new ContactManager();
-                            $contactManager->sendMail(
-                                htmlspecialchars($_POST['lastName']),
-                                htmlspecialchars($_POST['firstName']),
-                                htmlspecialchars(trim($_POST['tel'])),
-                                htmlspecialchars($_POST['email']),
-                                htmlspecialchars($_POST['subject']),
-                                htmlspecialchars($_POST['message'])
-                            );
-                            if ($contactManager){
-                                $_SESSION['message'] = 'Votre message nous a bien été transmis.';
+                    if (strlen($_POST['lastName']) <= 80 || strlen($_POST['firstName']) <= 80) {
+                        if (strlen($_POST['subject']) <= 150) {
+                            if (strlen($_POST['email']) <= 255) {
+                                if (preg_match("#^0[1-9]([-. ]?[0-9]{2}){4}$#", $_POST['tel'])) {
+                                    $_SESSION['message'] = 'Votre message nous a bien été transmis.';
+                                    $contactManager = new ContactManager();
+                                    $contactManager->sendMail(
+                                        htmlspecialchars($_POST['lastName']),
+                                        htmlspecialchars($_POST['firstName']),
+                                        htmlspecialchars(trim($_POST['tel'])),
+                                        htmlspecialchars($_POST['email']),
+                                        htmlspecialchars($_POST['subject']),
+                                        htmlspecialchars($_POST['message'])
+                                    );
+                                    if ($contactManager){
+                                        $_SESSION['message'] = 'Votre message nous a bien été transmis.';
+                                    } else {
+                                        $_SESSION['message'] = 'Une erreur est survenue.';
+                                    }
+                                } else {
+                                    $_SESSION['message'] = 'Le numéro de téléphone n\'est pas au bon format.';
+                                }
                             } else {
-                                $_SESSION['message'] = 'Une erreur est survenue.';
+                                $_SESSION['message'] = 'L\'adresse email saisie dépasse la longueur autorisée.';
                             }
                         } else {
-                            $_SESSION['message'] = 'Le numéro de téléphone n\'est pas au bon format.';
+                            $_SESSION['message'] = 'L\'objet saisi dépasse la longueur autorisée.';
                         }
                     } else {
-                        $_SESSION['message'] = 'L\'adresse email saisie dépasse la longueur autorisée.';
+                        $_SESSION['message'] = 'Le champs nom ou prénom dépasse la longueur autorisée.';
                     }
                 } else {
                     $_SESSION['message'] = 'L\'adresse email n\'est pas au bon format.';
